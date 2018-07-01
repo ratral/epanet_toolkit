@@ -1,0 +1,116 @@
+---
+title:    "CASE STUDY OF PRESSURE MANAGEMENT"
+subtitle: "System design in EPANET"
+author:   "Dr. Raúl Trujillo Álvarez"
+date:     "`r format(Sys.time(), '%d %B %Y')`"
+
+output: 
+  html_document:
+    theme: spacelab
+    toc: true
+    number_sections: true
+
+---
+
+```{r setup, include=FALSE}
+
+# Initialize Session
+
+  cat("\014")
+  rm(list=ls()) 
+
+# Installs libraries 
+
+  list.of.packages <- c("epanet2toolkit","epanetReader",
+                        "data.table","tidyverse",
+                        "knitr","kableExtra","captioner") 
+  
+  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  if(length(new.packages)) install.packages(new.packages,dependencies=TRUE)
+  lapply(list.of.packages, require, character.only = TRUE)
+  rm(list.of.packages,new.packages) # remove 
+
+
+# initialize files paths and files
+
+  knitr::opts_chunk$set(echo = TRUE)
+
+  dir_work   <-  gsub("/reports","",getwd())
+  dir_report <-  file.path(dir_work,"reports") 
+  dir_data   <-  file.path(dir_work,"data")  
+  dir_bin    <-  file.path(dir_work,"reports")
+
+# Tables and figures numbering
+# R Markdown: How to number and reference tables 
+# https://www.r-bloggers.com/r-markdown-how-to-number-and-reference-tables/
+  
+  nums_tables <- captioner::captioner(prefix = "Tab.")
+  nums_fig    <- captioner::captioner(prefix = "Fig.")
+
+  fig.001 <- nums_fig(name = "net_charact",
+                      caption = "Scheme of the network fed by deposit")
+
+
+# The input processor module receives a description of the network 
+# being simulated from an external input file (*.INP)
+
+  net_name     <- "prv_01" #!!!!!!!
+  
+  file_inp     <- file.path(dir_data,   paste(net_name,".inp", sep=""))
+  file_report  <- file.path(dir_report, paste(net_name,".rpt", sep=""))
+  file_bin     <- file.path(dir_report, paste(net_name,".bin", sep=""))
+  
+  net_input_01  <- read.inp(file_inp)
+  
+  entries       <- summary(net_input_01)
+
+```
+
+# DESCRIPTION
+
+This first analysis is based on a simple water distribution systems, 
+which could represent the drinking water supply scheme of a small population,
+formed by `r entries$entryCounts[1,1]`  knots and `r entries$entryCounts[3,1]` 
+pipes lines, whose characteristics are contained in `r nums_fig("net_charact")`:
+
+```{r network_characteristics, fig.cap = fig.001, echo=FALSE}
+  plot(net_input_01)
+```
+
+```{r echo=FALSE, results='asis'}
+# boot_options <- c("striped", "hover", "condensed", "responsive")
+# entries$entryCounts %>%
+#  kable("html", caption = "Summary") %>%
+#  kable_styling(bootstrap_options = boot_options, 
+#                full_width = F, 
+#                font_size = 12,
+#                position = "left")
+
+
+```
+
+## Time-Varying Demands
+
+All the distribution systems is inherently unsteady due to continuously varying
+demands. 
+
+In order for an extended period simulation to accurately reflect the dynamics 
+of the real system, these demand fluctuations must be incorporated into the 
+model.
+
+The temporal variations of flow (consumption) for water systems follow a 24-hour 
+pattern _(diurnal demand pattern)_.
+
+These Flow-Pattern not only are changing on a daily basis, also are different 
+in the weekdays (Weekend usage patterns often differ from weekday patterns),
+change weekly (vacation, christmas, ramadan etc.) annually (summer and winter) 
+and from year to year ( _"El Niño"_ and _"La Niña"_ phenomenon).
+
+Normally, the hydraulic models express demands by using a constant baseline
+demand multiplied by a dimensionless demand pattern factor at each time 
+increment. 
+
+A demand multiplier is defined as:
+
+For this exercise we are going to limit ourselves to a single daily pattern 
+multipliers.
