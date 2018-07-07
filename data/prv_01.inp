@@ -580,6 +580,8 @@ LINK GPV001 24 AT TIME 21:00
  Statistic          	NONE
 
 [REPORT]
+ Nodes                All
+ Links                All
  Status             	Yes
  Summary            	No
  Page               	0
