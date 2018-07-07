@@ -130,6 +130,14 @@ where:
  - $q_{base}=$ base demand $(l/s)$
 
 
+## Water Demand
+
+selecting $150 lpcd$ (_litres per capita per day water supply_ including 15% for 
+unaccounted for flow). 
+
+The design of the hydraulic system is performed for the daily mean
+water demand, which total value is $q_m = 39.13 \, (m^3/h) = 10.869 \,(l/s)$ 
+
 ## Pressure dependent demands (leaks)
 
 Simulations are run for two types of scenarios: with and without leak. Scenario 
