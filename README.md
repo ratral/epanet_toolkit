@@ -10,7 +10,7 @@ We will define a fictitious _**District Measured Area (DMA)**_ to check the diff
 
 Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
-ToDo:
+Tasks:
 
  - [ ]  Development of a standard distribution network
  - [ ]  Water Demand Patterns:
@@ -29,16 +29,14 @@ Calculation of the effect of different pressure management models.
 
 Pressure management can be defined as the practice of managing system pressures to the optimum levels of service while ensuring sufficient and efficient supply to legitimate uses.The positive effects of pressure management are to decrease real water losses by reducing unnecessary or excess pressures.
 
-### One Inlet systems
+Tasks for One Inlet in DMAs systems
 
  - [ ]  inlet mit constant pressure;
  - [ ]  inlet with Time-based pressure modulation;
  - [ ]  inlet with controlled pressure according to the flow;
  - [ ]  tank effect.
 
-
-
-### Multi inlet system
+Tasks for Multi inlet in DMAs systems
 
 - [ ]  Teil Tank : Water inlet from a tank in head and tail locations of the DMA
 
