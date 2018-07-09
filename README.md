@@ -28,6 +28,8 @@ q = D * A * SQR(2*g*h)
 
 where q the flowrate, C the discharge coefficient, A the orifice area, g acceleration due to gravity and h the pressure head. To apply this equation to leaks in pipes it can be written in more general form as: 
  
+![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
+
 q = c*(p^α)
 
 where c is the leakage coefficient and α the leakage exponent. A number of field studies have shown that α can be considerably larger than 0.5, and typically varies between 0.5 and 2.79 with a median of 1.15.
