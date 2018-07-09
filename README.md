@@ -14,8 +14,19 @@ Tasks:
 
  - [x]  Development of a standard distribution network (PRV_01.inp)
  - [x]  Water Demand Patterns:
-     - [ ]  Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
-     - [ ]  Two different types of day for each time period exist (working-days and holidays-weekends). 
+     - [x]  Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
+     - [x]  Two different types of day for each time period exist (working-days and holidays-weekends). 
+ - [ ]  Report (report_prv_01.Rmd) 
+
+
+## The effect of pressure on leakage in WDS
+
+One of the major factors influencing leakage is the pressure in the distribution system. In the past the conventional view was that leakage from water distribution systems is relatively insensitive to pressure, as described by the orifice equation:
+
+q = D_d*A*SQR(2*g*h)
+
+where q the flowrate, C_d the discharge coefficient, A the orifice area, g 
+
 
 ## Indicators for Real Losses and non-revenue water 
 
