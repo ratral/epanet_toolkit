@@ -8,7 +8,7 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 
 First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve controller.
 
-We will define a fictitious District Measured Area (DMA) to check the different strategies of pressure management in order to reduce the water losses.
+We will define a fictitious _**District Measured Area (DMA)**_ to check the different strategies of pressure management in order to reduce the water losses. DMAs are discrete areas of the _**water distribution system (WDS)_** and are created by closing boundary valves or by permanently disconnecting pipes to other areas so that it remains flexible to changing demands.
 
 Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
@@ -35,5 +35,5 @@ Pressure management can be defined as the practice of managing system pressures 
 
 ## Comparison of different sensor placement algorithms for model-based leak localization.
 
-
+The aim of this models is to narrow down the area where leakage is occurring in order to make later pinpointing easier. A traditional approach is to divide the network into so-called district metered areas (DMAs).
  
