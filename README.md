@@ -6,16 +6,13 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 
 ## Development of a standard network.
 
-First, we need to create a fictional network sector with measured inputs.
+First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve controller.
 
 We will define an area measured by the district (DMA, for its acronym in English) fictitious to check the different strategies of pressure management in order to reduce the actual water losses.
 
 Effective measurement / calculation will help to quantify un-generated water and reduce waste.
 
 ### Development of a standard network 100m * 100m 
-
-
-
 
 ## Pressure Management
 
@@ -32,6 +29,8 @@ Pressure management can be defined as the practice of managing system pressures 
 
 ### Multi inlet
 
+
+## Comparison of different sensor placement algorithms for model-based leak localization.
 
 
  
