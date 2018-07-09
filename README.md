@@ -12,7 +12,7 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 
 #### Inlet mit constant pressure.
 #### Inlet with Time-based pressure modulation
-#### Inlet with controlled pressure according to the flow $p=f(q_t)$.
+#### Inlet with controlled pressure according to the flow __p_i=f(q_t)__.
 #### tank effect
 
 ### Multi inlet
