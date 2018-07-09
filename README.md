@@ -4,15 +4,17 @@ The idea behind this project is to develop a standard hydraulic model to demonst
 
 for this we will use EPANET with R and the packages "epanetReader" and "epanet2toolkit".
 
-## Development of a standard network.
-
-First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve controller.
+First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve ontroller.
 
 We will define a fictitious _**District Measured Area (DMA)**_ to check the different strategies of pressure management in order to reduce the water losses. DMAs are discrete areas of the _**water distribution system (WDS)**_ and are created by closing boundary valves or by permanently disconnecting pipes to other areas so that it remains flexible to changing demands.
 
 Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
-**Development of a standard network 100m * 100m** 
+ToDo:
+  -[ ] Development of a standard distribution network
+  -[ ] Water Demand Patterns:
+    - [ ] Different periods of the year (Spring, Summer, Fall, Winter” and “Summerbreak”);
+    - [ ] Two different types of day for each time period exist (“working-days” and “holidays-weekends”). 
 
 ## Indicators for Real Losses and non-revenue water 
 
