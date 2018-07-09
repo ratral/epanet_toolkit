@@ -27,8 +27,6 @@ where _qt_ the flowrate, _C_ the discharge coefficient, _A_ the orifice area, _g
  
 <img src="https://latex.codecogs.com/svg.latex?q_t=C*p^{\alpha}"/>
 
-q = c*(p^α)
-
 where c is the leakage coefficient and α the leakage exponent. A number of field studies have shown that α can be considerably larger than 0.5, and typically varies between 0.5 and 2.79 with a median of 1.15.
 
 
