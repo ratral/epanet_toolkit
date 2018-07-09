@@ -12,7 +12,7 @@ We will define an area measured by the district (DMA, for its acronym in English
 
 Effective measurement / calculation will help to quantify un-generated water and reduce waste.
 
-### Development of a standard network 100m * 100m 
+**Development of a standard network 100m * 100m** 
 
 ## Pressure Management
 
@@ -27,7 +27,7 @@ Pressure management can be defined as the practice of managing system pressures 
  - Inlet with controlled pressure according to the flow __p_i=f(q_t)__.
  - Tank effect
 
-### Multi inlet
+### Multi inlet system
 
 
 ## Comparison of different sensor placement algorithms for model-based leak localization.
