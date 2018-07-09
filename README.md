@@ -12,10 +12,10 @@ Effective undertanding, measurement and calculation of the diferent modells and 
 
 ToDo:
 
-  -[ ] Development of a standard distribution network
-  -[ ] Water Demand Patterns:
-    - [ ] Different periods of the year (Spring, Summer, Fall, Winter” and “Summerbreak”);
-    - [ ] Two different types of day for each time period exist (“working-days” and “holidays-weekends”). 
+ - [ ]  Development of a standard distribution network
+ - [ ]  Water Demand Patterns:
+     - [ ]  Different periods of the year (Spring, Summer, Fall, Winter” and “Summerbreak”);
+     - [ ]  Two different types of day for each time period exist (“working-days” and “holidays-weekends”). 
 
 ## Indicators for Real Losses and non-revenue water 
 
