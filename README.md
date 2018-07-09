@@ -6,9 +6,16 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 
 ## Development of a standard network.
 
-## Calculation of the effect of different pressure management models.
+## Pressure Management
 
-### One Inlet
+Calculation of the effect of different pressure management models.
+
+Pressure management can be defined as the practice of managing system pressures to the optimum levels of service while ensuring sufficient and efficient supply to legitimate uses.The positive effects of pressure management are to decrease real water losses by reducing unnecessary or excess pressures.
+
+
+
+
+### One Inlet systems
 
 #### Inlet mit constant pressure.
 #### Inlet with Time-based pressure modulation
@@ -16,4 +23,7 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 #### tank effect
 
 ### Multi inlet
+
+
+
  
