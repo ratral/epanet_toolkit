@@ -1,14 +1,12 @@
 # Hydraulic model to understand the reduction of Real Water Losses in Water Distribution System (WDS). 
 
-The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of damage location in water networks.
-
-for this we will use EPANET with R and the packages "epanetReader" and "epanet2toolkit".
+The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of damage location in water networks. For this we will use EPANET with R and the packages "epanetReader" and "epanet2toolkit".
 
 First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve ontroller.
 
-We will define a fictitious _**District Measured Area (DMA)**_ to check the different strategies of pressure management in order to reduce the water losses. DMAs are discrete areas of the _**water distribution system (WDS)**_ and are created by closing boundary valves or by permanently disconnecting pipes to other areas so that it remains flexible to changing demands.
+Second, We will define a fictitious _**District Measured Area (DMA)**_ to check the different strategies of pressure management in order to reduce the water losses. DMAs are discrete areas of the _**water distribution system (WDS)**_ and are created by closing boundary valves or by permanently disconnecting pipes to other areas so that it remains flexible to changing demands.
 
-Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
+An effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
 Tasks:
 
@@ -19,13 +17,17 @@ Tasks:
  - [ ]  Report (report_prv_01.Rmd) 
 
 
-## The effect of pressure on leakage in WDS
+## The effect of pressure on leakage Water Distribution System (WDS).
 
 One of the major factors influencing leakage is the pressure in the distribution system. In the past the conventional view was that leakage from water distribution systems is relatively insensitive to pressure, as described by the orifice equation:
 
 q = D_d*A*SQR(2*g*h)
 
-where q the flowrate, C_d the discharge coefficient, A the orifice area, g 
+where q the flowrate, C_d the discharge coefficient, A the orifice area, g acceleration due to gravity and h the pressure head. To apply this equation to leaks in pipes it can be written in more general form as: 
+ 
+q = c*(p^α)
+
+where c is the leakage coefficient and α the leakage exponent. A number of field studies have shown that α can be considerably larger than 0.5, and typically varies between 0.5 and 2.79 with a median of 1.15.
 
 
 ## Indicators for Real Losses and non-revenue water 
