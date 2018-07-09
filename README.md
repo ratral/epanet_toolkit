@@ -1,6 +1,6 @@
 # Hydraulic model to understand the reduction of losses in hydraulic systems. 
 
-The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of damage location in aqueduct networks.
+The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of damage location in water networks.
 
 for this we will use EPANET with R and the packages "epanetReader" and "epanet2toolkit".
 
@@ -8,9 +8,9 @@ for this we will use EPANET with R and the packages "epanetReader" and "epanet2t
 
 First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve controller.
 
-We will define an area measured by the district (DMA, for its acronym in English) fictitious to check the different strategies of pressure management in order to reduce the actual water losses.
+We will define a fictitious District Measured Area (DMA) to check the different strategies of pressure management in order to reduce the water losses.
 
-Effective measurement / calculation will help to quantify un-generated water and reduce waste.
+Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
 **Development of a standard network 100m * 100m** 
 
