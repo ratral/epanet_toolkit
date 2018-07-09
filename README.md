@@ -23,12 +23,9 @@ One of the major factors influencing leakage is the pressure in the distribution
 
 <img src="https://latex.codecogs.com/svg.latex?q_t=C_d*A*\sqrt({2gh})"/>
 
-
-q = D * A * SQR(2*g*h)
-
-where q the flowrate, C the discharge coefficient, A the orifice area, g acceleration due to gravity and h the pressure head. To apply this equation to leaks in pipes it can be written in more general form as: 
+where _qt_ the flowrate, _C_ the discharge coefficient, _A_ the orifice area, _g_ acceleration due to gravity and h the pressure head. To apply this equation to leaks in pipes it can be written in more general form as: 
  
-
+<img src="https://latex.codecogs.com/svg.latex?q_t=C*p^\apha"/>
 
 q = c*(p^α)
 
