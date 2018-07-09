@@ -21,7 +21,7 @@ Tasks:
 
 One of the major factors influencing leakage is the pressure in the distribution system. In the past the conventional view was that leakage from water distribution systems is relatively insensitive to pressure, as described by the orifice equation:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;q_t=C_d*A*\sqrt({2gh})"/>
+<img src="https://latex.codecogs.com/svg.latex?;q_t=C_d*A*\sqrt({2gh})"/>
 
 
 q = D * A * SQR(2*g*h)
