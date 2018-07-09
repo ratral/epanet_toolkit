@@ -35,5 +35,9 @@ Pressure management can be defined as the practice of managing system pressures 
 
 ## Comparison of different sensor placement algorithms for model-based leak localization.
 
-The aim of this models is to narrow down the area where leakage is occurring in order to make later pinpointing easier. A traditional approach is to divide the network into so-called district metered areas (DMAs).
+The aim of this models is to reduce the area where leakage is occurring in order to make later pinpointing easier. A traditional approach is to divide the network into so-called district metered areas (DMAs).
+
+Leakage monitoring requires the installation of flow meters and pressure sensors at specific points in the DMAs. The inlet flow into and out of the DMAs need to be metered. 
+
+
  
