@@ -11,6 +11,7 @@ We will define a fictitious _**District Measured Area (DMA)**_ to check the diff
 Effective undertanding, measurement and calculation of the diferent modells and strategien will help to quantify un-generated water and reduce waste.
 
 ToDo:
+
   -[ ] Development of a standard distribution network
   -[ ] Water Demand Patterns:
     - [ ] Different periods of the year (Spring, Summer, Fall, Winter” and “Summerbreak”);
