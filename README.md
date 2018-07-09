@@ -12,8 +12,8 @@ Effective undertanding, measurement and calculation of the diferent modells and 
 
 Tasks:
 
- - [ ]  Development of a standard distribution network
- - [ ]  Water Demand Patterns:
+ - [x]  Development of a standard distribution network (PRV_01.inp)
+ - [x]  Water Demand Patterns:
      - [ ]  Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
      - [ ]  Two different types of day for each time period exist (working-days and holidays-weekends). 
 
