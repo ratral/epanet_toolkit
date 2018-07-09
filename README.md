@@ -21,14 +21,14 @@ Tasks:
 
 One of the major factors influencing leakage is the pressure in the distribution system. In the past the conventional view was that leakage from water distribution systems is relatively insensitive to pressure, as described by the orifice equation:
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=C_d*A*\sqrt({2gh})" title="\Large x=C_d*A*\sqrt({2gh})" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;q_t=C_d*A*\sqrt({2gh})" title="q_t=C_d*A*\sqrt({2gh})" />
 
 
 q = D * A * SQR(2*g*h)
 
 where q the flowrate, C the discharge coefficient, A the orifice area, g acceleration due to gravity and h the pressure head. To apply this equation to leaks in pipes it can be written in more general form as: 
  
-![\Large q_t= C_d * p^\alpha ](https://latex.codecogs.com/svg.latex?x%3D%5Cfrac%7B-b%5Cpm%5Csqrt%7Bb%5E2-4ac%7D%7D%7B2a%7D)
+
 
 q = c*(p^α)
 
