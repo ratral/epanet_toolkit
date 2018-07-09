@@ -22,10 +22,12 @@ Pressure management can be defined as the practice of managing system pressures 
 
 ### One Inlet systems
 
- - Inlet mit constant pressure.
- - Inlet with Time-based pressure modulation
- - Inlet with controlled pressure according to the flow __p_i=f(q_t)__.
- - Tank effect
+ - inlet mit constant pressure;
+ - inlet with Time-based pressure modulation;
+ - inlet with controlled pressure according to the flow __p_t=f(q_t)__;
+ - tank effect.
+
+
 
 ### Multi inlet system
 
