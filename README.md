@@ -14,8 +14,8 @@ ToDo:
 
  - [ ]  Development of a standard distribution network
  - [ ]  Water Demand Patterns:
-     - [ ]  Different periods of the year (Spring, Summer, Fall, Winter” and “Summerbreak”);
-     - [ ]  Two different types of day for each time period exist (“working-days” and “holidays-weekends”). 
+     - [ ]  Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
+     - [ ]  Two different types of day for each time period exist (working-days and holidays-weekends). 
 
 ## Indicators for Real Losses and non-revenue water 
 
@@ -40,7 +40,7 @@ Pressure management can be defined as the practice of managing system pressures 
 
 ### Multi inlet system
 
-
+- [ ]  Teil Tank : Water inlet from a tank in head and tail locations of the DMA
 
 ## Comparison of different sensor placement algorithms for model-based leak pre-localization.
 
