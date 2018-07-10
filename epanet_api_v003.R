@@ -15,6 +15,7 @@ library(tidyverse)
 library(epanetReader)
 library(epanet2toolkit)
 library(data.table)
+library(zoo)
 
 # initialize files paths and files
 
@@ -60,22 +61,33 @@ net_input_01  <- read.inp(file_inp)
 
 plot(net_input_01)
 
-# Plot Patterns
+# Plot Patterns for:
+# - three different periods of the year have been identified 
+#   named: “spring_summer”, “fall_winter” and “summer_break”;
+# - two different types of day for each time period exist 
+#   named: wd (working-days) and hw (holidays-weekends). 
+
+# Biblio:
+# Identifying Typical Urban Water Demand Patterns for a Reliable 
+# Short-Term Forecasting – The Icewater Project Approach;
+# A. Candelieri, F. Archetti
+# [https://www.sciencedirect.com/science/article/pii/S1877705814023339]
 
 
+idx <- seq(ymd_hm("2018-1-1 1:00"), ymd_hm("2018-1-1 24:00"), by = "hour")
 
 spring_summer <- tibble(wd = net_input_01$Patterns$wd_spring_summer,
-                        hw = net_input_01$Patterns$hw_spring_summer)
-
+                        hw = net_input_01$Patterns$hw_spring_summer) %>%
+                 as.zoo(idx)
 
 summer_break <- tibble(wd = net_input_01$Patterns$wd_summer_break,
-                       hw = net_input_01$Patterns$hw_summer_break)
+                       hw = net_input_01$Patterns$hw_summer_break) %>%
+                as.zoo(idx)
   
 
 fall_winter  <- tibble(wd = net_input_01$Patterns$wd_fall_winter,
-                       hw = net_input_01$Patterns$hw_fall_winter)
-
-
+                       hw = net_input_01$Patterns$hw_fall_winter)%>%
+                as.zoo(idx)
 
 # Retrieve summary information about the network.
 names(net_input_01)
