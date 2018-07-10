@@ -11,18 +11,10 @@ params <- list(net_works = c("prv_01"))
 
 # Installs libraries 
 
-list.of.packages <- c("epanet2toolkit","epanetReader",
-                      "data.table","tidyverse",
-                      "ggplot2", "animation") 
-
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-
-if(length(new.packages)) install.packages(new.packages,dependencies=TRUE)
-
-lapply(list.of.packages, require, character.only = TRUE)
-
-rm(list.of.packages,new.packages) # remove
-
+library(tidyverse)
+library(epanetReader)
+library(epanet2toolkit)
+library(data.table)
 
 # initialize files paths and files
 
@@ -33,15 +25,57 @@ dir_bin    <-  file.path(dir_work,"reports")
 
 # The input processor module receives a description of the network 
 # being simulated from an external input file (*.INP)
-file_inp     <- file.path(dir_data,   paste(params$net_work,".inp", sep=""))
-file_report  <- file.path(dir_report, paste(params$net_work,".rpt", sep=""))
-file_bin     <- file.path(dir_report, paste(params$net_work,".bin", sep=""))
+file_inp     <- file.path(dir_data,   paste0(params$net_work,".inp"))
+file_report  <- file.path(dir_report, paste0(params$net_work,".rpt"))
+file_bin     <- file.path(dir_report, paste0(params$net_work,".bin"))
 
 # Read network information from an *.inp
 
 net_input_01  <- read.inp(file_inp)
-entries       <- summary(net_input_01)
-entries$entryCounts
+
+# Types of Objects (from EPANET Manual)
+# EPANET contains both physical objects that can appear on the network map, and
+# non-physical objects that encompass design and operational information. 
+# after reading the file * .inp EPANET-Reader generates a List. 
+#
+# These List objects can be classified as followed:
+# 
+# 1.- NODES:
+#     - $Junctions
+#     - $Reservoirs
+#     - $Tanks
+# 2.- LINKS:
+#     - $Pipes
+#     - $Pumps
+#     - $Valves
+# 3.- MAP LABLES
+# 4.- TIME PATTERNS:
+# 5.- CURVES:
+# 6.- CONTROLS:
+#     - $Controls
+#     - $Rules
+
+
+# Plot Network
+
+plot(net_input_01)
+
+# Plot Patterns
+
+
+
+spring_summer <- tibble(wd = net_input_01$Patterns$wd_spring_summer,
+                        hw = net_input_01$Patterns$hw_spring_summer)
+
+
+summer_break <- tibble(wd = net_input_01$Patterns$wd_summer_break,
+                       hw = net_input_01$Patterns$hw_summer_break)
+  
+
+fall_winter  <- tibble(wd = net_input_01$Patterns$wd_fall_winter,
+                       hw = net_input_01$Patterns$hw_fall_winter)
+
+
 
 # Retrieve summary information about the network.
 names(net_input_01)
@@ -79,7 +113,7 @@ summary(net_report_01)
 
 # Results for a chosen time period can be retrieved using the subset function.
 
-names(net_report_01)
+
 
 t000 <- subset(net_report_01$nodeResults, 
                Timestamp == "0:15:00")

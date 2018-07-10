@@ -1,5 +1,5 @@
 [TITLE]
-
+BASIC MODEL v00.01
 
 [JUNCTIONS]
 ;ID              	Elev        	Demand      	Pattern         
@@ -468,10 +468,6 @@
 
 [SOURCES]
 ;Node            	Type        	Quality     	Pattern
-
-[REACTIONS]
-;Type     	Pipe/Tank       	Coefficient
-
 
 [REACTIONS]
  Order Bulk            	1
