@@ -1,6 +1,6 @@
 # Hydraulic model to understand the reduction of Real Water Losses in Water Distribution System (WDS). 
 
-The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of damage location in water networks. For this we will use EPANET with R and the packages [epanetReader](https://github.com/cran/epanetReader) and [epanet2toolkit](https://github.com/bradleyjeck/epanet2toolkit) (thanks to the developers).
+The idea behind this project is to develop a standard hydraulic model to demonstrate the effects of pressure management and the different models of leakage detection and location in Water Distribution Systems (WDSs). For this we will use EPANET with R and the packages [epanetReader](https://github.com/cran/epanetReader) and [epanet2toolkit](https://github.com/bradleyjeck/epanet2toolkit) (thanks to the developers).
 
 First, we need to create a fictional Hydraulic modelling network sector with measured inputs and for pressure reducing valve ontroller.
 
