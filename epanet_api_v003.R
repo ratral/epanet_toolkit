@@ -12,9 +12,11 @@ params <- list(net_works = c("prv_01"))
 # Installs libraries 
 
 library(tidyverse)
+library(lubridate)
 library(epanetReader)
 library(epanet2toolkit)
 library(data.table)
+library(ggfortify)
 library(zoo)
 
 # initialize files paths and files
@@ -59,7 +61,8 @@ net_input_01  <- read.inp(file_inp)
 
 # Plot Network
 
-plot(net_input_01)
+# plot(net_input_01)
+
 
 # Plot Patterns for:
 # - three different periods of the year have been identified 
@@ -74,36 +77,25 @@ plot(net_input_01)
 # [https://www.sciencedirect.com/science/article/pii/S1877705814023339]
 
 
-idx <- seq(ymd_hm("2018-1-1 1:00"), ymd_hm("2018-1-1 24:00"), by = "hour")
+idx <- seq(ymd_hm("2020-1-1 1:00"), ymd_hm("2020-1-1 24:00"), by = "hour")
 
-spring_summer <- tibble(wd = net_input_01$Patterns$wd_spring_summer,
-                        hw = net_input_01$Patterns$hw_spring_summer) %>%
-                 as.zoo(idx)
+patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
 
-summer_break <- tibble(wd = net_input_01$Patterns$wd_summer_break,
-                       hw = net_input_01$Patterns$hw_summer_break) %>%
-                as.zoo(idx)
+# autoplot
+# https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_ts.html
+
+
+autoplot.zoo(patterns, facets = NULL)+
+  xlab("Time (Hour)") + 
+  ylab("Flow Factor")
   
 
-fall_winter  <- tibble(wd = net_input_01$Patterns$wd_fall_winter,
-                       hw = net_input_01$Patterns$hw_fall_winter)%>%
-                as.zoo(idx)
-
-# Retrieve summary information about the network.
-names(net_input_01)
-
-summary(net_input_01)
-summary(net_input_01$Junctions)
-summary(net_input_01$Emitters)
-
-net_input_01$Patterns
-
-str(net_input_01$Patterns)
-length(net_input_01$Patterns$PT0001)
-
+#...............................................................................
+# ACTUAL STATUS MARKER !!!!!!!
+#...............................................................................
 # A basic network plot 
-# plot(net_input_01$Patterns$PT0001)
-# plot(net_input_01)
+
+plot(net_input_01)
 
 #...............................................................................
 # 2. Running a Full Simulation                                             ####
