@@ -9,10 +9,13 @@ rm(list=ls())
 
 params <- list(net_works = c("prv_01"))
 
+
+
 # Installs libraries 
 
 library(tidyverse)
 library(lubridate)
+library(scales)
 library(epanetReader)
 library(epanet2toolkit)
 library(data.table)
@@ -36,63 +39,60 @@ file_bin     <- file.path(dir_report, paste0(params$net_work,".bin"))
 
 net_input_01  <- read.inp(file_inp)
 
-# Types of Objects (from EPANET Manual)
+#...............................................................................
+# Types of Objects from EPANET 
 # EPANET contains both physical objects that can appear on the network map, and
 # non-physical objects that encompass design and operational information. 
 # after reading the file * .inp EPANET-Reader generates a List. 
-#
 # These List objects can be classified as followed:
 # 
-# 1.- NODES:
-#     - $Junctions
-#     - $Reservoirs
-#     - $Tanks
-# 2.- LINKS:
-#     - $Pipes
-#     - $Pumps
-#     - $Valves
+# 1.- NODES: $Junctions; $Reservoirs; $Tanks; 
+# 2.- LINKS: $Pipes; $Pumps; $Valves
 # 3.- MAP LABLES
 # 4.- TIME PATTERNS:
 # 5.- CURVES:
-# 6.- CONTROLS:
-#     - $Controls
-#     - $Rules
-
-
+# 6.- CONTROLS: $Controls; $Rules
+#...............................................................................
 # Plot Network
+#...............................................................................
 
-# plot(net_input_01)
+plot(net_input_01)
 
-
-# Plot Patterns for:
-# - three different periods of the year have been identified 
-#   named: “spring_summer”, “fall_winter” and “summer_break”;
-# - two different types of day for each time period exist 
-#   named: wd (working-days) and hw (holidays-weekends). 
+#...............................................................................
+# Plot Consumtion/Demand Patterns for:
+# - three different periods of the year will be used : 
+#   “spring_summer”, “fall_winter” and “summer_break”;
+# - two different types of day for each time period named: 
+#   wd (working-days) and hw (holidays-weekends). 
 
 # Biblio:
 # Identifying Typical Urban Water Demand Patterns for a Reliable 
 # Short-Term Forecasting – The Icewater Project Approach;
 # A. Candelieri, F. Archetti
 # [https://www.sciencedirect.com/science/article/pii/S1877705814023339]
+# autoplot
+# https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_ts.html
+
+
+# net_input_01$Times
+# seq(ymd_hm("2020-1-1 1:00"), ymd_hm("2020-1-1 24:00"), by = "5 min")
 
 
 idx <- seq(ymd_hm("2020-1-1 1:00"), ymd_hm("2020-1-1 24:00"), by = "hour")
 
 patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
 
-# autoplot
-# https://cran.r-project.org/web/packages/ggfortify/vignettes/plot_ts.html
-
-
 autoplot.zoo(patterns, facets = NULL)+
   xlab("Time (Hour)") + 
-  ylab("Flow Factor")
-  
+  ylab("Flow Factor") +
+  scale_x_datetime(breaks       = date_breaks("2 hour"), 
+                   minor_breaks = date_breaks("1 hour"), 
+                   labels       = date_format("%H:%M")) 
 
 #...............................................................................
 # ACTUAL STATUS MARKER !!!!!!!
 #...............................................................................
+
 # A basic network plot 
 
 plot(net_input_01)
