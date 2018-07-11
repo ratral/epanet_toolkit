@@ -10,11 +10,12 @@ An effective undertanding, measurement and calculation of the diferent modells a
 
 Tasks:
 
- - [x]  Development of a standard distribution network (PRV_01.inp)
- - [x]  Water Demand Patterns:
-     - [x]  Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
-     - [x]  Two different types of day for each time period exist (working-days and holidays-weekends). 
- - [ ]  Report (report_prv_01.Rmd) 
+ - Development of a standard distribution network (PRV_01.inp)
+ - Water Demand Patterns:
+     - Different periods of the year (Spring, Summer, Fall, Winter and Summerbreak);
+     - Two different types of day for each time period exist (working-days and holidays-weekends). 
+ - Monte Carlo Simulation of the diferent Demand Patterns
+ - Report (report_prv_01.Rmd) 
 
 
 ## The effect of pressure on leakage Water Distribution System (WDS).
