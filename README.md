@@ -42,16 +42,21 @@ Calculation of the effect of different pressure management models.
 
 Pressure management can be defined as the practice of managing system pressures to the optimum levels of service while ensuring sufficient and efficient supply to legitimate uses.The positive effects of pressure management are to decrease real water losses by reducing unnecessary or excess pressures.
 
-Tasks for One Inlet in DMAs systems
+**Tasks for One Inlet in DMAs systems**
+One Inlet with one Pressure Reduction Valve (PRV), no Outlets
+ - PRV mit constant pressure;
+ - PRV with Time-based pressure modulation;
+ - PRV with controlled pressure according to the flow;
 
- - [ ]  inlet mit constant pressure;
- - [ ]  inlet with Time-based pressure modulation;
- - [ ]  inlet with controlled pressure according to the flow;
- - [ ]  tank effect.
+**Tasks for Multi inlet in DMAs systems**
+Mohre as one inlet with PRVs and posible Outlet with pressure sostinable Valve PSV 
+- Teil Tank : Water inlet from a tank in head and tail locations of the DMA
+- Multi inlets with PRVs 
+- Multi Inlets with PRVs and Outlet with PSV
 
-Tasks for Multi inlet in DMAs systems
+**Analise of the Tank Effect**
+The idea is to use the tanks of the users as shock absorbers of consumption.
 
-- [ ]  Teil Tank : Water inlet from a tank in head and tail locations of the DMA
 
 ## Comparison of different sensor placement algorithms for model-based leak pre-localization.
 
