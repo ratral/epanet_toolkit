@@ -66,7 +66,9 @@ idx <- seq(ymd_hm("2020-1-1 1:00"),
 
 patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
 
-plot_ts_curves(patterns,  y_lab = "Flow Factor")
+plot_ts_curves(patterns,
+               m_title ="Patterns for the Flow Factor",  
+               y_lab = "Flow Factor")
 
 
 #...............................................................................
@@ -100,7 +102,9 @@ inlet_flow <- as.tibble(subset(net_report_01$linkResults,
 
 
 
-plot_ts_curves(inlet_flow, y_lab = "Flow (l/s)")
+plot_ts_curves(inlet_flow,
+               m_title ="Inlet Flow (l/s)",
+               y_lab = "Flow (l/s)")
 
 # inhabitants = aprox. 10,000
 # consum about 125 l/hab/day

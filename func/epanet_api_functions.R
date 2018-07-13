@@ -4,19 +4,24 @@
 #...............................................................................
 
 plot_ts_curves <- function (ts_curve,
+                            m_title = "",
                             x_lab       = "Time (Hours)",
                             y_lab       = "Flow Factor", 
                             time_breaks = "2 hour",
                             time_minor  = "1 hour",
                             x_labtls    = "%H:%M") {
   
+  limits <- c(ymd_hm("2020-1-1 0:00"), ymd_hm("2020-1-1 24:00"))
+  
   autoplot.zoo(ts_curve, facets = NULL) +
+  ggtitle(m_title)+
   xlab(x_lab) + 
   ylab(y_lab) +
   scale_x_datetime(breaks       = date_breaks(time_breaks), 
-                  minor_breaks = date_breaks(time_minor), 
-                  labels       = date_format(x_labtls))+
-  theme_wsj() + scale_colour_wsj("colors6", "")
+                   minor_breaks = date_breaks(time_minor), 
+                   labels       = date_format(x_labtls),
+                   limits       = limits) +
+    theme_hc() + scale_colour_hc()
 }
 #...............................................................................
 
