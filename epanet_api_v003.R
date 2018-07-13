@@ -67,6 +67,7 @@ idx <- seq(ymd_hm("2020-1-1 1:00"),
 patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
 
 plot_ts_curves(patterns,
+               y_limits = c(0.0,2.0),
                m_title ="Patterns for the Flow Factor",  
                y_lab = "Flow Factor")
 
@@ -100,9 +101,8 @@ inlet_flow <- as.tibble(subset(net_report_01$linkResults,
               select(Flow) %>%
               as.zoo(idx)
 
-
-
 plot_ts_curves(inlet_flow,
+               y_limits = c(0.0,20.0),
                m_title ="Inlet Flow (l/s)",
                y_lab = "Flow (l/s)")
 
