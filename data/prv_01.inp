@@ -528,10 +528,6 @@ BASIC MODEL v00.02
 ;Node            	Type        	Quality     	Pattern
 
 [REACTIONS]
-;Type     	Pipe/Tank       	Coefficient
-
-
-[REACTIONS]
  Order Bulk            	1
  Order Tank            	1
  Order Wall            	1
