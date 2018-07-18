@@ -375,36 +375,36 @@ BASIC MODEL v00.02
 
 [PATTERNS]
 ;ID              	Multipliers
-;
- wd_spring_summer	0.62        	0.52        	0.50        	0.47        	0.48        	0.56        
- wd_spring_summer	0.84        	1.40        	1.46        	1.37        	1.30        	1.24        
- wd_spring_summer	1.24        	1.26        	1.22        	1.10        	1.03        	1.03        
- wd_spring_summer	1.11        	1.22        	1.24        	1.08        	0.90        	0.79        
+;wd_spring_summer
+ wd_spring_summer	0.36        	0.19        	0.15        	0.11        	0.12        	0.26        
+ wd_spring_summer	0.73        	1.67        	1.78        	1.63        	1.51        	1.40        
+ wd_spring_summer	1.41        	1.44        	1.37        	1.16        	1.05        	1.06        
+ wd_spring_summer	1.19        	1.37        	1.41        	1.13        	0.84        	0.65        
 ;hw_spring_summer
- hw_spring_summer	0.68        	0.59        	0.55        	0.52        	0.52        	0.55        
- hw_spring_summer	0.70        	0.92        	1.27        	1.48        	1.48        	1.39        
- hw_spring_summer	1.33        	1.33        	1.25        	1.12        	1.06        	1.06        
- hw_spring_summer	1.11        	1.19        	1.17        	1.02        	0.90        	0.81        
+ hw_spring_summer	0.43        	0.26        	0.20        	0.14        	0.14        	0.20        
+ hw_spring_summer	0.47        	0.86        	1.48        	1.85        	1.85        	1.69        
+ hw_spring_summer	1.59        	1.59        	1.45        	1.22        	1.10        	1.10        
+ hw_spring_summer	1.20        	1.33        	1.31        	1.04        	0.82        	0.66        
 ;wd_summer_break
- wd_summer_break 	0.69        	0.67        	0.66        	0.64        	0.67        	0.84        
- wd_summer_break 	1.16        	1.32        	1.28        	1.22        	1.20        	1.18        
- wd_summer_break 	1.17        	1.13        	1.08        	1.06        	1.06        	1.09        
- wd_summer_break 	1.14        	1.14        	1.04        	0.94        	0.87        	0.75        
+ wd_summer_break 	0.50        	0.47        	0.44        	0.41        	0.46        	0.74        
+ wd_summer_break 	1.26        	1.53        	1.46        	1.36        	1.32        	1.29        
+ wd_summer_break 	1.28        	1.21        	1.12        	1.10        	1.09        	1.15        
+ wd_summer_break 	1.23        	1.22        	1.07        	0.91        	0.78        	0.59        
 ;hw_summer_break
- hw_summer_break 	0.79        	0.76        	0.75        	0.73        	0.74        	0.85        
- hw_summer_break 	1.05        	1.22        	1.26        	1.21        	1.16        	1.14        
- hw_summer_break 	1.13        	1.08        	1.03        	1.02        	1.02        	1.06        
- hw_summer_break 	1.12        	1.12        	1.05        	0.97        	0.92        	0.83        
+ hw_summer_break 	0.58        	0.54        	0.51        	0.47        	0.48        	0.71        
+ hw_summer_break 	1.10        	1.42        	1.51        	1.41        	1.32        	1.27        
+ hw_summer_break 	1.25        	1.16        	1.06        	1.03        	1.03        	1.12        
+ hw_summer_break 	1.23        	1.24        	1.10        	0.94        	0.84        	0.67        
 ;wd_fall_winter
- wd_fall_winter  	0.60        	0.57        	0.56        	0.55        	0.60        	0.85        
- wd_fall_winter  	1.32        	1.42        	1.31        	1.23        	1.19        	1.19        
- wd_fall_winter  	1.21        	1.17        	1.09        	1.04        	1.03        	1.11        
- wd_fall_winter  	1.21        	1.21        	1.08        	0.93        	0.84        	0.69        
+ wd_fall_winter  	0.36        	0.31        	0.30        	0.29        	0.36        	0.77        
+ wd_fall_winter  	1.51        	1.66        	1.50        	1.37        	1.30        	1.30        
+ wd_fall_winter  	1.34        	1.27        	1.15        	1.06        	1.05        	1.17        
+ wd_fall_winter  	1.33        	1.34        	1.12        	0.89        	0.75        	0.50        
 ;hw_fall_winter
- hw_fall_winter  	0.67        	0.64        	0.62        	0.61        	0.63        	0.75        
- hw_fall_winter  	0.98        	1.26        	1.38        	1.35        	1.27        	1.24        
- hw_fall_winter  	1.23        	1.17        	1.08        	1.03        	1.03        	1.09        
- hw_fall_winter  	1.18        	1.16        	1.06        	0.95        	0.88        	0.75        
+ hw_fall_winter  	0.45        	0.40        	0.37        	0.34        	0.38        	0.59        
+ hw_fall_winter  	0.97        	1.43        	1.64        	1.58        	1.46        	1.40        
+ hw_fall_winter  	1.39        	1.28        	1.13        	1.05        	1.04        	1.15        
+ hw_fall_winter  	1.30        	1.27        	1.10        	0.92        	0.80        	0.58        
 
 [CURVES]
 ;ID              	X-Value     	Y-Value

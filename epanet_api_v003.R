@@ -5,12 +5,6 @@
 cat("\014")
 rm(list=ls()) 
 
-# Initialize params
-
-params <- list(net_works = "prv_01", 
-               inlet_valves = c("PRV_001"),
-               time_step = "hour")
-
 # Installs libraries 
 
 library(tidyverse)
@@ -18,10 +12,28 @@ library(epanetReader)
 library(epanet2toolkit)
 library(ggfortify)
 library(ggthemes)
-
 library(zoo)
 library(scales)
 library(lubridate)
+
+# Initialize params
+
+params <- list(net_works     = "prv_01", 
+               inlet_valves  = c("PRV_001"),
+               time_step     = "hour",
+               pattern_start = "2020-1-1 00:30",
+               pattern_end   = "2020-1-1 23:30")
+
+
+demad_factor <- list( c( "wd_spring_summer","hw_spring_summer",
+                         "wd_summer_break","hw_summer_break",
+                         "wd_fall_winter","hw_fall_winter"),
+                      c( 0.92, 1.00, 1.09, 0.81, 0.66, 0.95))
+
+# Time Serie Index
+idx <- seq( ymd_hm(params$pattern_start), 
+            ymd_hm(params$pattern_end), 
+            by = params$time_step)
 
 
 # initialize files paths and files
@@ -32,14 +44,10 @@ dir_data   <-  file.path(dir_work,"data")
 dir_bin    <-  file.path(dir_work,"reports")
 dir_func   <-  file.path(dir_work,"func")
 
-# The input processor module receives a description of the network 
-# being simulated from an external input file (*.INP)
-
 file_inp     <- file.path(dir_data,   paste0(params$net_work,".inp"))
 file_report  <- file.path(dir_report, paste0(params$net_work,".rpt"))
 file_bin     <- file.path(dir_report, paste0(params$net_work,".bin"))
-
-file_func     <- file.path(dir_func,   "epanet_api_functions.R")
+file_func    <- file.path(dir_func,   "epanet_api_functions.R")
 
 # Load Functions Standard
 
@@ -59,27 +67,17 @@ net_input_01  <- read.inp(file_inp)
 # Plot Consumtion/Demand Patterns
 #...............................................................................
 
-
-idx <- seq(ymd_hm("2020-1-1 1:00"), 
-           ymd_hm("2020-1-1 24:00"), 
-           by = params$time_step)
-
 patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
 
 plot_ts_curves(patterns,
                y_limits = c(0.0,2.0),
-               m_title ="Patterns for the Flow Factor",  
-               y_lab = "Flow Factor")
-
+               m_title  = "Patterns for the Flow Factor",  
+               y_lab    = "Flow Factor")
 
 #...............................................................................
 # 2. Running a Full Simulation                                             ####
 #    The function ENepanet() runs a full simulation and 
 #    writes the results to a file. 
-#
-# REMEBER !!!
-# Add the line 'Nodes All' to the [REPORT] section of the .inp file.
-# Add the line 'Links All' to the [REPORT] section of the .inp file.
 #...............................................................................
 
 ENepanet(file_inp, file_report)
@@ -89,11 +87,6 @@ ENepanet(file_inp, file_report)
 # The simulation is summarized over junctions, tanks and pipes.
 #...............................................................................
 
-# For the Valve GPV001 in STATUS OPEN
-# [STATUS]
-# ;ID              	Status/Setting
-# GPV001          	Open
-
 net_report_01 <- read.rpt(file_report) 
 
 inlet_flow <- as.tibble(subset(net_report_01$linkResults, 
@@ -102,9 +95,9 @@ inlet_flow <- as.tibble(subset(net_report_01$linkResults,
               as.zoo(idx)
 
 plot_ts_curves(inlet_flow,
-               y_limits = c(0.0,20.0),
-               m_title ="Inlet Flow (l/s)",
-               y_lab = "Flow (l/s)")
+               y_limits = c(0.0,25),
+               m_title  = "Inlet Flow (l/s)",
+               y_lab    = "Flow (l/s)")
 
 # inhabitants = aprox. 10,000
 # consum about 125 l/hab/day

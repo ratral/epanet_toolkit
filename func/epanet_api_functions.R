@@ -9,7 +9,7 @@ plot_ts_curves <- function (ts_curve,
                             x_lab       = "Time (Hours)",
                             y_lab       = "Flow Factor", 
                             time_breaks = "2 hour",
-                            time_minor  = "1 hour",
+                            time_minor  = "30 min",
                             x_labtls    = "%H:%M") {
   
   x_limits <- c(ymd_hm("2020-1-1 0:00"), ymd_hm("2020-1-1 24:00"))
