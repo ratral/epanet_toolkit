@@ -8,6 +8,8 @@ rm(list=ls())
 # Installs libraries 
 
 library(tidyverse)
+library(plyr) 
+library(reshape2)
 library(epanetReader)
 library(epanet2toolkit)
 library(ggfortify)
@@ -22,7 +24,8 @@ params <- list(net_works     = "prv_01",
                inlet_valves  = c("PRV_001"),
                time_step     = "hour",
                pattern_start = "2020-1-1 00:30",
-               pattern_end   = "2020-1-1 23:30")
+               pattern_end   = "2020-1-1 23:30",
+               main_nodes    = c("JT-0A-001", "JT-0K-011"))
 
 
 demad_factor <- list( c( "wd_spring_summer","hw_spring_summer",
@@ -89,10 +92,29 @@ ENepanet(file_inp, file_report)
 
 net_report_01 <- read.rpt(file_report) 
 
-inlet_flow <- as.tibble(subset(net_report_01$linkResults, 
-                               ID == params$inlet_valves[1])) %>%
+
+inlet_flow <- subset(net_report_01$linkResults, 
+                     ID == params$inlet_valves) %>%
+              as.tibble()  %>%
               select(Flow) %>%
               as.zoo(idx)
+
+d_pressure <- net_report_01$nodeResults %>%
+              subset(nodeType == "Junction") %>%
+              as.tibble() %>%
+              select(ID,timeInSeconds,Pressure) %>%
+              dcast(timeInSeconds~ID, 
+                    margins = FALSE, 
+                    value.var = "Pressure",
+                    fun.aggregate = mean)
+
+# gather()  takes multiple columns, and gathers them into key-value pairs: 
+#           it makes “wide” data longer.
+#
+# spread(). takes two columns (key & value) and spreads in to multiple columns,
+#           it makes “long” data wider.
+
+
 
 plot_ts_curves(inlet_flow,
                y_limits = c(0.0,25),
@@ -104,6 +126,11 @@ plot_ts_curves(inlet_flow,
 # round(sum(inlet_flow)*((60*60)/125.0),0)
 
 
+
+
+
+
 #...............................................................................
 # ACTUAL STATUS MARKER !!!!!!!
+# https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
 #...............................................................................
