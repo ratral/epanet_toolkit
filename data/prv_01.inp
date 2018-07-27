@@ -3,128 +3,128 @@ BASIC MODEL v00.02
 
 [JUNCTIONS]
 ;ID              	Elev        	Demand      	Pattern         
- JT-01-001       	0           	0.12        	wd_summer_break 	;
- JT-0A-001       	0           	0.12        	wd_summer_break 	;
- JT-0A-002       	0           	0.12        	wd_summer_break 	;
- JT-0A-003       	0           	0.12        	wd_summer_break 	;
- JT-0A-004       	0           	0.12        	wd_summer_break 	;
- JT-0A-005       	0           	0.12        	wd_summer_break 	;
- JT-0A-006       	0           	0.12        	wd_summer_break 	;
- JT-0A-007       	0           	0.12        	wd_summer_break 	;
- JT-0A-008       	0           	0.12        	wd_summer_break 	;
- JT-0A-009       	0           	0.12        	wd_summer_break 	;
- JT-0A-010       	0           	0.12        	wd_summer_break 	;
- JT-0A-011       	0           	0.12        	wd_summer_break 	;
- JT-0B-001       	0           	0.12        	wd_summer_break 	;
- JT-0B-002       	0           	0.12        	wd_summer_break 	;
- JT-0B-003       	0           	0.12        	wd_summer_break 	;
- JT-0B-004       	0           	0.12        	wd_summer_break 	;
- JT-0B-005       	0           	0.12        	wd_summer_break 	;
- JT-0B-006       	0           	0.12        	wd_summer_break 	;
- JT-0B-007       	0           	0.12        	wd_summer_break 	;
- JT-0B-008       	0           	0.12        	wd_summer_break 	;
- JT-0B-009       	0           	0.12        	wd_summer_break 	;
- JT-0B-010       	0           	0.12        	wd_summer_break 	;
- JT-0B-011       	0           	0.12        	wd_summer_break 	;
- JT-0C-001       	0           	0.12        	wd_summer_break 	;
- JT-0C-002       	0           	0.12        	wd_summer_break 	;
- JT-0C-003       	0           	0.12        	wd_summer_break 	;
- JT-0C-004       	0           	0.12        	wd_summer_break 	;
- JT-0C-005       	0           	0.12        	wd_summer_break 	;
- JT-0C-006       	0           	0.12        	wd_summer_break 	;
- JT-0C-007       	0           	0.12        	wd_summer_break 	;
- JT-0C-008       	0           	0.12        	wd_summer_break 	;
- JT-0C-009       	0           	0.12        	wd_summer_break 	;
- JT-0C-010       	0           	0.12        	wd_summer_break 	;
- JT-0C-011       	0           	0.12        	wd_summer_break 	;
- JT-0D-001       	0           	0.12        	wd_summer_break 	;
- JT-0D-002       	0           	0.12        	wd_summer_break 	;
- JT-0D-003       	0           	0.12        	wd_summer_break 	;
- JT-0D-004       	0           	0.12        	wd_summer_break 	;
- JT-0D-005       	0           	0.12        	wd_summer_break 	;
- JT-0D-006       	0           	0.12        	wd_summer_break 	;
- JT-0D-007       	0           	0.12        	wd_summer_break 	;
- JT-0D-008       	0           	0.12        	wd_summer_break 	;
- JT-0D-009       	0           	0.12        	wd_summer_break 	;
- JT-0D-010       	0           	0.12        	wd_summer_break 	;
- JT-0D-011       	0           	0.12        	wd_summer_break 	;
- JT-0E-001       	0           	0.12        	wd_summer_break 	;
- JT-0E-002       	0           	0.12        	wd_summer_break 	;
- JT-0E-003       	0           	0.12        	wd_summer_break 	;
- JT-0E-004       	0           	0.12        	wd_summer_break 	;
- JT-0E-005       	0           	0.12        	wd_summer_break 	;
- JT-0E-006       	0           	0.12        	wd_summer_break 	;
- JT-0E-007       	0           	0.12        	wd_summer_break 	;
- JT-0E-008       	0           	0.12        	wd_summer_break 	;
- JT-0E-009       	0           	0.12        	wd_summer_break 	;
- JT-0E-010       	0           	0.12        	wd_summer_break 	;
- JT-0E-011       	0           	0.12        	wd_summer_break 	;
- JT-0F-001       	0           	0.12        	wd_summer_break 	;
- JT-0F-002       	0           	0.12        	wd_summer_break 	;
- JT-0F-003       	0           	0.12        	wd_summer_break 	;
- JT-0F-004       	0           	0.12        	wd_summer_break 	;
- JT-0F-005       	0           	0.12        	wd_summer_break 	;
- JT-0F-006       	0           	0.12        	wd_summer_break 	;
- JT-0F-007       	0           	0.12        	wd_summer_break 	;
- JT-0F-008       	0           	0.12        	wd_summer_break 	;
- JT-0F-009       	0           	0.12        	wd_summer_break 	;
- JT-0F-010       	0           	0.12        	wd_summer_break 	;
- JT-0F-011       	0           	0.12        	wd_summer_break 	;
- JT-0G-001       	0           	0.12        	wd_summer_break 	;
- JT-0G-002       	0           	0.12        	wd_summer_break 	;
- JT-0G-003       	0           	0.12        	wd_summer_break 	;
- JT-0G-004       	0           	0.12        	wd_summer_break 	;
- JT-0G-005       	0           	0.12        	wd_summer_break 	;
- JT-0G-006       	0           	0.12        	wd_summer_break 	;
- JT-0G-007       	0           	0.12        	wd_summer_break 	;
- JT-0G-008       	0           	0.12        	wd_summer_break 	;
- JT-0G-009       	0           	0.12        	wd_summer_break 	;
- JT-0G-010       	0           	0.12        	wd_summer_break 	;
- JT-0G-011       	0           	0.12        	wd_summer_break 	;
- JT-0H-001       	0           	0.12        	wd_summer_break 	;
- JT-0H-002       	0           	0.12        	wd_summer_break 	;
- JT-0H-003       	0           	0.12        	wd_summer_break 	;
- JT-0H-004       	0           	0.12        	wd_summer_break 	;
- JT-0H-005       	0           	0.12        	wd_summer_break 	;
- JT-0H-006       	0           	0.12        	wd_summer_break 	;
- JT-0H-007       	0           	0.12        	wd_summer_break 	;
- JT-0H-008       	0           	0.12        	wd_summer_break 	;
- JT-0H-009       	0           	0.12        	wd_summer_break 	;
- JT-0H-010       	0           	0.12        	wd_summer_break 	;
- JT-0H-011       	0           	0.12        	wd_summer_break 	;
- JT-0I-001       	0           	0.12        	wd_summer_break 	;
- JT-0I-002       	0           	0.12        	wd_summer_break 	;
- JT-0I-003       	0           	0.12        	wd_summer_break 	;
- JT-0I-004       	0           	0.12        	wd_summer_break 	;
- JT-0I-005       	0           	0.12        	wd_summer_break 	;
- JT-0I-006       	0           	0.12        	wd_summer_break 	;
- JT-0I-007       	0           	0.12        	wd_summer_break 	;
- JT-0I-008       	0           	0.12        	wd_summer_break 	;
- JT-0I-009       	0           	0.12        	wd_summer_break 	;
- JT-0I-010       	0           	0.12        	wd_summer_break 	;
- JT-0I-011       	0           	0.12        	wd_summer_break 	;
- JT-0J-001       	0           	0.12        	wd_summer_break 	;
- JT-0J-002       	0           	0.12        	wd_summer_break 	;
- JT-0J-003       	0           	0.12        	wd_summer_break 	;
- JT-0J-004       	0           	0.12        	wd_summer_break 	;
- JT-0J-005       	0           	0.12        	wd_summer_break 	;
- JT-0J-006       	0           	0.12        	wd_summer_break 	;
- JT-0J-007       	0           	0.12        	wd_summer_break 	;
- JT-0J-008       	0           	0.12        	wd_summer_break 	;
- JT-0J-009       	0           	0.12        	wd_summer_break 	;
- JT-0J-010       	0           	0.12        	wd_summer_break 	;
- JT-0J-011       	0           	0.12        	wd_summer_break 	;
- JT-0K-001       	0           	0.12        	wd_summer_break 	;
- JT-0K-002       	0           	0.12        	wd_summer_break 	;
- JT-0K-003       	0           	0.12        	wd_summer_break 	;
- JT-0K-004       	0           	0.12        	wd_summer_break 	;
- JT-0K-005       	0           	0.12        	wd_summer_break 	;
- JT-0K-006       	0           	0.12        	wd_summer_break 	;
- JT-0K-007       	0           	0.12        	wd_summer_break 	;
- JT-0K-008       	0           	0.12        	wd_summer_break 	;
- JT-0K-009       	0           	0.12        	wd_summer_break 	;
- JT-0K-010       	0           	0.12        	wd_summer_break 	;
- JT-0K-011       	0           	0.12        	wd_summer_break 	;
+ JT-01-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0A-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0B-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0C-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0D-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0E-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0F-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0G-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0H-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0I-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0J-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-001       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-002       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-003       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-004       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-005       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-006       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-007       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-008       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-009       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-010       	0           	0.12        	nd_wd_summer_break 	;
+ JT-0K-011       	0           	0.12        	nd_wd_summer_break 	;
 
 [RESERVOIRS]
 ;ID              	Head        	Pattern         
@@ -375,36 +375,36 @@ BASIC MODEL v00.02
 
 [PATTERNS]
 ;ID              	Multipliers
-;wd_spring_summer
- wd_spring_summer	0.36        	0.19        	0.15        	0.11        	0.12        	0.26        
- wd_spring_summer	0.73        	1.67        	1.78        	1.63        	1.51        	1.40        
- wd_spring_summer	1.41        	1.44        	1.37        	1.16        	1.05        	1.06        
- wd_spring_summer	1.19        	1.37        	1.41        	1.13        	0.84        	0.65        
-;hw_spring_summer
- hw_spring_summer	0.43        	0.26        	0.20        	0.14        	0.14        	0.20        
- hw_spring_summer	0.47        	0.86        	1.48        	1.85        	1.85        	1.69        
- hw_spring_summer	1.59        	1.59        	1.45        	1.22        	1.10        	1.10        
- hw_spring_summer	1.20        	1.33        	1.31        	1.04        	0.82        	0.66        
-;wd_summer_break
- wd_summer_break 	0.50        	0.47        	0.44        	0.41        	0.46        	0.74        
- wd_summer_break 	1.26        	1.53        	1.46        	1.36        	1.32        	1.29        
- wd_summer_break 	1.28        	1.21        	1.12        	1.10        	1.09        	1.15        
- wd_summer_break 	1.23        	1.22        	1.07        	0.91        	0.78        	0.59        
-;hw_summer_break
- hw_summer_break 	0.58        	0.54        	0.51        	0.47        	0.48        	0.71        
- hw_summer_break 	1.10        	1.42        	1.51        	1.41        	1.32        	1.27        
- hw_summer_break 	1.25        	1.16        	1.06        	1.03        	1.03        	1.12        
- hw_summer_break 	1.23        	1.24        	1.10        	0.94        	0.84        	0.67        
-;wd_fall_winter
- wd_fall_winter  	0.36        	0.31        	0.30        	0.29        	0.36        	0.77        
- wd_fall_winter  	1.51        	1.66        	1.50        	1.37        	1.30        	1.30        
- wd_fall_winter  	1.34        	1.27        	1.15        	1.06        	1.05        	1.17        
- wd_fall_winter  	1.33        	1.34        	1.12        	0.89        	0.75        	0.50        
-;hw_fall_winter
- hw_fall_winter  	0.45        	0.40        	0.37        	0.34        	0.38        	0.59        
- hw_fall_winter  	0.97        	1.43        	1.64        	1.58        	1.46        	1.40        
- hw_fall_winter  	1.39        	1.28        	1.13        	1.05        	1.04        	1.15        
- hw_fall_winter  	1.30        	1.27        	1.10        	0.92        	0.80        	0.58        
+;nd_wd_spring_summer
+ nd_wd_spring_summer	0.36        	0.19        	0.15        	0.11        	0.12        	0.26        
+ nd_wd_spring_summer	0.73        	1.67        	1.78        	1.63        	1.51        	1.40        
+ nd_wd_spring_summer	1.41        	1.44        	1.37        	1.16        	1.05        	1.06        
+ nd_wd_spring_summer	1.19        	1.37        	1.41        	1.13        	0.84        	0.65        
+;nd_hw_spring_summer
+ nd_hw_spring_summer	0.43        	0.26        	0.20        	0.14        	0.14        	0.20        
+ nd_hw_spring_summer	0.47        	0.86        	1.48        	1.85        	1.85        	1.69        
+ nd_hw_spring_summer	1.59        	1.59        	1.45        	1.22        	1.10        	1.10        
+ nd_hw_spring_summer	1.20        	1.33        	1.31        	1.04        	0.82        	0.66        
+;nd_wd_summer_break
+ nd_wd_summer_break 	0.50        	0.47        	0.44        	0.41        	0.46        	0.74        
+ nd_wd_summer_break 	1.26        	1.53        	1.46        	1.36        	1.32        	1.29        
+ nd_wd_summer_break 	1.28        	1.21        	1.12        	1.10        	1.09        	1.15        
+ nd_wd_summer_break 	1.23        	1.22        	1.07        	0.91        	0.78        	0.59        
+;nd_hw_summer_break
+ nd_hw_summer_break 	0.58        	0.54        	0.51        	0.47        	0.48        	0.71        
+ nd_hw_summer_break 	1.10        	1.42        	1.51        	1.41        	1.32        	1.27        
+ nd_hw_summer_break 	1.25        	1.16        	1.06        	1.03        	1.03        	1.12        
+ nd_hw_summer_break 	1.23        	1.24        	1.10        	0.94        	0.84        	0.67        
+;nd_wd_fall_winter
+ nd_wd_fall_winter  	0.36        	0.31        	0.30        	0.29        	0.36        	0.77        
+ nd_wd_fall_winter  	1.51        	1.66        	1.50        	1.37        	1.30        	1.30        
+ nd_wd_fall_winter  	1.34        	1.27        	1.15        	1.06        	1.05        	1.17        
+ nd_wd_fall_winter  	1.33        	1.34        	1.12        	0.89        	0.75        	0.50        
+;nd_hw_fall_winter
+ nd_hw_fall_winter  	0.45        	0.40        	0.37        	0.34        	0.38        	0.59        
+ nd_hw_fall_winter  	0.97        	1.43        	1.64        	1.58        	1.46        	1.40        
+ nd_hw_fall_winter  	1.39        	1.28        	1.13        	1.05        	1.04        	1.15        
+ nd_hw_fall_winter  	1.30        	1.27        	1.10        	0.92        	0.80        	0.58        
 
 [CURVES]
 ;ID              	X-Value     	Y-Value

@@ -7,16 +7,18 @@ rm(list=ls())
 
 # Installs libraries 
 
+library(zoo)
+library(lubridate)
+
 library(tidyverse)
-library(plyr) 
-library(reshape2)
 library(epanetReader)
 library(epanet2toolkit)
 library(ggfortify)
 library(ggthemes)
-library(zoo)
+
+library(plyr) 
+library(reshape2)
 library(scales)
-library(lubridate)
 
 # Initialize params
 
@@ -67,15 +69,23 @@ net_input_01  <- read.inp(file_inp)
 # plot(net_input_01)
 
 #...............................................................................
-# Plot Consumtion/Demand Patterns
+# Plot NODAL Demand Patterns
+# nd <- Nodal demands, 
+#       wd <- Workdays
+#       hw <- weekdays and holidays
+# rh <- reservoir heads, 
+# ps <- pump schedules, 
+# wq <- water quality 
 #...............................................................................
 
-patterns <- as.tibble(net_input_01$Patterns) %>% as.zoo(idx)
+patterns <- as.tibble(net_input_01$Patterns) %>% 
+            select(starts_with("nd")) %>%          
+            as.zoo(idx)
 
 plot_ts_curves(patterns,
                y_limits = c(0.0,2.0),
-               m_title  = "Patterns for the Flow Factor",  
-               y_lab    = "Flow Factor")
+               m_title  = "NODAL DEMAND PATTERNS",  
+               y_lab    = "Multiplier (Avg. = 1.0)")
 
 #...............................................................................
 # 2. Running a Full Simulation                                             ####
