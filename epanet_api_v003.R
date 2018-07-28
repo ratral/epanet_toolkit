@@ -27,6 +27,7 @@ params <- list(net_works     = "prv_01",
                time_step     = "hour",
                pattern_start = "2020-1-1 00:30",
                pattern_end   = "2020-1-1 23:30",
+               jt_to_analyze = "^JT-0[A-K]", # RegExp
                main_nodes    = c("JT-0A-001", "JT-0K-011"))
 
 
@@ -109,35 +110,46 @@ inlet_flow <- subset(net_report_01$linkResults,
               select(Flow) %>%
               as.zoo(idx)
 
-d_pressure <- net_report_01$nodeResults %>%
-              subset(nodeType == "Junction") %>%
-              as.tibble() %>%
-              select(ID,timeInSeconds,Pressure) %>%
-              dcast(timeInSeconds~ID, 
-                    margins = FALSE, 
-                    value.var = "Pressure",
-                    fun.aggregate = mean)
-
-# gather()  takes multiple columns, and gathers them into key-value pairs: 
-#           it makes “wide” data longer.
-#
-# spread(). takes two columns (key & value) and spreads in to multiple columns,
-#           it makes “long” data wider.
-
-
-
-plot_ts_curves(inlet_flow,
-               y_limits = c(0.0,25),
-               m_title  = "Inlet Flow (l/s)",
-               y_lab    = "Flow (l/s)")
-
 # inhabitants = aprox. 10,000
 # consum about 125 l/hab/day
 # round(sum(inlet_flow)*((60*60)/125.0),0)
 
+plot_ts_curves(inlet_flow,
+               y_limits = c(0.0,25),
+               m_title  = "INLET FLOW (l/s)",
+               y_lab    = "Flow (l/s)")
+
+#-------------------------------------------------------------------------------
+jt_pressure <- net_report_01$nodeResults %>%
+               as.tibble() %>%
+               subset(nodeType == "Junction") %>%
+               select(ID,timeInSeconds,Pressure) %>%
+               dcast(timeInSeconds~ID,  
+                     value.var = "Pressure") %>%
+               select(matches(params$jt_to_analyze)) 
+               
+jt_pressure <- jt_pressure %>%
+               mutate(Min = apply(jt_pressure, MARGIN = 1, 
+                                  FUN = function(x) min(x))) %>%
+               mutate(Qu25 = apply(jt_pressure, MARGIN = 1, 
+                                   FUN = function(x) quantile(x, probs=0.25))) %>%
+               mutate(Median = apply(jt_pressure, MARGIN = 1, 
+                                     FUN = function(x) median(x))) %>%
+               mutate(Mean = apply(jt_pressure, MARGIN = 1, 
+                                   FUN = function(x) mean(x))) %>%
+               mutate(Qu75 = apply(jt_pressure, MARGIN = 1, 
+                                   FUN = function(x) quantile(x, probs=0.75))) %>%
+               mutate(Max = apply(jt_pressure, MARGIN = 1, 
+                                  FUN = function(x) max(x))) %>%
+               mutate(D_pressure = apply(jt_pressure, MARGIN = 1, 
+                                         FUN = function(x) max(x)-min(x))) %>%
+               as.zoo(idx)
 
 
-
+plot_ts_curves(plot_data,
+               y_limits = c(40,50),
+               m_title  = "PRESSURE IN THE NETWORK",
+               y_lab    = "Pressure (m)")
 
 
 #...............................................................................
