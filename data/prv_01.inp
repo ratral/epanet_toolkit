@@ -3,128 +3,128 @@ BASIC MODEL v00.02
 
 [JUNCTIONS]
 ;ID              	Elev        	Demand      	Pattern         
- JT-01-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0A-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0B-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0C-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0D-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0E-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0F-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0G-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0H-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0I-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0J-011       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-001       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-002       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-003       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-004       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-005       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-006       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-007       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-008       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-009       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-010       	0           	0.12        	nd_wd_summer_break 	;
- JT-0K-011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_01_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0A_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0B_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0C_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0D_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0E_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0F_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0G_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0H_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0I_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0J_011       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_002       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_003       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_004       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_005       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_006       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_007       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_008       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_009       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_010       	0           	0.12        	nd_wd_summer_break 	;
+ JT_0K_011       	0           	0.12        	nd_wd_summer_break 	;
 
 [RESERVOIRS]
 ;ID              	Head        	Pattern         
@@ -135,234 +135,234 @@ BASIC MODEL v00.02
 
 [PIPES]
 ;ID              	Node1           	Node2           	Length      	Diameter    	Roughness   	MinorLoss   	Status
- PS-0A-001       	JT-0A-001       	JT-0A-002       	100         	100         	100         	0           	Open  	;
- PS-0A-002       	JT-0A-002       	JT-0A-003       	100         	100         	100         	0           	Open  	;
- PS-0A-003       	JT-0A-003       	JT-0A-004       	100         	100         	100         	0           	Open  	;
- PS-0A-004       	JT-0A-004       	JT-0A-005       	100         	100         	100         	0           	Open  	;
- PS-0A-005       	JT-0A-005       	JT-0A-006       	100         	100         	100         	0           	Open  	;
- PS-0A-006       	JT-0A-006       	JT-0A-007       	100         	100         	100         	0           	Open  	;
- PS-0A-007       	JT-0A-007       	JT-0A-008       	100         	100         	100         	0           	Open  	;
- PS-0A-008       	JT-0A-008       	JT-0A-009       	100         	100         	100         	0           	Open  	;
- PS-0A-009       	JT-0A-009       	JT-0A-010       	100         	100         	100         	0           	Open  	;
- PS-0B-001       	JT-0B-001       	JT-0B-002       	100         	100         	100         	0           	Open  	;
- PS-0B-002       	JT-0B-002       	JT-0B-003       	100         	100         	100         	0           	Open  	;
- PS-0B-003       	JT-0B-003       	JT-0B-004       	100         	100         	100         	0           	Open  	;
- PS-0B-004       	JT-0B-004       	JT-0B-005       	100         	100         	100         	0           	Open  	;
- PS-0B-005       	JT-0B-005       	JT-0B-006       	100         	100         	100         	0           	Open  	;
- PS-0B-006       	JT-0B-006       	JT-0B-007       	100         	100         	100         	0           	Open  	;
- PS-0B-007       	JT-0B-007       	JT-0B-008       	100         	100         	100         	0           	Open  	;
- PS-0B-008       	JT-0B-008       	JT-0B-009       	100         	100         	100         	0           	Open  	;
- PS-0B-009       	JT-0B-009       	JT-0B-010       	100         	100         	100         	0           	Open  	;
- PS-0C-001       	JT-0C-001       	JT-0C-002       	100         	100         	100         	0           	Open  	;
- PS-0C-002       	JT-0C-002       	JT-0C-003       	100         	100         	100         	0           	Open  	;
- PS-0C-003       	JT-0C-003       	JT-0C-004       	100         	100         	100         	0           	Open  	;
- PS-0C-004       	JT-0C-004       	JT-0C-005       	100         	100         	100         	0           	Open  	;
- PS-0C-005       	JT-0C-005       	JT-0C-006       	100         	100         	100         	0           	Open  	;
- PS-0C-006       	JT-0C-006       	JT-0C-007       	100         	100         	100         	0           	Open  	;
- PS-0C-007       	JT-0C-007       	JT-0C-008       	100         	100         	100         	0           	Open  	;
- PS-0C-008       	JT-0C-008       	JT-0C-009       	100         	100         	100         	0           	Open  	;
- PS-0C-009       	JT-0C-009       	JT-0C-010       	100         	100         	100         	0           	Open  	;
- PS-0D-001       	JT-0D-001       	JT-0D-002       	100         	100         	100         	0           	Open  	;
- PS-0D-002       	JT-0D-002       	JT-0D-003       	100         	100         	100         	0           	Open  	;
- PS-0D-003       	JT-0D-003       	JT-0D-004       	100         	100         	100         	0           	Open  	;
- PS-0D-004       	JT-0D-004       	JT-0D-005       	100         	100         	100         	0           	Open  	;
- PS-0D-005       	JT-0D-005       	JT-0D-006       	100         	100         	100         	0           	Open  	;
- PS-0D-006       	JT-0D-006       	JT-0D-007       	100         	100         	100         	0           	Open  	;
- PS-0D-007       	JT-0D-007       	JT-0D-008       	100         	100         	100         	0           	Open  	;
- PS-0D-008       	JT-0D-008       	JT-0D-009       	100         	100         	100         	0           	Open  	;
- PS-0D-009       	JT-0D-009       	JT-0D-010       	100         	100         	100         	0           	Open  	;
- PS-0E-001       	JT-0E-001       	JT-0E-002       	100         	100         	100         	0           	Open  	;
- PS-0E-002       	JT-0E-002       	JT-0E-003       	100         	100         	100         	0           	Open  	;
- PS-0E-003       	JT-0E-003       	JT-0E-004       	100         	100         	100         	0           	Open  	;
- PS-0E-004       	JT-0E-004       	JT-0E-005       	100         	100         	100         	0           	Open  	;
- PS-0E-005       	JT-0E-005       	JT-0E-006       	100         	100         	100         	0           	Open  	;
- PS-0E-006       	JT-0E-006       	JT-0E-007       	100         	100         	100         	0           	Open  	;
- PS-0E-007       	JT-0E-007       	JT-0E-008       	100         	100         	100         	0           	Open  	;
- PS-0E-008       	JT-0E-008       	JT-0E-009       	100         	100         	100         	0           	Open  	;
- PS-0E-009       	JT-0E-009       	JT-0E-010       	100         	100         	100         	0           	Open  	;
- PS-0F-001       	JT-0F-001       	JT-0F-002       	100         	100         	100         	0           	Open  	;
- PS-0F-002       	JT-0F-002       	JT-0F-003       	100         	100         	100         	0           	Open  	;
- PS-0F-003       	JT-0F-003       	JT-0F-004       	100         	100         	100         	0           	Open  	;
- PS-0F-004       	JT-0F-004       	JT-0F-005       	100         	100         	100         	0           	Open  	;
- PS-0F-005       	JT-0F-005       	JT-0F-006       	100         	100         	100         	0           	Open  	;
- PS-0F-006       	JT-0F-006       	JT-0F-007       	100         	100         	100         	0           	Open  	;
- PS-0F-007       	JT-0F-007       	JT-0F-008       	100         	100         	100         	0           	Open  	;
- PS-0F-008       	JT-0F-008       	JT-0F-009       	100         	100         	100         	0           	Open  	;
- PS-0F-009       	JT-0F-009       	JT-0F-010       	100         	100         	100         	0           	Open  	;
- PS-0G-001       	JT-0G-001       	JT-0G-002       	100         	100         	100         	0           	Open  	;
- PS-0G-002       	JT-0G-002       	JT-0G-003       	100         	100         	100         	0           	Open  	;
- PS-0G-003       	JT-0G-003       	JT-0G-004       	100         	100         	100         	0           	Open  	;
- PS-0G-004       	JT-0G-004       	JT-0G-005       	100         	100         	100         	0           	Open  	;
- PS-0G-005       	JT-0G-005       	JT-0G-006       	100         	100         	100         	0           	Open  	;
- PS-0G-006       	JT-0G-006       	JT-0G-007       	100         	100         	100         	0           	Open  	;
- PS-0G-007       	JT-0G-007       	JT-0G-008       	100         	100         	100         	0           	Open  	;
- PS-0G-008       	JT-0G-008       	JT-0G-009       	100         	100         	100         	0           	Open  	;
- PS-0G-009       	JT-0G-009       	JT-0G-010       	100         	100         	100         	0           	Open  	;
- PS-0H-001       	JT-0H-001       	JT-0H-002       	100         	100         	100         	0           	Open  	;
- PS-0H-002       	JT-0H-002       	JT-0H-003       	100         	100         	100         	0           	Open  	;
- PS-0H-003       	JT-0H-003       	JT-0H-004       	100         	100         	100         	0           	Open  	;
- PS-0H-004       	JT-0H-004       	JT-0H-005       	100         	100         	100         	0           	Open  	;
- PS-0H-005       	JT-0H-005       	JT-0H-006       	100         	100         	100         	0           	Open  	;
- PS-0H-006       	JT-0H-006       	JT-0H-007       	100         	100         	100         	0           	Open  	;
- PS-0H-007       	JT-0H-007       	JT-0H-008       	100         	100         	100         	0           	Open  	;
- PS-0H-008       	JT-0H-008       	JT-0H-009       	100         	100         	100         	0           	Open  	;
- PS-0H-009       	JT-0H-009       	JT-0H-010       	100         	100         	100         	0           	Open  	;
- PS-0I-001       	JT-0I-001       	JT-0I-002       	100         	100         	100         	0           	Open  	;
- PS-0I-002       	JT-0I-002       	JT-0I-003       	100         	100         	100         	0           	Open  	;
- PS-0I-003       	JT-0I-003       	JT-0I-004       	100         	100         	100         	0           	Open  	;
- PS-0I-004       	JT-0I-004       	JT-0I-005       	100         	100         	100         	0           	Open  	;
- PS-0I-005       	JT-0I-005       	JT-0I-006       	100         	100         	100         	0           	Open  	;
- PS-0I-006       	JT-0I-006       	JT-0I-007       	100         	100         	100         	0           	Open  	;
- PS-0I-007       	JT-0I-007       	JT-0I-008       	100         	100         	100         	0           	Open  	;
- PS-0I-008       	JT-0I-008       	JT-0I-009       	100         	100         	100         	0           	Open  	;
- PS-0I-009       	JT-0I-009       	JT-0I-010       	100         	100         	100         	0           	Open  	;
- PS-0J-001       	JT-0J-001       	JT-0J-002       	100         	100         	100         	0           	Open  	;
- PS-0J-002       	JT-0J-002       	JT-0J-003       	100         	100         	100         	0           	Open  	;
- PS-0J-003       	JT-0J-003       	JT-0J-004       	100         	100         	100         	0           	Open  	;
- PS-0J-004       	JT-0J-004       	JT-0J-005       	100         	100         	100         	0           	Open  	;
- PS-0J-005       	JT-0J-005       	JT-0J-006       	100         	100         	100         	0           	Open  	;
- PS-0J-006       	JT-0J-006       	JT-0J-007       	100         	100         	100         	0           	Open  	;
- PS-0J-007       	JT-0J-007       	JT-0J-008       	100         	100         	100         	0           	Open  	;
- PS-0J-008       	JT-0J-008       	JT-0J-009       	100         	100         	100         	0           	Open  	;
- PS-0J-009       	JT-0J-009       	JT-0J-010       	100         	100         	100         	0           	Open  	;
- PS-01-001       	JT-0A-001       	JT-0B-001       	100         	100         	100         	0           	Open  	;
- PS-01-002       	JT-0B-001       	JT-0C-001       	100         	100         	100         	0           	Open  	;
- PS-01-003       	JT-0C-001       	JT-0D-001       	100         	100         	100         	0           	Open  	;
- PS-01-004       	JT-0D-001       	JT-0E-001       	100         	100         	100         	0           	Open  	;
- PS-01-005       	JT-0E-001       	JT-0F-001       	100         	100         	100         	0           	Open  	;
- PS-01-006       	JT-0F-001       	JT-0G-001       	100         	100         	100         	0           	Open  	;
- PS-01-007       	JT-0G-001       	JT-0H-001       	100         	100         	100         	0           	Open  	;
- PS-01-008       	JT-0H-001       	JT-0I-001       	100         	100         	100         	0           	Open  	;
- PS-01-009       	JT-0I-001       	JT-0J-001       	100         	100         	100         	0           	Open  	;
- PS-02-001       	JT-0A-002       	JT-0B-002       	100         	100         	100         	0           	Open  	;
- PS-02-002       	JT-0B-002       	JT-0C-002       	100         	100         	100         	0           	Open  	;
- PS-02-003       	JT-0C-002       	JT-0D-002       	100         	100         	100         	0           	Open  	;
- PS-02-004       	JT-0D-002       	JT-0E-002       	100         	100         	100         	0           	Open  	;
- PS-02-005       	JT-0E-002       	JT-0F-002       	100         	100         	100         	0           	Open  	;
- PS-02-006       	JT-0F-002       	JT-0G-002       	100         	100         	100         	0           	Open  	;
- PS-02-007       	JT-0G-002       	JT-0H-002       	100         	100         	100         	0           	Open  	;
- PS-02-008       	JT-0H-002       	JT-0I-002       	100         	100         	100         	0           	Open  	;
- PS-02-009       	JT-0I-002       	JT-0J-002       	100         	100         	100         	0           	Open  	;
- PS-03-001       	JT-0A-003       	JT-0B-003       	100         	100         	100         	0           	Open  	;
- PS-03-002       	JT-0B-003       	JT-0C-003       	100         	100         	100         	0           	Open  	;
- PS-03-003       	JT-0C-003       	JT-0D-003       	100         	100         	100         	0           	Open  	;
- PS-03-004       	JT-0D-003       	JT-0E-003       	100         	100         	100         	0           	Open  	;
- PS-03-005       	JT-0E-003       	JT-0F-003       	100         	100         	100         	0           	Open  	;
- PS-03-006       	JT-0F-003       	JT-0G-003       	100         	100         	100         	0           	Open  	;
- PS-03-007       	JT-0G-003       	JT-0H-003       	100         	100         	100         	0           	Open  	;
- PS-03-008       	JT-0H-003       	JT-0I-003       	100         	100         	100         	0           	Open  	;
- PS-03-009       	JT-0I-003       	JT-0J-003       	100         	100         	100         	0           	Open  	;
- PS-04-001       	JT-0A-004       	JT-0B-004       	100         	100         	100         	0           	Open  	;
- PS-04-002       	JT-0B-004       	JT-0C-004       	100         	100         	100         	0           	Open  	;
- PS-04-003       	JT-0C-004       	JT-0D-004       	100         	100         	100         	0           	Open  	;
- PS-04-004       	JT-0D-004       	JT-0E-004       	100         	100         	100         	0           	Open  	;
- PS-04-005       	JT-0E-004       	JT-0F-004       	100         	100         	100         	0           	Open  	;
- PS-04-006       	JT-0F-004       	JT-0G-004       	100         	100         	100         	0           	Open  	;
- PS-04-007       	JT-0G-004       	JT-0H-004       	100         	100         	100         	0           	Open  	;
- PS-04-008       	JT-0H-004       	JT-0I-004       	100         	100         	100         	0           	Open  	;
- PS-04-009       	JT-0I-004       	JT-0J-004       	100         	100         	100         	0           	Open  	;
- PS-05-001       	JT-0A-005       	JT-0B-005       	100         	100         	100         	0           	Open  	;
- PS-05-002       	JT-0B-005       	JT-0C-005       	100         	100         	100         	0           	Open  	;
- PS-05-003       	JT-0C-005       	JT-0D-005       	100         	100         	100         	0           	Open  	;
- PS-05-004       	JT-0D-005       	JT-0E-005       	100         	100         	100         	0           	Open  	;
- PS-05-005       	JT-0E-005       	JT-0F-005       	100         	100         	100         	0           	Open  	;
- PS-05-006       	JT-0F-005       	JT-0G-005       	100         	100         	100         	0           	Open  	;
- PS-05-007       	JT-0G-005       	JT-0H-005       	100         	100         	100         	0           	Open  	;
- PS-05-008       	JT-0H-005       	JT-0I-005       	100         	100         	100         	0           	Open  	;
- PS-05-009       	JT-0I-005       	JT-0J-005       	100         	100         	100         	0           	Open  	;
- PS-06-001       	JT-0A-006       	JT-0B-006       	100         	100         	100         	0           	Open  	;
- PS-06-002       	JT-0B-006       	JT-0C-006       	100         	100         	100         	0           	Open  	;
- PS-06-003       	JT-0C-006       	JT-0D-006       	100         	100         	100         	0           	Open  	;
- PS-06-004       	JT-0D-006       	JT-0E-006       	100         	100         	100         	0           	Open  	;
- PS-06-005       	JT-0E-006       	JT-0F-006       	100         	100         	100         	0           	Open  	;
- PS-06-006       	JT-0F-006       	JT-0G-006       	100         	100         	100         	0           	Open  	;
- PS-06-007       	JT-0G-006       	JT-0H-006       	100         	100         	100         	0           	Open  	;
- PS-06-008       	JT-0H-006       	JT-0I-006       	100         	100         	100         	0           	Open  	;
- PS-06-009       	JT-0I-006       	JT-0J-006       	100         	100         	100         	0           	Open  	;
- PS-07-001       	JT-0A-007       	JT-0B-007       	100         	100         	100         	0           	Open  	;
- PS-07-002       	JT-0B-007       	JT-0C-007       	100         	100         	100         	0           	Open  	;
- PS-07-003       	JT-0C-007       	JT-0D-007       	100         	100         	100         	0           	Open  	;
- PS-07-004       	JT-0D-007       	JT-0E-007       	100         	100         	100         	0           	Open  	;
- PS-07-005       	JT-0E-007       	JT-0F-007       	100         	100         	100         	0           	Open  	;
- PS-07-006       	JT-0F-007       	JT-0G-007       	100         	100         	100         	0           	Open  	;
- PS-07-007       	JT-0G-007       	JT-0H-007       	100         	100         	100         	0           	Open  	;
- PS-07-008       	JT-0H-007       	JT-0I-007       	100         	100         	100         	0           	Open  	;
- PS-07-009       	JT-0I-007       	JT-0J-007       	100         	100         	100         	0           	Open  	;
- PS-08-001       	JT-0A-008       	JT-0B-008       	100         	100         	100         	0           	Open  	;
- PS-08-002       	JT-0B-008       	JT-0C-008       	100         	100         	100         	0           	Open  	;
- PS-08-003       	JT-0C-008       	JT-0D-008       	100         	100         	100         	0           	Open  	;
- PS-08-004       	JT-0D-008       	JT-0E-008       	100         	100         	100         	0           	Open  	;
- PS-08-005       	JT-0E-008       	JT-0F-008       	100         	100         	100         	0           	Open  	;
- PS-08-006       	JT-0F-008       	JT-0G-008       	100         	100         	100         	0           	Open  	;
- PS-08-007       	JT-0G-008       	JT-0H-008       	100         	100         	100         	0           	Open  	;
- PS-08-008       	JT-0H-008       	JT-0I-008       	100         	100         	100         	0           	Open  	;
- PS-08-009       	JT-0I-008       	JT-0J-008       	100         	100         	100         	0           	Open  	;
- PS-09-001       	JT-0A-009       	JT-0B-009       	100         	100         	100         	0           	Open  	;
- PS-09-002       	JT-0B-009       	JT-0C-009       	100         	100         	100         	0           	Open  	;
- PS-09-003       	JT-0C-009       	JT-0D-009       	100         	100         	100         	0           	Open  	;
- PS-09-004       	JT-0D-009       	JT-0E-009       	100         	100         	100         	0           	Open  	;
- PS-09-005       	JT-0E-009       	JT-0F-009       	100         	100         	100         	0           	Open  	;
- PS-09-006       	JT-0F-009       	JT-0G-009       	100         	100         	100         	0           	Open  	;
- PS-09-007       	JT-0G-009       	JT-0H-009       	100         	100         	100         	0           	Open  	;
- PS-09-008       	JT-0H-009       	JT-0I-009       	100         	100         	100         	0           	Open  	;
- PS-09-009       	JT-0I-009       	JT-0J-009       	100         	100         	100         	0           	Open  	;
- PS-10-001       	JT-0A-010       	JT-0B-010       	100         	100         	100         	0           	Open  	;
- PS-10-002       	JT-0B-010       	JT-0C-010       	100         	100         	100         	0           	Open  	;
- PS-10-003       	JT-0C-010       	JT-0D-010       	100         	100         	100         	0           	Open  	;
- PS-10-004       	JT-0D-010       	JT-0E-010       	100         	100         	100         	0           	Open  	;
- PS-10-005       	JT-0E-010       	JT-0F-010       	100         	100         	100         	0           	Open  	;
- PS-10-006       	JT-0F-010       	JT-0G-010       	100         	100         	100         	0           	Open  	;
- PS-10-007       	JT-0G-010       	JT-0H-010       	100         	100         	100         	0           	Open  	;
- PS-10-008       	JT-0H-010       	JT-0I-010       	100         	100         	100         	0           	Open  	;
- PS-10-009       	JT-0I-010       	JT-0J-010       	100         	100         	100         	0           	Open  	;
- PS-01-010       	JT-0J-001       	JT-0K-001       	100         	100         	100         	0           	Open  	;
- PS-02-010       	JT-0J-002       	JT-0K-002       	100         	100         	100         	0           	Open  	;
- PS-03-010       	JT-0J-003       	JT-0K-003       	100         	100         	100         	0           	Open  	;
- PS-04-010       	JT-0J-004       	JT-0K-004       	100         	100         	100         	0           	Open  	;
- PS-05-010       	JT-0J-005       	JT-0K-005       	100         	100         	100         	0           	Open  	;
- PS-06-010       	JT-0J-006       	JT-0K-006       	100         	100         	100         	0           	Open  	;
- PS-07-010       	JT-0J-007       	JT-0K-007       	100         	100         	100         	0           	Open  	;
- PS-08-010       	JT-0J-008       	JT-0K-008       	100         	100         	100         	0           	Open  	;
- PS-09-010       	JT-0J-009       	JT-0K-009       	100         	100         	100         	0           	Open  	;
- PS-10-010       	JT-0J-010       	JT-0K-010       	100         	100         	100         	0           	Open  	;
- PS-11-010       	JT-0J-011       	JT-0K-011       	100         	100         	100         	0           	Open  	;
- PS-0K-001       	JT-0K-001       	JT-0K-002       	100         	100         	100         	0           	Open  	;
- PS-0K-002       	JT-0K-002       	JT-0K-003       	100         	100         	100         	0           	Open  	;
- PS-0K-003       	JT-0K-003       	JT-0K-004       	100         	100         	100         	0           	Open  	;
- PS-0K-004       	JT-0K-004       	JT-0K-005       	100         	100         	100         	0           	Open  	;
- PS-0K-005       	JT-0K-005       	JT-0K-006       	100         	100         	100         	0           	Open  	;
- PS-0K-006       	JT-0K-006       	JT-0K-007       	100         	100         	100         	0           	Open  	;
- PS-0K-007       	JT-0K-007       	JT-0K-008       	100         	100         	100         	0           	Open  	;
- PS-0K-008       	JT-0K-008       	JT-0K-009       	100         	100         	100         	0           	Open  	;
- PS-0K-009       	JT-0K-009       	JT-0K-010       	100         	100         	100         	0           	Open  	;
- PS-0A-010       	JT-0A-010       	JT-0A-011       	100         	100         	100         	0           	Open  	;
- PS-0B-010       	JT-0B-010       	JT-0B-011       	100         	100         	100         	0           	Open  	;
- PS-0C-010       	JT-0C-010       	JT-0C-011       	100         	100         	100         	0           	Open  	;
- PS-0D-010       	JT-0D-010       	JT-0D-011       	100         	100         	100         	0           	Open  	;
- PS-0E-010       	JT-0E-010       	JT-0E-011       	100         	100         	100         	0           	Open  	;
- PS-0F-010       	JT-0F-010       	JT-0F-011       	100         	100         	100         	0           	Open  	;
- PS-0G-010       	JT-0G-010       	JT-0G-011       	100         	100         	100         	0           	Open  	;
- PS-0H-010       	JT-0H-010       	JT-0H-011       	100         	100         	100         	0           	Open  	;
- PS-0I-010       	JT-0I-010       	JT-0I-011       	100         	100         	100         	0           	Open  	;
- PS-0J-010       	JT-0J-010       	JT-0J-011       	100         	100         	100         	0           	Open  	;
- PS-0K-010       	JT-0K-010       	JT-0K-011       	100         	100         	100         	0           	Open  	;
- PS-11-001       	JT-0A-011       	JT-0B-011       	100         	100         	100         	0           	Open  	;
- PS-11-002       	JT-0B-011       	JT-0C-011       	100         	100         	100         	0           	Open  	;
- PS-11-003       	JT-0C-011       	JT-0D-011       	100         	100         	100         	0           	Open  	;
- PS-11-004       	JT-0D-011       	JT-0E-011       	100         	100         	100         	0           	Open  	;
- PS-11-005       	JT-0E-011       	JT-0F-011       	100         	100         	100         	0           	Open  	;
- PS-11-006       	JT-0F-011       	JT-0G-011       	100         	100         	100         	0           	Open  	;
- PS-11-007       	JT-0G-011       	JT-0H-011       	100         	100         	100         	0           	Open  	;
- PS-11-008       	JT-0H-011       	JT-0I-011       	100         	100         	100         	0           	Open  	;
- PS-11-009       	JT-0I-011       	JT-0J-011       	100         	12          	100         	0           	Open  	;
- PT-01-001       	RS0001          	JT-01-001       	2000        	300         	100         	0           	Open  	;
+ PS_0A_001       	JT_0A_001       	JT_0A_002       	100         	100         	100         	0           	Open  	;
+ PS_0A_002       	JT_0A_002       	JT_0A_003       	100         	100         	100         	0           	Open  	;
+ PS_0A_003       	JT_0A_003       	JT_0A_004       	100         	100         	100         	0           	Open  	;
+ PS_0A_004       	JT_0A_004       	JT_0A_005       	100         	100         	100         	0           	Open  	;
+ PS_0A_005       	JT_0A_005       	JT_0A_006       	100         	100         	100         	0           	Open  	;
+ PS_0A_006       	JT_0A_006       	JT_0A_007       	100         	100         	100         	0           	Open  	;
+ PS_0A_007       	JT_0A_007       	JT_0A_008       	100         	100         	100         	0           	Open  	;
+ PS_0A_008       	JT_0A_008       	JT_0A_009       	100         	100         	100         	0           	Open  	;
+ PS_0A_009       	JT_0A_009       	JT_0A_010       	100         	100         	100         	0           	Open  	;
+ PS_0B_001       	JT_0B_001       	JT_0B_002       	100         	100         	100         	0           	Open  	;
+ PS_0B_002       	JT_0B_002       	JT_0B_003       	100         	100         	100         	0           	Open  	;
+ PS_0B_003       	JT_0B_003       	JT_0B_004       	100         	100         	100         	0           	Open  	;
+ PS_0B_004       	JT_0B_004       	JT_0B_005       	100         	100         	100         	0           	Open  	;
+ PS_0B_005       	JT_0B_005       	JT_0B_006       	100         	100         	100         	0           	Open  	;
+ PS_0B_006       	JT_0B_006       	JT_0B_007       	100         	100         	100         	0           	Open  	;
+ PS_0B_007       	JT_0B_007       	JT_0B_008       	100         	100         	100         	0           	Open  	;
+ PS_0B_008       	JT_0B_008       	JT_0B_009       	100         	100         	100         	0           	Open  	;
+ PS_0B_009       	JT_0B_009       	JT_0B_010       	100         	100         	100         	0           	Open  	;
+ PS_0C_001       	JT_0C_001       	JT_0C_002       	100         	100         	100         	0           	Open  	;
+ PS_0C_002       	JT_0C_002       	JT_0C_003       	100         	100         	100         	0           	Open  	;
+ PS_0C_003       	JT_0C_003       	JT_0C_004       	100         	100         	100         	0           	Open  	;
+ PS_0C_004       	JT_0C_004       	JT_0C_005       	100         	100         	100         	0           	Open  	;
+ PS_0C_005       	JT_0C_005       	JT_0C_006       	100         	100         	100         	0           	Open  	;
+ PS_0C_006       	JT_0C_006       	JT_0C_007       	100         	100         	100         	0           	Open  	;
+ PS_0C_007       	JT_0C_007       	JT_0C_008       	100         	100         	100         	0           	Open  	;
+ PS_0C_008       	JT_0C_008       	JT_0C_009       	100         	100         	100         	0           	Open  	;
+ PS_0C_009       	JT_0C_009       	JT_0C_010       	100         	100         	100         	0           	Open  	;
+ PS_0D_001       	JT_0D_001       	JT_0D_002       	100         	100         	100         	0           	Open  	;
+ PS_0D_002       	JT_0D_002       	JT_0D_003       	100         	100         	100         	0           	Open  	;
+ PS_0D_003       	JT_0D_003       	JT_0D_004       	100         	100         	100         	0           	Open  	;
+ PS_0D_004       	JT_0D_004       	JT_0D_005       	100         	100         	100         	0           	Open  	;
+ PS_0D_005       	JT_0D_005       	JT_0D_006       	100         	100         	100         	0           	Open  	;
+ PS_0D_006       	JT_0D_006       	JT_0D_007       	100         	100         	100         	0           	Open  	;
+ PS_0D_007       	JT_0D_007       	JT_0D_008       	100         	100         	100         	0           	Open  	;
+ PS_0D_008       	JT_0D_008       	JT_0D_009       	100         	100         	100         	0           	Open  	;
+ PS_0D_009       	JT_0D_009       	JT_0D_010       	100         	100         	100         	0           	Open  	;
+ PS_0E_001       	JT_0E_001       	JT_0E_002       	100         	100         	100         	0           	Open  	;
+ PS_0E_002       	JT_0E_002       	JT_0E_003       	100         	100         	100         	0           	Open  	;
+ PS_0E_003       	JT_0E_003       	JT_0E_004       	100         	100         	100         	0           	Open  	;
+ PS_0E_004       	JT_0E_004       	JT_0E_005       	100         	100         	100         	0           	Open  	;
+ PS_0E_005       	JT_0E_005       	JT_0E_006       	100         	100         	100         	0           	Open  	;
+ PS_0E_006       	JT_0E_006       	JT_0E_007       	100         	100         	100         	0           	Open  	;
+ PS_0E_007       	JT_0E_007       	JT_0E_008       	100         	100         	100         	0           	Open  	;
+ PS_0E_008       	JT_0E_008       	JT_0E_009       	100         	100         	100         	0           	Open  	;
+ PS_0E_009       	JT_0E_009       	JT_0E_010       	100         	100         	100         	0           	Open  	;
+ PS_0F_001       	JT_0F_001       	JT_0F_002       	100         	100         	100         	0           	Open  	;
+ PS_0F_002       	JT_0F_002       	JT_0F_003       	100         	100         	100         	0           	Open  	;
+ PS_0F_003       	JT_0F_003       	JT_0F_004       	100         	100         	100         	0           	Open  	;
+ PS_0F_004       	JT_0F_004       	JT_0F_005       	100         	100         	100         	0           	Open  	;
+ PS_0F_005       	JT_0F_005       	JT_0F_006       	100         	100         	100         	0           	Open  	;
+ PS_0F_006       	JT_0F_006       	JT_0F_007       	100         	100         	100         	0           	Open  	;
+ PS_0F_007       	JT_0F_007       	JT_0F_008       	100         	100         	100         	0           	Open  	;
+ PS_0F_008       	JT_0F_008       	JT_0F_009       	100         	100         	100         	0           	Open  	;
+ PS_0F_009       	JT_0F_009       	JT_0F_010       	100         	100         	100         	0           	Open  	;
+ PS_0G_001       	JT_0G_001       	JT_0G_002       	100         	100         	100         	0           	Open  	;
+ PS_0G_002       	JT_0G_002       	JT_0G_003       	100         	100         	100         	0           	Open  	;
+ PS_0G_003       	JT_0G_003       	JT_0G_004       	100         	100         	100         	0           	Open  	;
+ PS_0G_004       	JT_0G_004       	JT_0G_005       	100         	100         	100         	0           	Open  	;
+ PS_0G_005       	JT_0G_005       	JT_0G_006       	100         	100         	100         	0           	Open  	;
+ PS_0G_006       	JT_0G_006       	JT_0G_007       	100         	100         	100         	0           	Open  	;
+ PS_0G_007       	JT_0G_007       	JT_0G_008       	100         	100         	100         	0           	Open  	;
+ PS_0G_008       	JT_0G_008       	JT_0G_009       	100         	100         	100         	0           	Open  	;
+ PS_0G_009       	JT_0G_009       	JT_0G_010       	100         	100         	100         	0           	Open  	;
+ PS_0H_001       	JT_0H_001       	JT_0H_002       	100         	100         	100         	0           	Open  	;
+ PS_0H_002       	JT_0H_002       	JT_0H_003       	100         	100         	100         	0           	Open  	;
+ PS_0H_003       	JT_0H_003       	JT_0H_004       	100         	100         	100         	0           	Open  	;
+ PS_0H_004       	JT_0H_004       	JT_0H_005       	100         	100         	100         	0           	Open  	;
+ PS_0H_005       	JT_0H_005       	JT_0H_006       	100         	100         	100         	0           	Open  	;
+ PS_0H_006       	JT_0H_006       	JT_0H_007       	100         	100         	100         	0           	Open  	;
+ PS_0H_007       	JT_0H_007       	JT_0H_008       	100         	100         	100         	0           	Open  	;
+ PS_0H_008       	JT_0H_008       	JT_0H_009       	100         	100         	100         	0           	Open  	;
+ PS_0H_009       	JT_0H_009       	JT_0H_010       	100         	100         	100         	0           	Open  	;
+ PS_0I_001       	JT_0I_001       	JT_0I_002       	100         	100         	100         	0           	Open  	;
+ PS_0I_002       	JT_0I_002       	JT_0I_003       	100         	100         	100         	0           	Open  	;
+ PS_0I_003       	JT_0I_003       	JT_0I_004       	100         	100         	100         	0           	Open  	;
+ PS_0I_004       	JT_0I_004       	JT_0I_005       	100         	100         	100         	0           	Open  	;
+ PS_0I_005       	JT_0I_005       	JT_0I_006       	100         	100         	100         	0           	Open  	;
+ PS_0I_006       	JT_0I_006       	JT_0I_007       	100         	100         	100         	0           	Open  	;
+ PS_0I_007       	JT_0I_007       	JT_0I_008       	100         	100         	100         	0           	Open  	;
+ PS_0I_008       	JT_0I_008       	JT_0I_009       	100         	100         	100         	0           	Open  	;
+ PS_0I_009       	JT_0I_009       	JT_0I_010       	100         	100         	100         	0           	Open  	;
+ PS_0J_001       	JT_0J_001       	JT_0J_002       	100         	100         	100         	0           	Open  	;
+ PS_0J_002       	JT_0J_002       	JT_0J_003       	100         	100         	100         	0           	Open  	;
+ PS_0J_003       	JT_0J_003       	JT_0J_004       	100         	100         	100         	0           	Open  	;
+ PS_0J_004       	JT_0J_004       	JT_0J_005       	100         	100         	100         	0           	Open  	;
+ PS_0J_005       	JT_0J_005       	JT_0J_006       	100         	100         	100         	0           	Open  	;
+ PS_0J_006       	JT_0J_006       	JT_0J_007       	100         	100         	100         	0           	Open  	;
+ PS_0J_007       	JT_0J_007       	JT_0J_008       	100         	100         	100         	0           	Open  	;
+ PS_0J_008       	JT_0J_008       	JT_0J_009       	100         	100         	100         	0           	Open  	;
+ PS_0J_009       	JT_0J_009       	JT_0J_010       	100         	100         	100         	0           	Open  	;
+ PS_01_001       	JT_0A_001       	JT_0B_001       	100         	100         	100         	0           	Open  	;
+ PS_01_002       	JT_0B_001       	JT_0C_001       	100         	100         	100         	0           	Open  	;
+ PS_01_003       	JT_0C_001       	JT_0D_001       	100         	100         	100         	0           	Open  	;
+ PS_01_004       	JT_0D_001       	JT_0E_001       	100         	100         	100         	0           	Open  	;
+ PS_01_005       	JT_0E_001       	JT_0F_001       	100         	100         	100         	0           	Open  	;
+ PS_01_006       	JT_0F_001       	JT_0G_001       	100         	100         	100         	0           	Open  	;
+ PS_01_007       	JT_0G_001       	JT_0H_001       	100         	100         	100         	0           	Open  	;
+ PS_01_008       	JT_0H_001       	JT_0I_001       	100         	100         	100         	0           	Open  	;
+ PS_01_009       	JT_0I_001       	JT_0J_001       	100         	100         	100         	0           	Open  	;
+ PS_02_001       	JT_0A_002       	JT_0B_002       	100         	100         	100         	0           	Open  	;
+ PS_02_002       	JT_0B_002       	JT_0C_002       	100         	100         	100         	0           	Open  	;
+ PS_02_003       	JT_0C_002       	JT_0D_002       	100         	100         	100         	0           	Open  	;
+ PS_02_004       	JT_0D_002       	JT_0E_002       	100         	100         	100         	0           	Open  	;
+ PS_02_005       	JT_0E_002       	JT_0F_002       	100         	100         	100         	0           	Open  	;
+ PS_02_006       	JT_0F_002       	JT_0G_002       	100         	100         	100         	0           	Open  	;
+ PS_02_007       	JT_0G_002       	JT_0H_002       	100         	100         	100         	0           	Open  	;
+ PS_02_008       	JT_0H_002       	JT_0I_002       	100         	100         	100         	0           	Open  	;
+ PS_02_009       	JT_0I_002       	JT_0J_002       	100         	100         	100         	0           	Open  	;
+ PS_03_001       	JT_0A_003       	JT_0B_003       	100         	100         	100         	0           	Open  	;
+ PS_03_002       	JT_0B_003       	JT_0C_003       	100         	100         	100         	0           	Open  	;
+ PS_03_003       	JT_0C_003       	JT_0D_003       	100         	100         	100         	0           	Open  	;
+ PS_03_004       	JT_0D_003       	JT_0E_003       	100         	100         	100         	0           	Open  	;
+ PS_03_005       	JT_0E_003       	JT_0F_003       	100         	100         	100         	0           	Open  	;
+ PS_03_006       	JT_0F_003       	JT_0G_003       	100         	100         	100         	0           	Open  	;
+ PS_03_007       	JT_0G_003       	JT_0H_003       	100         	100         	100         	0           	Open  	;
+ PS_03_008       	JT_0H_003       	JT_0I_003       	100         	100         	100         	0           	Open  	;
+ PS_03_009       	JT_0I_003       	JT_0J_003       	100         	100         	100         	0           	Open  	;
+ PS_04_001       	JT_0A_004       	JT_0B_004       	100         	100         	100         	0           	Open  	;
+ PS_04_002       	JT_0B_004       	JT_0C_004       	100         	100         	100         	0           	Open  	;
+ PS_04_003       	JT_0C_004       	JT_0D_004       	100         	100         	100         	0           	Open  	;
+ PS_04_004       	JT_0D_004       	JT_0E_004       	100         	100         	100         	0           	Open  	;
+ PS_04_005       	JT_0E_004       	JT_0F_004       	100         	100         	100         	0           	Open  	;
+ PS_04_006       	JT_0F_004       	JT_0G_004       	100         	100         	100         	0           	Open  	;
+ PS_04_007       	JT_0G_004       	JT_0H_004       	100         	100         	100         	0           	Open  	;
+ PS_04_008       	JT_0H_004       	JT_0I_004       	100         	100         	100         	0           	Open  	;
+ PS_04_009       	JT_0I_004       	JT_0J_004       	100         	100         	100         	0           	Open  	;
+ PS_05_001       	JT_0A_005       	JT_0B_005       	100         	100         	100         	0           	Open  	;
+ PS_05_002       	JT_0B_005       	JT_0C_005       	100         	100         	100         	0           	Open  	;
+ PS_05_003       	JT_0C_005       	JT_0D_005       	100         	100         	100         	0           	Open  	;
+ PS_05_004       	JT_0D_005       	JT_0E_005       	100         	100         	100         	0           	Open  	;
+ PS_05_005       	JT_0E_005       	JT_0F_005       	100         	100         	100         	0           	Open  	;
+ PS_05_006       	JT_0F_005       	JT_0G_005       	100         	100         	100         	0           	Open  	;
+ PS_05_007       	JT_0G_005       	JT_0H_005       	100         	100         	100         	0           	Open  	;
+ PS_05_008       	JT_0H_005       	JT_0I_005       	100         	100         	100         	0           	Open  	;
+ PS_05_009       	JT_0I_005       	JT_0J_005       	100         	100         	100         	0           	Open  	;
+ PS_06_001       	JT_0A_006       	JT_0B_006       	100         	100         	100         	0           	Open  	;
+ PS_06_002       	JT_0B_006       	JT_0C_006       	100         	100         	100         	0           	Open  	;
+ PS_06_003       	JT_0C_006       	JT_0D_006       	100         	100         	100         	0           	Open  	;
+ PS_06_004       	JT_0D_006       	JT_0E_006       	100         	100         	100         	0           	Open  	;
+ PS_06_005       	JT_0E_006       	JT_0F_006       	100         	100         	100         	0           	Open  	;
+ PS_06_006       	JT_0F_006       	JT_0G_006       	100         	100         	100         	0           	Open  	;
+ PS_06_007       	JT_0G_006       	JT_0H_006       	100         	100         	100         	0           	Open  	;
+ PS_06_008       	JT_0H_006       	JT_0I_006       	100         	100         	100         	0           	Open  	;
+ PS_06_009       	JT_0I_006       	JT_0J_006       	100         	100         	100         	0           	Open  	;
+ PS_07_001       	JT_0A_007       	JT_0B_007       	100         	100         	100         	0           	Open  	;
+ PS_07_002       	JT_0B_007       	JT_0C_007       	100         	100         	100         	0           	Open  	;
+ PS_07_003       	JT_0C_007       	JT_0D_007       	100         	100         	100         	0           	Open  	;
+ PS_07_004       	JT_0D_007       	JT_0E_007       	100         	100         	100         	0           	Open  	;
+ PS_07_005       	JT_0E_007       	JT_0F_007       	100         	100         	100         	0           	Open  	;
+ PS_07_006       	JT_0F_007       	JT_0G_007       	100         	100         	100         	0           	Open  	;
+ PS_07_007       	JT_0G_007       	JT_0H_007       	100         	100         	100         	0           	Open  	;
+ PS_07_008       	JT_0H_007       	JT_0I_007       	100         	100         	100         	0           	Open  	;
+ PS_07_009       	JT_0I_007       	JT_0J_007       	100         	100         	100         	0           	Open  	;
+ PS_08_001       	JT_0A_008       	JT_0B_008       	100         	100         	100         	0           	Open  	;
+ PS_08_002       	JT_0B_008       	JT_0C_008       	100         	100         	100         	0           	Open  	;
+ PS_08_003       	JT_0C_008       	JT_0D_008       	100         	100         	100         	0           	Open  	;
+ PS_08_004       	JT_0D_008       	JT_0E_008       	100         	100         	100         	0           	Open  	;
+ PS_08_005       	JT_0E_008       	JT_0F_008       	100         	100         	100         	0           	Open  	;
+ PS_08_006       	JT_0F_008       	JT_0G_008       	100         	100         	100         	0           	Open  	;
+ PS_08_007       	JT_0G_008       	JT_0H_008       	100         	100         	100         	0           	Open  	;
+ PS_08_008       	JT_0H_008       	JT_0I_008       	100         	100         	100         	0           	Open  	;
+ PS_08_009       	JT_0I_008       	JT_0J_008       	100         	100         	100         	0           	Open  	;
+ PS_09_001       	JT_0A_009       	JT_0B_009       	100         	100         	100         	0           	Open  	;
+ PS_09_002       	JT_0B_009       	JT_0C_009       	100         	100         	100         	0           	Open  	;
+ PS_09_003       	JT_0C_009       	JT_0D_009       	100         	100         	100         	0           	Open  	;
+ PS_09_004       	JT_0D_009       	JT_0E_009       	100         	100         	100         	0           	Open  	;
+ PS_09_005       	JT_0E_009       	JT_0F_009       	100         	100         	100         	0           	Open  	;
+ PS_09_006       	JT_0F_009       	JT_0G_009       	100         	100         	100         	0           	Open  	;
+ PS_09_007       	JT_0G_009       	JT_0H_009       	100         	100         	100         	0           	Open  	;
+ PS_09_008       	JT_0H_009       	JT_0I_009       	100         	100         	100         	0           	Open  	;
+ PS_09_009       	JT_0I_009       	JT_0J_009       	100         	100         	100         	0           	Open  	;
+ PS_10_001       	JT_0A_010       	JT_0B_010       	100         	100         	100         	0           	Open  	;
+ PS_10_002       	JT_0B_010       	JT_0C_010       	100         	100         	100         	0           	Open  	;
+ PS_10_003       	JT_0C_010       	JT_0D_010       	100         	100         	100         	0           	Open  	;
+ PS_10_004       	JT_0D_010       	JT_0E_010       	100         	100         	100         	0           	Open  	;
+ PS_10_005       	JT_0E_010       	JT_0F_010       	100         	100         	100         	0           	Open  	;
+ PS_10_006       	JT_0F_010       	JT_0G_010       	100         	100         	100         	0           	Open  	;
+ PS_10_007       	JT_0G_010       	JT_0H_010       	100         	100         	100         	0           	Open  	;
+ PS_10_008       	JT_0H_010       	JT_0I_010       	100         	100         	100         	0           	Open  	;
+ PS_10_009       	JT_0I_010       	JT_0J_010       	100         	100         	100         	0           	Open  	;
+ PS_01_010       	JT_0J_001       	JT_0K_001       	100         	100         	100         	0           	Open  	;
+ PS_02_010       	JT_0J_002       	JT_0K_002       	100         	100         	100         	0           	Open  	;
+ PS_03_010       	JT_0J_003       	JT_0K_003       	100         	100         	100         	0           	Open  	;
+ PS_04_010       	JT_0J_004       	JT_0K_004       	100         	100         	100         	0           	Open  	;
+ PS_05_010       	JT_0J_005       	JT_0K_005       	100         	100         	100         	0           	Open  	;
+ PS_06_010       	JT_0J_006       	JT_0K_006       	100         	100         	100         	0           	Open  	;
+ PS_07_010       	JT_0J_007       	JT_0K_007       	100         	100         	100         	0           	Open  	;
+ PS_08_010       	JT_0J_008       	JT_0K_008       	100         	100         	100         	0           	Open  	;
+ PS_09_010       	JT_0J_009       	JT_0K_009       	100         	100         	100         	0           	Open  	;
+ PS_10_010       	JT_0J_010       	JT_0K_010       	100         	100         	100         	0           	Open  	;
+ PS_11_010       	JT_0J_011       	JT_0K_011       	100         	100         	100         	0           	Open  	;
+ PS_0K_001       	JT_0K_001       	JT_0K_002       	100         	100         	100         	0           	Open  	;
+ PS_0K_002       	JT_0K_002       	JT_0K_003       	100         	100         	100         	0           	Open  	;
+ PS_0K_003       	JT_0K_003       	JT_0K_004       	100         	100         	100         	0           	Open  	;
+ PS_0K_004       	JT_0K_004       	JT_0K_005       	100         	100         	100         	0           	Open  	;
+ PS_0K_005       	JT_0K_005       	JT_0K_006       	100         	100         	100         	0           	Open  	;
+ PS_0K_006       	JT_0K_006       	JT_0K_007       	100         	100         	100         	0           	Open  	;
+ PS_0K_007       	JT_0K_007       	JT_0K_008       	100         	100         	100         	0           	Open  	;
+ PS_0K_008       	JT_0K_008       	JT_0K_009       	100         	100         	100         	0           	Open  	;
+ PS_0K_009       	JT_0K_009       	JT_0K_010       	100         	100         	100         	0           	Open  	;
+ PS_0A_010       	JT_0A_010       	JT_0A_011       	100         	100         	100         	0           	Open  	;
+ PS_0B_010       	JT_0B_010       	JT_0B_011       	100         	100         	100         	0           	Open  	;
+ PS_0C_010       	JT_0C_010       	JT_0C_011       	100         	100         	100         	0           	Open  	;
+ PS_0D_010       	JT_0D_010       	JT_0D_011       	100         	100         	100         	0           	Open  	;
+ PS_0E_010       	JT_0E_010       	JT_0E_011       	100         	100         	100         	0           	Open  	;
+ PS_0F_010       	JT_0F_010       	JT_0F_011       	100         	100         	100         	0           	Open  	;
+ PS_0G_010       	JT_0G_010       	JT_0G_011       	100         	100         	100         	0           	Open  	;
+ PS_0H_010       	JT_0H_010       	JT_0H_011       	100         	100         	100         	0           	Open  	;
+ PS_0I_010       	JT_0I_010       	JT_0I_011       	100         	100         	100         	0           	Open  	;
+ PS_0J_010       	JT_0J_010       	JT_0J_011       	100         	100         	100         	0           	Open  	;
+ PS_0K_010       	JT_0K_010       	JT_0K_011       	100         	100         	100         	0           	Open  	;
+ PS_11_001       	JT_0A_011       	JT_0B_011       	100         	100         	100         	0           	Open  	;
+ PS_11_002       	JT_0B_011       	JT_0C_011       	100         	100         	100         	0           	Open  	;
+ PS_11_003       	JT_0C_011       	JT_0D_011       	100         	100         	100         	0           	Open  	;
+ PS_11_004       	JT_0D_011       	JT_0E_011       	100         	100         	100         	0           	Open  	;
+ PS_11_005       	JT_0E_011       	JT_0F_011       	100         	100         	100         	0           	Open  	;
+ PS_11_006       	JT_0F_011       	JT_0G_011       	100         	100         	100         	0           	Open  	;
+ PS_11_007       	JT_0G_011       	JT_0H_011       	100         	100         	100         	0           	Open  	;
+ PS_11_008       	JT_0H_011       	JT_0I_011       	100         	100         	100         	0           	Open  	;
+ PS_11_009       	JT_0I_011       	JT_0J_011       	100         	12          	100         	0           	Open  	;
+ PT_01_001       	RS0001          	JT_01_001       	2000        	300         	100         	0           	Open  	;
 
 [PUMPS]
 ;ID              	Node1           	Node2           	Parameters
 
 [VALVES]
 ;ID              	Node1           	Node2           	Diameter    	Type	Setting     	MinorLoss   
- PRV_001         	JT-01-001       	JT-0A-001       	300         	PRV 	0           	0           	;
+ PRV_001         	JT_01_001       	JT_0A_001       	300         	PRV 	0           	0           	;
 
 [TAGS]
 
@@ -407,7 +407,7 @@ BASIC MODEL v00.02
  nd_hw_fall_winter  	1.30        	1.27        	1.10        	0.92        	0.80        	0.58        
 
 [CURVES]
-;ID              	X-Value     	Y-Value
+;ID              	X_Value     	Y_Value
 
 [CONTROLS]
 
@@ -420,106 +420,106 @@ BASIC MODEL v00.02
 
 [EMITTERS]
 ;Junction        	Coefficient
- JT-0A-001       	0.00
- JT-0A-002       	0.00
- JT-0A-003       	0.00
- JT-0A-004       	0.00
- JT-0A-005       	0.00
- JT-0A-006       	0.00
- JT-0A-007       	0.00
- JT-0A-008       	0.00
- JT-0A-009       	0.00
- JT-0A-010       	0.00
- JT-0B-001       	0.00
- JT-0B-002       	0.00
- JT-0B-003       	0.00
- JT-0B-004       	0.00
- JT-0B-005       	0.00
- JT-0B-006       	0.00
- JT-0B-007       	0.00
- JT-0B-008       	0.00
- JT-0B-009       	0.00
- JT-0B-010       	0.00
- JT-0C-001       	0.00
- JT-0C-002       	0.00
- JT-0C-003       	0.00
- JT-0C-004       	0.00
- JT-0C-005       	0.00
- JT-0C-006       	0.00
- JT-0C-007       	0.00
- JT-0C-008       	0.00
- JT-0C-009       	0.00
- JT-0C-010       	0.00
- JT-0D-001       	0.00
- JT-0D-002       	0.00
- JT-0D-003       	0.00
- JT-0D-004       	0.00
- JT-0D-005       	0.00
- JT-0D-006       	0.00
- JT-0D-007       	0.00
- JT-0D-008       	0.00
- JT-0D-009       	0.00
- JT-0D-010       	0.00
- JT-0E-001       	0.00
- JT-0E-002       	0.00
- JT-0E-003       	0.00
- JT-0E-004       	0.00
- JT-0E-005       	0.00
- JT-0E-006       	0.00
- JT-0E-007       	0.00
- JT-0E-008       	0.00
- JT-0E-009       	0.00
- JT-0E-010       	0.00
- JT-0F-001       	0.00
- JT-0F-002       	0.00
- JT-0F-003       	0.00
- JT-0F-004       	0.00
- JT-0F-005       	0.00
- JT-0F-006       	0.00
- JT-0F-007       	0.00
- JT-0F-008       	0.00
- JT-0F-009       	0.00
- JT-0F-010       	0.00
- JT-0G-001       	0.00
- JT-0G-002       	0.00
- JT-0G-003       	0.00
- JT-0G-004       	0.00
- JT-0G-005       	0.00
- JT-0G-006       	0.00
- JT-0G-007       	0.00
- JT-0G-008       	0.00
- JT-0G-009       	0.00
- JT-0G-010       	0.00
- JT-0H-001       	0.00
- JT-0H-002       	0.00
- JT-0H-003       	0.00
- JT-0H-004       	0.00
- JT-0H-005       	0.00
- JT-0H-006       	0.00
- JT-0H-007       	0.00
- JT-0H-008       	0.00
- JT-0H-009       	0.00
- JT-0H-010       	0.00
- JT-0I-001       	0.00
- JT-0I-002       	0.00
- JT-0I-003       	0.00
- JT-0I-004       	0.00
- JT-0I-005       	0.00
- JT-0I-006       	0.00
- JT-0I-007       	0.00
- JT-0I-008       	0.00
- JT-0I-009       	0.00
- JT-0I-010       	0.00
- JT-0J-001       	0.00
- JT-0J-002       	0.00
- JT-0J-003       	0.00
- JT-0J-004       	0.00
- JT-0J-005       	0.00
- JT-0J-006       	0.00
- JT-0J-007       	0.00
- JT-0J-008       	0.00
- JT-0J-009       	0.00
- JT-0J-010       	0.00
+ JT_0A_001       	0.00
+ JT_0A_002       	0.00
+ JT_0A_003       	0.00
+ JT_0A_004       	0.00
+ JT_0A_005       	0.00
+ JT_0A_006       	0.00
+ JT_0A_007       	0.00
+ JT_0A_008       	0.00
+ JT_0A_009       	0.00
+ JT_0A_010       	0.00
+ JT_0B_001       	0.00
+ JT_0B_002       	0.00
+ JT_0B_003       	0.00
+ JT_0B_004       	0.00
+ JT_0B_005       	0.00
+ JT_0B_006       	0.00
+ JT_0B_007       	0.00
+ JT_0B_008       	0.00
+ JT_0B_009       	0.00
+ JT_0B_010       	0.00
+ JT_0C_001       	0.00
+ JT_0C_002       	0.00
+ JT_0C_003       	0.00
+ JT_0C_004       	0.00
+ JT_0C_005       	0.00
+ JT_0C_006       	0.00
+ JT_0C_007       	0.00
+ JT_0C_008       	0.00
+ JT_0C_009       	0.00
+ JT_0C_010       	0.00
+ JT_0D_001       	0.00
+ JT_0D_002       	0.00
+ JT_0D_003       	0.00
+ JT_0D_004       	0.00
+ JT_0D_005       	0.00
+ JT_0D_006       	0.00
+ JT_0D_007       	0.00
+ JT_0D_008       	0.00
+ JT_0D_009       	0.00
+ JT_0D_010       	0.00
+ JT_0E_001       	0.00
+ JT_0E_002       	0.00
+ JT_0E_003       	0.00
+ JT_0E_004       	0.00
+ JT_0E_005       	0.00
+ JT_0E_006       	0.00
+ JT_0E_007       	0.00
+ JT_0E_008       	0.00
+ JT_0E_009       	0.00
+ JT_0E_010       	0.00
+ JT_0F_001       	0.00
+ JT_0F_002       	0.00
+ JT_0F_003       	0.00
+ JT_0F_004       	0.00
+ JT_0F_005       	0.00
+ JT_0F_006       	0.00
+ JT_0F_007       	0.00
+ JT_0F_008       	0.00
+ JT_0F_009       	0.00
+ JT_0F_010       	0.00
+ JT_0G_001       	0.00
+ JT_0G_002       	0.00
+ JT_0G_003       	0.00
+ JT_0G_004       	0.00
+ JT_0G_005       	0.00
+ JT_0G_006       	0.00
+ JT_0G_007       	0.00
+ JT_0G_008       	0.00
+ JT_0G_009       	0.00
+ JT_0G_010       	0.00
+ JT_0H_001       	0.00
+ JT_0H_002       	0.00
+ JT_0H_003       	0.00
+ JT_0H_004       	0.00
+ JT_0H_005       	0.00
+ JT_0H_006       	0.00
+ JT_0H_007       	0.00
+ JT_0H_008       	0.00
+ JT_0H_009       	0.00
+ JT_0H_010       	0.00
+ JT_0I_001       	0.00
+ JT_0I_002       	0.00
+ JT_0I_003       	0.00
+ JT_0I_004       	0.00
+ JT_0I_005       	0.00
+ JT_0I_006       	0.00
+ JT_0I_007       	0.00
+ JT_0I_008       	0.00
+ JT_0I_009       	0.00
+ JT_0I_010       	0.00
+ JT_0J_001       	0.00
+ JT_0J_002       	0.00
+ JT_0J_003       	0.00
+ JT_0J_004       	0.00
+ JT_0J_005       	0.00
+ JT_0J_006       	0.00
+ JT_0J_007       	0.00
+ JT_0J_008       	0.00
+ JT_0J_009       	0.00
+ JT_0J_010       	0.00
 
 [QUALITY]
 ;Node            	InitQual
@@ -576,136 +576,136 @@ BASIC MODEL v00.02
  Tolerance          	0.01
 
 [COORDINATES]
-;Node            	X-Coord         	Y-Coord
- JT-01-001       	552.84          	8020.00         
- JT-0A-001       	1350.00         	8020.00         
- JT-0A-002       	1350.00         	7520.00         
- JT-0A-003       	1350.00         	7020.00         
- JT-0A-004       	1350.00         	6520.00         
- JT-0A-005       	1350.00         	6020.00         
- JT-0A-006       	1350.00         	5520.00         
- JT-0A-007       	1350.00         	5020.00         
- JT-0A-008       	1350.00         	4520.00         
- JT-0A-009       	1350.00         	4020.00         
- JT-0A-010       	1350.00         	3520.00         
- JT-0A-011       	1350.00         	3020.00         
- JT-0B-001       	1850.00         	8020.00         
- JT-0B-002       	1850.00         	7520.00         
- JT-0B-003       	1850.00         	7020.00         
- JT-0B-004       	1850.00         	6520.00         
- JT-0B-005       	1850.00         	6020.00         
- JT-0B-006       	1850.00         	5520.00         
- JT-0B-007       	1850.00         	5020.00         
- JT-0B-008       	1850.00         	4520.00         
- JT-0B-009       	1850.00         	4020.00         
- JT-0B-010       	1850.00         	3520.00         
- JT-0B-011       	1850.00         	3020.00         
- JT-0C-001       	2350.00         	8020.00         
- JT-0C-002       	2350.00         	7520.00         
- JT-0C-003       	2350.00         	7020.00         
- JT-0C-004       	2350.00         	6520.00         
- JT-0C-005       	2350.00         	6020.00         
- JT-0C-006       	2350.00         	5520.00         
- JT-0C-007       	2350.00         	5020.00         
- JT-0C-008       	2350.00         	4520.00         
- JT-0C-009       	2350.00         	4020.00         
- JT-0C-010       	2350.00         	3520.00         
- JT-0C-011       	2350.00         	3020.00         
- JT-0D-001       	2850.00         	8020.00         
- JT-0D-002       	2850.00         	7520.00         
- JT-0D-003       	2850.00         	7020.00         
- JT-0D-004       	2850.00         	6520.00         
- JT-0D-005       	2850.00         	6020.00         
- JT-0D-006       	2850.00         	5520.00         
- JT-0D-007       	2850.00         	5020.00         
- JT-0D-008       	2850.00         	4520.00         
- JT-0D-009       	2850.00         	4020.00         
- JT-0D-010       	2850.00         	3520.00         
- JT-0D-011       	2850.00         	3020.00         
- JT-0E-001       	3350.00         	8020.00         
- JT-0E-002       	3350.00         	7520.00         
- JT-0E-003       	3350.00         	7020.00         
- JT-0E-004       	3350.00         	6520.00         
- JT-0E-005       	3350.00         	6020.00         
- JT-0E-006       	3350.00         	5520.00         
- JT-0E-007       	3350.00         	5020.00         
- JT-0E-008       	3350.00         	4520.00         
- JT-0E-009       	3350.00         	4020.00         
- JT-0E-010       	3350.00         	3520.00         
- JT-0E-011       	3350.00         	3020.00         
- JT-0F-001       	3850.00         	8020.00         
- JT-0F-002       	3850.00         	7520.00         
- JT-0F-003       	3850.00         	7020.00         
- JT-0F-004       	3850.00         	6520.00         
- JT-0F-005       	3850.00         	6020.00         
- JT-0F-006       	3850.00         	5520.00         
- JT-0F-007       	3850.00         	5020.00         
- JT-0F-008       	3850.00         	4520.00         
- JT-0F-009       	3850.00         	4020.00         
- JT-0F-010       	3850.00         	3520.00         
- JT-0F-011       	3850.00         	3020.00         
- JT-0G-001       	4350.00         	8020.00         
- JT-0G-002       	4350.00         	7520.00         
- JT-0G-003       	4350.00         	7020.00         
- JT-0G-004       	4350.00         	6520.00         
- JT-0G-005       	4350.00         	6020.00         
- JT-0G-006       	4350.00         	5520.00         
- JT-0G-007       	4350.00         	5020.00         
- JT-0G-008       	4350.00         	4520.00         
- JT-0G-009       	4350.00         	4020.00         
- JT-0G-010       	4350.00         	3520.00         
- JT-0G-011       	4350.00         	3020.00         
- JT-0H-001       	4850.00         	8020.00         
- JT-0H-002       	4850.00         	7520.00         
- JT-0H-003       	4850.00         	7020.00         
- JT-0H-004       	4850.00         	6520.00         
- JT-0H-005       	4850.00         	6020.00         
- JT-0H-006       	4850.00         	5520.00         
- JT-0H-007       	4850.00         	5020.00         
- JT-0H-008       	4850.00         	4520.00         
- JT-0H-009       	4850.00         	4020.00         
- JT-0H-010       	4850.00         	3520.00         
- JT-0H-011       	4850.00         	3020.00         
- JT-0I-001       	5350.00         	8020.00         
- JT-0I-002       	5350.00         	7520.00         
- JT-0I-003       	5350.00         	7020.00         
- JT-0I-004       	5350.00         	6520.00         
- JT-0I-005       	5350.00         	6020.00         
- JT-0I-006       	5350.00         	5520.00         
- JT-0I-007       	5350.00         	5020.00         
- JT-0I-008       	5350.00         	4520.00         
- JT-0I-009       	5350.00         	4020.00         
- JT-0I-010       	5350.00         	3520.00         
- JT-0I-011       	5350.00         	3020.00         
- JT-0J-001       	5850.00         	8020.00         
- JT-0J-002       	5850.00         	7520.00         
- JT-0J-003       	5850.00         	7020.00         
- JT-0J-004       	5850.00         	6520.00         
- JT-0J-005       	5850.00         	6020.00         
- JT-0J-006       	5850.00         	5520.00         
- JT-0J-007       	5850.00         	5020.00         
- JT-0J-008       	5850.00         	4520.00         
- JT-0J-009       	5850.00         	4020.00         
- JT-0J-010       	5850.00         	3520.00         
- JT-0J-011       	5850.00         	3020.00         
- JT-0K-001       	6350.00         	8020.00         
- JT-0K-002       	6350.00         	7520.00         
- JT-0K-003       	6350.00         	7020.00         
- JT-0K-004       	6350.00         	6520.00         
- JT-0K-005       	6350.00         	6020.00         
- JT-0K-006       	6350.00         	5520.00         
- JT-0K-007       	6350.00         	5020.00         
- JT-0K-008       	6350.00         	4520.00         
- JT-0K-009       	6350.00         	4020.00         
- JT-0K-010       	6350.00         	3520.00         
- JT-0K-011       	6350.00         	3020.00         
+;Node            	X_Coord         	Y_Coord
+ JT_01_001       	552.84          	8020.00         
+ JT_0A_001       	1350.00         	8020.00         
+ JT_0A_002       	1350.00         	7520.00         
+ JT_0A_003       	1350.00         	7020.00         
+ JT_0A_004       	1350.00         	6520.00         
+ JT_0A_005       	1350.00         	6020.00         
+ JT_0A_006       	1350.00         	5520.00         
+ JT_0A_007       	1350.00         	5020.00         
+ JT_0A_008       	1350.00         	4520.00         
+ JT_0A_009       	1350.00         	4020.00         
+ JT_0A_010       	1350.00         	3520.00         
+ JT_0A_011       	1350.00         	3020.00         
+ JT_0B_001       	1850.00         	8020.00         
+ JT_0B_002       	1850.00         	7520.00         
+ JT_0B_003       	1850.00         	7020.00         
+ JT_0B_004       	1850.00         	6520.00         
+ JT_0B_005       	1850.00         	6020.00         
+ JT_0B_006       	1850.00         	5520.00         
+ JT_0B_007       	1850.00         	5020.00         
+ JT_0B_008       	1850.00         	4520.00         
+ JT_0B_009       	1850.00         	4020.00         
+ JT_0B_010       	1850.00         	3520.00         
+ JT_0B_011       	1850.00         	3020.00         
+ JT_0C_001       	2350.00         	8020.00         
+ JT_0C_002       	2350.00         	7520.00         
+ JT_0C_003       	2350.00         	7020.00         
+ JT_0C_004       	2350.00         	6520.00         
+ JT_0C_005       	2350.00         	6020.00         
+ JT_0C_006       	2350.00         	5520.00         
+ JT_0C_007       	2350.00         	5020.00         
+ JT_0C_008       	2350.00         	4520.00         
+ JT_0C_009       	2350.00         	4020.00         
+ JT_0C_010       	2350.00         	3520.00         
+ JT_0C_011       	2350.00         	3020.00         
+ JT_0D_001       	2850.00         	8020.00         
+ JT_0D_002       	2850.00         	7520.00         
+ JT_0D_003       	2850.00         	7020.00         
+ JT_0D_004       	2850.00         	6520.00         
+ JT_0D_005       	2850.00         	6020.00         
+ JT_0D_006       	2850.00         	5520.00         
+ JT_0D_007       	2850.00         	5020.00         
+ JT_0D_008       	2850.00         	4520.00         
+ JT_0D_009       	2850.00         	4020.00         
+ JT_0D_010       	2850.00         	3520.00         
+ JT_0D_011       	2850.00         	3020.00         
+ JT_0E_001       	3350.00         	8020.00         
+ JT_0E_002       	3350.00         	7520.00         
+ JT_0E_003       	3350.00         	7020.00         
+ JT_0E_004       	3350.00         	6520.00         
+ JT_0E_005       	3350.00         	6020.00         
+ JT_0E_006       	3350.00         	5520.00         
+ JT_0E_007       	3350.00         	5020.00         
+ JT_0E_008       	3350.00         	4520.00         
+ JT_0E_009       	3350.00         	4020.00         
+ JT_0E_010       	3350.00         	3520.00         
+ JT_0E_011       	3350.00         	3020.00         
+ JT_0F_001       	3850.00         	8020.00         
+ JT_0F_002       	3850.00         	7520.00         
+ JT_0F_003       	3850.00         	7020.00         
+ JT_0F_004       	3850.00         	6520.00         
+ JT_0F_005       	3850.00         	6020.00         
+ JT_0F_006       	3850.00         	5520.00         
+ JT_0F_007       	3850.00         	5020.00         
+ JT_0F_008       	3850.00         	4520.00         
+ JT_0F_009       	3850.00         	4020.00         
+ JT_0F_010       	3850.00         	3520.00         
+ JT_0F_011       	3850.00         	3020.00         
+ JT_0G_001       	4350.00         	8020.00         
+ JT_0G_002       	4350.00         	7520.00         
+ JT_0G_003       	4350.00         	7020.00         
+ JT_0G_004       	4350.00         	6520.00         
+ JT_0G_005       	4350.00         	6020.00         
+ JT_0G_006       	4350.00         	5520.00         
+ JT_0G_007       	4350.00         	5020.00         
+ JT_0G_008       	4350.00         	4520.00         
+ JT_0G_009       	4350.00         	4020.00         
+ JT_0G_010       	4350.00         	3520.00         
+ JT_0G_011       	4350.00         	3020.00         
+ JT_0H_001       	4850.00         	8020.00         
+ JT_0H_002       	4850.00         	7520.00         
+ JT_0H_003       	4850.00         	7020.00         
+ JT_0H_004       	4850.00         	6520.00         
+ JT_0H_005       	4850.00         	6020.00         
+ JT_0H_006       	4850.00         	5520.00         
+ JT_0H_007       	4850.00         	5020.00         
+ JT_0H_008       	4850.00         	4520.00         
+ JT_0H_009       	4850.00         	4020.00         
+ JT_0H_010       	4850.00         	3520.00         
+ JT_0H_011       	4850.00         	3020.00         
+ JT_0I_001       	5350.00         	8020.00         
+ JT_0I_002       	5350.00         	7520.00         
+ JT_0I_003       	5350.00         	7020.00         
+ JT_0I_004       	5350.00         	6520.00         
+ JT_0I_005       	5350.00         	6020.00         
+ JT_0I_006       	5350.00         	5520.00         
+ JT_0I_007       	5350.00         	5020.00         
+ JT_0I_008       	5350.00         	4520.00         
+ JT_0I_009       	5350.00         	4020.00         
+ JT_0I_010       	5350.00         	3520.00         
+ JT_0I_011       	5350.00         	3020.00         
+ JT_0J_001       	5850.00         	8020.00         
+ JT_0J_002       	5850.00         	7520.00         
+ JT_0J_003       	5850.00         	7020.00         
+ JT_0J_004       	5850.00         	6520.00         
+ JT_0J_005       	5850.00         	6020.00         
+ JT_0J_006       	5850.00         	5520.00         
+ JT_0J_007       	5850.00         	5020.00         
+ JT_0J_008       	5850.00         	4520.00         
+ JT_0J_009       	5850.00         	4020.00         
+ JT_0J_010       	5850.00         	3520.00         
+ JT_0J_011       	5850.00         	3020.00         
+ JT_0K_001       	6350.00         	8020.00         
+ JT_0K_002       	6350.00         	7520.00         
+ JT_0K_003       	6350.00         	7020.00         
+ JT_0K_004       	6350.00         	6520.00         
+ JT_0K_005       	6350.00         	6020.00         
+ JT_0K_006       	6350.00         	5520.00         
+ JT_0K_007       	6350.00         	5020.00         
+ JT_0K_008       	6350.00         	4520.00         
+ JT_0K_009       	6350.00         	4020.00         
+ JT_0K_010       	6350.00         	3520.00         
+ JT_0K_011       	6350.00         	3020.00         
  RS0001          	-190.80         	8786.69         
 
 [VERTICES]
-;Link            	X-Coord         	Y-Coord
+;Link            	X_Coord         	Y_Coord
 
 [LABELS]
-;X-Coord           Y-Coord          Label & Anchor Node
+;X_Coord           Y_Coord          Label & Anchor Node
  1345.40          8350.00          "A"                 
  1850.00          8350.00          "B"                 
  2350.00          8350.00          "C"                 

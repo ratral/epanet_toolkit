@@ -27,8 +27,8 @@ params <- list(net_works     = "prv_01",
                time_step     = "hour",
                pattern_start = "2020-1-1 00:30",
                pattern_end   = "2020-1-1 23:30",
-               jt_to_analyze = "^JT-0[A-K]", # RegExp
-               main_nodes    = c("JT-0A-001", "JT-0K-011"))
+               jt_to_analyze = "^JT_0[A-K]", # RegExp
+               main_nodes    = c("JT_0A_001", "JT_0K_011"))
 
 
 demad_factor <- list( c( "wd_spring_summer","hw_spring_summer",
@@ -120,37 +120,29 @@ plot_ts_curves(inlet_flow,
                y_lab    = "Flow (l/s)")
 
 #-------------------------------------------------------------------------------
+
 jt_pressure <- net_report_01$nodeResults %>%
                as.tibble() %>%
-               subset(nodeType == "Junction") %>%
+               subset(nodeType == "Junction" & grepl(params$jt_to_analyze,ID )) %>%
                select(ID,timeInSeconds,Pressure) %>%
-               dcast(timeInSeconds~ID,  
-                     value.var = "Pressure") %>%
+               dcast(timeInSeconds~ID, value.var = "Pressure") %>%
                select(matches(params$jt_to_analyze)) 
-               
+
+
 jt_pressure <- jt_pressure %>%
-               mutate(Min = apply(jt_pressure, MARGIN = 1, 
-                                  FUN = function(x) min(x))) %>%
-               mutate(Qu25 = apply(jt_pressure, MARGIN = 1, 
-                                   FUN = function(x) quantile(x, probs=0.25))) %>%
-               mutate(Median = apply(jt_pressure, MARGIN = 1, 
-                                     FUN = function(x) median(x))) %>%
-               mutate(Mean = apply(jt_pressure, MARGIN = 1, 
-                                   FUN = function(x) mean(x))) %>%
-               mutate(Qu75 = apply(jt_pressure, MARGIN = 1, 
-                                   FUN = function(x) quantile(x, probs=0.75))) %>%
-               mutate(Max = apply(jt_pressure, MARGIN = 1, 
-                                  FUN = function(x) max(x))) %>%
-               mutate(D_pressure = apply(jt_pressure, MARGIN = 1, 
-                                         FUN = function(x) max(x)-min(x))) %>%
+               mutate(Min        = apply(jt_pressure, MARGIN = 1, FUN = function(x) min(x))) %>%
+               mutate(Qu25       = apply(jt_pressure, MARGIN = 1, FUN = function(x) quantile(x, probs=0.25))) %>%
+               mutate(Median     = apply(jt_pressure, MARGIN = 1, FUN = function(x) median(x))) %>%
+               mutate(Mean       = apply(jt_pressure, MARGIN = 1, FUN = function(x) mean(x))) %>%
+               mutate(Qu75       = apply(jt_pressure, MARGIN = 1, FUN = function(x) quantile(x, probs=0.75))) %>%
+               mutate(Max        = apply(jt_pressure, MARGIN = 1, FUN = function(x) max(x))) %>%
+               mutate(D_pressure = Max-Min)  %>%
                as.zoo(idx)
 
-
-plot_ts_curves(plot_data,
-               y_limits = c(40,50),
+plot_ts_curves(jt_pressure$D_pressure,
+               y_limits = c(0,50),
                m_title  = "PRESSURE IN THE NETWORK",
                y_lab    = "Pressure (m)")
-
 
 #...............................................................................
 # ACTUAL STATUS MARKER !!!!!!!
