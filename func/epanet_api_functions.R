@@ -80,8 +80,5 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
                  as.zoo(idx)
 }
 
+#...............................................................................
 
-#<- tab_results %>%
-#  subset(grepl(id,ID ))
-#select(ID, timeInSeconds, value) %>%
-#  spread(ID, value)
