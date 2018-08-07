@@ -27,19 +27,14 @@ params <- list(net_works     = "prv_01",
                pattern_start = "2020-1-1 00:30",
                pattern_end   = "2020-1-1 23:30",
                jt_to_analyze = "^JT_0[A-K]", # RegExp
-               main_nodes    = c("JT_0A_001", "JT_0K_011"))
+               main_nodes    = c("JT_0A_001", "JT_0K_011"),
+               emitter_coeff = 1/10000)
 
 
 demad_factor <- list( c( "wd_spring_summer","hw_spring_summer",
                          "wd_summer_break","hw_summer_break",
                          "wd_fall_winter","hw_fall_winter"),
                       c( 0.92, 1.00, 1.09, 0.81, 0.66, 0.95))
-
-# Time Serie Index
-idx <- seq( ymd_hm(params$pattern_start), 
-            ymd_hm(params$pattern_end), 
-            by = params$time_step)
-
 
 # initialize files paths and files
 
@@ -65,6 +60,17 @@ net_input_01  <- read.inp(file_inp)
 # glimpse(net_input_01)
 
 #...............................................................................
+# LEAKAGE
+#...............................................................................
+
+Net_fromR_01 <- gen_emitter (inp_file = net_input_01, 
+                             emitter_base = params$emitter_coeff, 
+                             id_junctions = params$jt_to_analyze, 
+                             sample_size = 1)
+
+write.inp(Net_fromR_01, file.path(dir_data,"Net_fromR_01.inp"))
+
+#...............................................................................
 # Times of net input
 #...............................................................................
 
@@ -73,8 +79,6 @@ net_times <- net_input_01$Times
 names(net_times) <- c("duration", "hydraulic_timestep", "quality_timestep",
                       "pattern_timestep", "pattern_start", "report_timestep",
                       "report_start", "start_clock_time", "statistic")
-
-
 
 #...............................................................................
 # Plot Network
@@ -149,4 +153,5 @@ jt_pressure <- tab_reports( report  = net_report_01,
 #...............................................................................
 # ACTUAL STATUS MARKER !!!!!!!
 # https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+# git push origin master
 #...............................................................................

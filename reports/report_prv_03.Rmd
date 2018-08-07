@@ -148,20 +148,27 @@ incorporates additional node pressure-dependent flow.
 Leaks are incorporated in the simulation using nodal emitters whose flow 
 value $q_{l_{t}}$ follows the _Equation:_
 
-$$q_{l_t}=c*p^{\alpha}_t$$
+$q^{leak}_k =(\beta_k*l_k)*p^{\alpha}_k+C_k*p^{\delta}_k$
 
 where: 
 
- - $q_{l_{t}}$ is the leak flow in $(l/s)$  at the $t^{th}$ time step,
+ - $q^{leak}_k$ is the leak flow in along pipe $k$ at the $t^{th}$ time step,
  
- - $p_t=$ is the nodal pressure in $(m)$ at the $t^{th}$ time step,
+ - $l_k$ is the length of pipe $k$
  
- - $\alpha=$ is the exponent dependent on pipe and leak typ, 
-   in these case we will use $α = 1.18$ ,   
+ - $p_k=$  is the average pressure in pipe $k$ computed as the mean of the pressure values of its end nodes at the  $t^{th}$ time step,
  
- - $c=$ is the coefficient dependent of network conditions,
-   in these case we will use $c = 0.05$ .
+ - $\alpha_k=$ is the exponent dependent on pipe and leak typ, in these case we will use $α = 1.18$. The $\alpha_k$ parameter can take values between 0.5 and 2.5, depending on the leak type.
+ 
+ - The $\beta_k$ parameter is related to the pipe material deterioration and its value must be set by calibration (initial value can be set around $0.05$)
+   
+ - $C_k$ and $\delta_k$ are parameter of the _bursts leakage_ model (classical orifice flow formulas)
+ 
+ For each pipe, the total leakage is assigned to its end nodes, half to each node. So, the nodal leakage flow $q^{leak}_i$ for a node $i$ can be computed as follows:
+ 
+ $q^{leak}_i=\frac{1}{2}*\sum_{k=1}^{n} q^{leak}_k$
+ 
+Where $k$ interates over all $n$ pipes connected to node $i$.
 
- 
 
-# References
+

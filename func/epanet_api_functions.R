@@ -81,4 +81,40 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
 }
 
 #...............................................................................
+# EMITTERS
+# Generation of the Emitters coefficients
+#...............................................................................
+
+gen_emitter <- function(inp_file, emitter_base, id_junctions, sample_size = 1){
+  
+  pipes     <- as.tibble(inp_file$Pipes) %>% 
+               subset(grepl(id_junctions,Node1)|grepl(id_junctions,Node2)) %>%
+               select(Node1, Node2,Length)
+  
+  Node1     <- pipes %>% group_by(Node1) %>% summarize(sum(Length))
+  Node2     <- pipes %>% group_by(Node2) %>% summarize(sum(Length))
+  
+  names(Node1) <- c("ID", "sum1")
+  names(Node2) <- c("ID", "sum2")
+  
+  Node  <- full_join(Node1, Node2, by = "ID")
+  
+  Node$sum1[is.na(Node$sum1)] <- 0
+  Node$sum2[is.na(Node$sum2)] <- 0
+  
+  Node  <- Node %>% mutate(Length = (sum1+sum2)/2)
+  
+  junctions <- as.tibble(inp_file$Junctions) %>%
+               subset(grepl(id_junctions,ID )) %>%
+               full_join(Node, by = "ID") %>%
+               mutate(Emitter_C = emitter_base * Length ) %>%
+               select(ID, Demand, Length, Emitter_C, Pattern) 
+  
+  inp_file$Emitters <- data.frame( ID       = junctions$ID , 
+                                   FlowCoef = junctions$Emitter_C )
+  
+  inp_file
+}
+
+
 
