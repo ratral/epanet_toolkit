@@ -63,12 +63,15 @@ net_input_01  <- read.inp(file_inp)
 # LEAKAGE
 #...............................................................................
 
-Net_fromR_01 <- gen_emitter (inp_file = net_input_01, 
-                             emitter_base = params$emitter_coeff, 
-                             id_junctions = params$jt_to_analyze, 
-                             sample_size = 1)
+junctions_base <- gen_emitter (inp_file = net_input_01, 
+                               emitter_base = params$emitter_coeff, 
+                               id_junctions = params$jt_to_analyze)
 
-write.inp(Net_fromR_01, file.path(dir_data,"Net_fromR_01.inp"))
+net_input_01$Emitters <- data.frame(ID = junctions_base$ID,
+                                    FlowCoef = junctions_base$FlowCoef)
+
+
+write.inp(net_input_01, file.path(dir_data,"Net_fromR_01.inp"))
 
 #...............................................................................
 # Times of net input

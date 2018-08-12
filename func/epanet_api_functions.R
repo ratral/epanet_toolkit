@@ -56,17 +56,17 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
   
   if(results == "nodes"){
     tab_results <- as.tibble(report$nodeResults) %>%
-      subset(nodeType == type & grepl(id,ID )) 
+                   subset(nodeType == type & grepl(id,ID )) 
   }
   
   if (results == "links"){
     tab_results <- as.tibble(report$linkResults) %>%
-      subset(linkType == type & grepl(id,ID )) 
+                   subset(linkType == type & grepl(id,ID )) 
   }
   
   tab_results <-tab_results %>%
-    select(timeInSeconds, ID, value) %>%
-    spread(ID, value) 
+                select(timeInSeconds, ID, value) %>%
+                spread(ID, value) 
   
   if (summary == TRUE){
     tab_results <- cbind(tab_results, 
@@ -85,7 +85,10 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
 # Generation of the Emitters coefficients
 #...............................................................................
 
-gen_emitter <- function(inp_file, emitter_base, id_junctions, sample_size = 1){
+gen_emitter <- function(inp_file, emitter_base, id_junctions){
+
+  junctions <- as.tibble(inp_file$Junctions) %>%
+               subset(grepl(id_junctions,ID ))   
   
   pipes     <- as.tibble(inp_file$Pipes) %>% 
                subset(grepl(id_junctions,Node1)|grepl(id_junctions,Node2)) %>%
@@ -104,17 +107,11 @@ gen_emitter <- function(inp_file, emitter_base, id_junctions, sample_size = 1){
   
   Node  <- Node %>% mutate(Length = (sum1+sum2)/2)
   
-  junctions <- as.tibble(inp_file$Junctions) %>%
-               subset(grepl(id_junctions,ID )) %>%
+  junctions <- junctions %>%
                full_join(Node, by = "ID") %>%
-               mutate(Emitter_C = emitter_base * Length ) %>%
-               select(ID, Demand, Length, Emitter_C, Pattern) 
-  
-  inp_file$Emitters <- data.frame( ID       = junctions$ID , 
-                                   FlowCoef = junctions$Emitter_C )
-  
-  inp_file
+               mutate(Emitter_C  = emitter_base, 
+                      Length     = (sum1+sum2)/2,
+                      FlowCoef   = emitter_base * (sum1+sum2)/2) %>%
+               select(ID, Demand, Pattern, Emitter_C, Length, FlowCoef) 
 }
-
-
 
