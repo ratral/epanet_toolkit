@@ -64,10 +64,12 @@ net_input_01  <- read.inp(file_inp)
 #...............................................................................
 
 junctions_base <- gen_emitter (inp_file = net_input_01, 
-                               emitter_base = params$emitter_coeff, 
+                               emitter_base = 0, 
                                id_junctions = params$jt_to_analyze)
 
-net_input_01$Emitters <- data.frame(ID = junctions_base$ID,
+emiter_coef <- junctions_base %>% select(ID, Emitter_C)
+
+net_input_01$Emitters <- data.frame(ID       = junctions_base$ID,
                                     FlowCoef = junctions_base$FlowCoef)
 
 
