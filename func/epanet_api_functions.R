@@ -115,3 +115,18 @@ gen_emitter <- function(inp_file, emitter_base, id_junctions){
                select(ID, Demand, Pattern, Emitter_C, Length, FlowCoef) 
 }
 
+#...............................................................................
+# EMITTERS
+# Generate random numbers following a distribution within an interval
+#...............................................................................
+
+
+random_value <- function( n = 1, xmean, xsd, lwr, upr, rounding =3 ) {
+  samp <- round(rnorm(n, xmean, xsd), rounding)
+  samp[samp < lwr] <- lwr
+  samp[samp > upr] <- upr
+  samp
+}
+
+
+
