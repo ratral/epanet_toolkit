@@ -128,11 +128,76 @@ random_value <- function( n = 1, xmean, xsd, lwr, upr, rounding =3 ) {
 }
 
 #...............................................................................
-# GENERATE THE LEAKAGE IN A NEW NETWORK                                  
+# Generates a new network from a base network with randomly generated Leaks                             
+#
+# The pressure-leakage relationship for a pipe k can be stated as follows:
+# q = (Betha * Length) * (Pressure)^ (Alpha) 
+# 
+# FlowCoef = (Betha * Length)
+#
+# q = FlowCoef * (Pressure)^ (Alpha) 
+# 
+# The Alpha parameter can take values between 0.5 and 2.5
+# The Betha parameter is related to the pipe material material deterioration
+#           and its value but must be set by calibration
+#           (initial values can be set around 10e-7)
 #...............................................................................
 
-gen_network_w_leaks <- function(){
-  1
+gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
+  
+  # All nodes are selected and the values of the existing emitters are added.
+  
+  emitters  <- as.tibble(inp_file$Junctions) %>%
+               full_join(as.tibble(inp_file$Emitters), by= "ID") %>%
+               select(ID,Demand,FlowCoef) %>%
+               replace_na(list(FlowCoef = 0))
+  
+  # For each pipe, the total leakage is assigned to its end nodes,
+  # half to each node.
+  
+  pipes <- as.tibble(inp_file$Pipes) %>% select(Node1, Node2,Length)
+  
+  node1 <- pipes %>% group_by(Node1) %>% summarize(sum(Length)) %>% 
+           rename(ID = Node1, sum1 = `sum(Length)`)
+           
+  node2 <- pipes %>% group_by(Node2) %>% summarize(sum(Length)) %>% 
+           rename(ID = Node2, sum2 = `sum(Length)`)
+  
+  node  <- full_join(node1, node2, by = "ID") %>% 
+           replace_na(list(sum1 = 0, sum2 = 0)) %>% 
+           mutate(Length = (sum1+sum2)/2) %>%
+           select(ID, Length) 
+
+  emitters <- emitters %>% 
+              left_join(node, by= "ID" ) %>%
+              mutate(Betha = FlowCoef/Length) %>%
+              select(ID, Betha, Length, FlowCoef) %>% 
+              subset(grepl(id_junctions,ID ))
+  
+  index   <- sample(1:nrow(emitters),round(params$leak_rate*nrow(emitters)))
+  
+  emitters[index,]$Betha <- emitters[index,]$Betha + 1/rweibull(1,6,10000)
+  
+  emitters <- emitters %>% mutate( FlowCoef = round(Betha*Length,4))
+  
+  net_input_01$Title <- paste0("BASIC DMA MODEL v00.03 WITH LEAKS IN NODES:\n",
+                               str_c(emitters[index,]$ID, collapse = ", "), 
+                               "\n", "Damages in approximately ",
+                               sum(emitters[index,]$Length),
+                               " meters of the network")
+  
+  net_input_01$Emitters <- data.frame(ID       = emitters$ID,
+                                      FlowCoef = emitters$FlowCoef)
+
+  net_input_01
 }
+  
+# test <- gen_network_w_leaks(net_input_01, 0.05, "^JT_0[A-K]" )
+# test$Betha <- test$Betha %>% map_dbl(rnorm, n=1)
+# test
 
 
+
+#...............................................................................
+# Generates a new network from a base network with randomly generated Leaks                             
+#...............................................................................

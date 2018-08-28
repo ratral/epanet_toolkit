@@ -3,7 +3,7 @@ BASIC MODEL v00.02
 
 [JUNCTIONS]
 ;ID              	Elev        	Demand      	Pattern         
- JT_01_001       	0           	0.12        	nd_wd_summer_break 	;
+ JT_01_001       	0           	0.00        	nd_wd_summer_break 	;
  JT_0A_001       	0           	0.12        	nd_wd_summer_break 	;
  JT_0A_002       	0           	0.12        	nd_wd_summer_break 	;
  JT_0A_003       	0           	0.12        	nd_wd_summer_break 	;
