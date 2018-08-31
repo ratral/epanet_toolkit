@@ -81,6 +81,14 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
 }
 
 #...............................................................................
+
+# tab_reports <- function(report,results, type, id, value, summary = FALSE){
+
+
+
+
+
+#...............................................................................
 # EMITTERS
 #
 # Generation of the Emitters coefficients

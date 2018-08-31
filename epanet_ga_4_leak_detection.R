@@ -65,15 +65,18 @@ source(f_names$file_func)
 #...............................................................................
 
 # Read network information from an *.inp
+
 net_input_01  <- read.inp(f_names$base_file_inp)
 
+#if(!file.exists(f_names$new_file_inp)){
 
-if(!file.exists(f_names$new_file_inp)){
-   net_input_01 <- gen_network_w_leaks(net_input_01, 0.05, "^JT_0[A-K]" )
+   net_input_01 <- gen_network_w_leaks(net_input_01, 
+                                       params$leak_rate, 
+                                       params$jt_to_analyze )
+   
    write.inp(net_input_01, f_names$new_file_inp)
-}
 
-if(!file.exists(f_names$new_file_inp)){file.copy(base_file_inp,ga_file_inp )}
+#  }
 
 #...............................................................................
 # 3. Running a Full Simulation                                             ####
@@ -81,5 +84,65 @@ if(!file.exists(f_names$new_file_inp)){file.copy(base_file_inp,ga_file_inp )}
 #    writes the results to a file. 
 #...............................................................................
 
+ENepanet(f_names$base_file_inp, f_names$base_file_report)
+ENepanet(f_names$new_file_inp,  f_names$new_file_report)
 
+base_report   <- read.rpt(f_names$base_file_report)
+leack_report  <- read.rpt(f_names$new_file_report)
+
+# tab_reports(report,results, type, id, value, summary = FALSE)
+
+
+pipes <- as.tibble(net_input_01$Pipes) %>%
+         select(ID, from_node = Node1, to_node = Node2)
+
+
+pres_base       <- tab_reports( report  = base_report,
+                                results = "nodes", 
+                                type    = "Junction", 
+                                id      = params$jt_to_analyze,
+                                value   = "Pressure", 
+                                summary = FALSE)
+
+headloss_base   <- tab_reports( report  = base_report, 
+                                results = "links",
+                                type    = "Pipe",
+                                id      = "PS_",
+                                value   = "Headloss",
+                                summary = FALSE)
+
+flow_base      <- tab_reports( report  = base_report, 
+                               results = "links",
+                               type    = "Pipe",
+                               id      = "PS_",
+                               value   = "Flow",
+                               summary = FALSE)
+
+pres_leack     <- tab_reports( report  = leack_report,
+                               results = "nodes", 
+                               type    = "Junction", 
+                               id      = params$jt_to_analyze,
+                               value   = "Pressure", 
+                               summary = FALSE)
+
+headloss_leack <- tab_reports( report  = leack_report, 
+                               results = "links",
+                               type    = "Pipe",
+                               id      = "PS_",
+                               value   = "Headloss",
+                               summary = FALSE)
+
+flow_leack     <- tab_reports( report  = leack_report, 
+                               results = "links",
+                               type    = "Pipe",
+                               id      = "PS_",
+                               value   = "Flow",
+                               summary = FALSE)
+
+
+delta_pressure <- (pres_base - pres_leack)
+delta_headloss <- (headloss_base-headloss_leack)
+delta_flow     <- (flow_base-flow_leack)
+
+# glimpse(net_report_01)
 
