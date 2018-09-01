@@ -12,7 +12,8 @@ Stats_calc <- function(x){
   max    <- max(x, na.rm=TRUE)
   sd     <- round(sd(x, na.rm=TRUE),2)
   dvalue <- max-min
-  return(c(Min=min, Qu=q25, Qu=q50, Mean=mean, Qu=q75, Max=max, SD=sd, D.Value=dvalue))
+  return(c(Min=min, Qu=q25, Qu=q50, Mean=mean, 
+           Qu=q75, Max=max, SD=sd, D.Value=dvalue))
 }
 
 #...............................................................................
