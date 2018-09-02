@@ -93,10 +93,6 @@ leack_report  <- read.rpt(f_names$new_file_report)
 # tab_reports(report,results, type, id, value, summary = FALSE)
 
 
-pipes <- as.tibble(net_input_01$Pipes) %>%
-         select(ID, from_node = Node1, to_node = Node2)
-
-
 pres_base       <- tab_reports( report  = base_report,
                                 results = "nodes", 
                                 type    = "Junction", 
@@ -138,11 +134,53 @@ flow_leack     <- tab_reports( report  = leack_report,
                                id      = "PS_",
                                value   = "Flow",
                                summary = FALSE)
+#...............................................................................
+
+base_net     <- net_input_01
+report       <- base_report
+id_pipes     <- "PS_" 
+id_junctions <- "^JT_0[A-K]"
+
+pipes <- as.tibble(base_net$Pipes) %>%
+         filter(grepl(id_pipes, ID)) %>%
+         select(ID, from_node = Node1, to_node = Node2)
 
 
-delta_pressure <- (pres_base - pres_leack)
-delta_headloss <- (headloss_base-headloss_leack)
-delta_flow     <- (flow_base-flow_leack)
+emitters    <- as.tibble(base_net$Emitters)
+emitters$ID <- as.character(emitters$ID)
+
+nodes_results <- as.tibble(report$nodeResults)  %>%
+                 filter(nodeType == "Junction" & grepl(id_junctions,ID ))  %>%
+                 select(ID, Pressure) %>%
+                 group_by(ID) %>%
+                 summarise(p_min    = min(Pressure),
+                           p_q25    = quantile(Pressure, 0.25),
+                           p_median = median(Pressure),
+                           p_mean   = mean(Pressure),
+                           p_q75    = quantile(Pressure, 0.75),
+                           p_max    = max(Pressure))
+
+nodes_results <- left_join(nodes_results, emitters, by = "ID")
+
+link_results <- as.tibble(report$linkResults) %>%
+                filter(linkType == "Pipe" & grepl(id_pipes,ID )) %>%
+                select(ID, Flow, Headloss) %>%
+                group_by(ID) %>%
+                summarise(f_min     = min(Flow),
+                          f_q25     = quantile(Flow, 0.25),
+                          f_median  = median(Flow),
+                          f_mean    = mean(Flow),
+                          f_q75     = quantile(Flow, 0.75),
+                          hl_q25    = quantile(Headloss, 0.25),
+                          hl_min    = min(Headloss),
+                          f_max     = max(Flow),
+                          hl_median = median(Headloss),
+                          hl_mean   = mean(Headloss),
+                          hl_q75    = quantile(Headloss, 0.75),
+                          hl_max    = max(Headloss))
+
+pipes <- left_join(pipes,link_results, by = "ID")
+pipes <- left_join(pipes,nodes_results, by = c("from_node" = "ID"))
+pipes <- left_join(pipes,nodes_results, by = c("to_node" = "ID"))
 
 # glimpse(net_report_01)
-

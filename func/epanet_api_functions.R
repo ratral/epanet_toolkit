@@ -21,8 +21,8 @@ Stats_calc <- function(x){
 #...............................................................................
 
 plot_ts_curves <- function (ts_curve,
-                            m_title = "",
-                            y_limits = c(0,7),
+                            m_title     = "",
+                            y_limits    = c(0,7),
                             x_lab       = "Time (Hours)",
                             y_lab       = "Flow Factor", 
                             time_breaks = "2 hour",
