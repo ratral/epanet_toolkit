@@ -157,12 +157,128 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
   net_input_01
 }
   
-# test <- gen_network_w_leaks(net_input_01, 0.05, "^JT_0[A-K]" )
-# test$Betha <- test$Betha %>% map_dbl(rnorm, n=1)
-# test
-
-
 
 #...............................................................................
-# Generates a new network from a base network with randomly generated Leaks                             
+# EVALUATION TABLE
+# Evaluate, compare, benchmark Networks 
 #...............................................................................
+
+eval_nodes <- function(report,id_nodes, group = FALSE, standardize = FALSE){
+
+  nodes_tab <- as.tibble(report$nodeResults)  %>%
+               filter(nodeType == "Junction" & grepl(id_nodes,ID )) 
+  
+  if(!group){
+    nodes_tab <- nodes_tab  %>%
+                 select(timeInSeconds, ID, Pressure) %>%
+                 spread(ID, Pressure) 
+  }
+  
+  if (group) {
+    nodes_tab <- nodes_tab %>%
+                 select(ID, Pressure) %>% 
+                 group_by(ID) %>%
+                 summarise(p_min    = min(Pressure),
+                           p_q25    = quantile(Pressure, 0.25),
+                           p_median = median(Pressure),
+                           p_mean   = mean(Pressure),
+                           p_q75    = quantile(Pressure, 0.75),
+                           p_max    = max(Pressure))
+ }
+  
+  if (standardize) {
+ 
+    l <- length(nodes_tab)
+    
+    maxs    <- apply(nodes_tab[2:l], 2, max) 
+    mins    <- apply(nodes_tab[2:l], 2, min)
+    
+    scaled  <- (scale(nodes_tab[2:l], 
+                      center = mins, 
+                      scale = maxs - mins)*100)
+    
+    nodes_tab <- as.tibble(cbind(nodes_tab[1],scaled))
+ 
+}
+  nodes_tab
+}
+#...............................................................................
+
+eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardize = FALSE){
+    
+    pipes_tab <- as.tibble(report$linkResults) %>%
+                 filter(linkType == "Pipe" & grepl( id_pipes, ID )) 
+    
+    if(value == "Flow" & !group){
+      pipes_tab <- pipes_tab  %>%
+                   select(timeInSeconds, ID, Flow ) %>%
+                   spread(ID, Flow) 
+    }   
+   
+    if(value == "Flow" & group) {
+      pipes_tab <- pipes_tab %>%
+                   select(ID, Flow) %>%
+                   group_by(ID) %>%
+                   summarise( f_min  = min(Flow),
+                              f_q25     = quantile(Flow, 0.25),
+                              f_median  = median(Flow),
+                              f_mean    = mean(Flow),
+                              f_q75     = quantile(Flow, 0.75),
+                              f_max     = max(Flow))
+    }
+ 
+    if (value == "Headloss" & !group){
+      pipes_tab <- pipes_tab %>%
+                   select(timeInSeconds, ID, Headloss) %>%
+                   spread(ID, Headloss) 
+    }
+    
+    if (value == "Headloss" & group){
+      pipes_tab <- pipes_tab %>%
+                   select(ID, Headloss) %>%
+                   group_by(ID) %>%
+                   summarise( hl_min    = min(Headloss),
+                              hl_q25    = quantile(Headloss, 0.25),
+                              hl_median = median(Headloss),
+                              hl_mean   = mean(Headloss),
+                              hl_q75    = quantile(Headloss, 0.75),
+                              hl_max    = max(Headloss))
+    }
+  
+    if (standardize) {
+      
+      l <- length(pipes_tab)
+      
+      maxs    <- apply(pipes_tab[2:l], 2, max) 
+      mins    <- apply(pipes_tab[2:l], 2, min)
+      
+      scaled  <- (scale(pipes_tab[2:l], 
+                        center = mins, 
+                        scale = maxs - mins)*100)
+      
+      pipes_tab <- as.tibble(cbind(pipes_tab[1],scaled))
+      
+    }
+    
+    pipes_tab
+}
+
+#...............................................................................
+
+eval_emitters <- function(inp_file, id_nodes){
+  
+  emitters    <- as.tibble(inp_file$Emitters) %>% filter(grepl(id_nodes,ID ))
+  emitters$ID <- as.character(emitters$ID)
+  
+  emitters
+  
+}
+
+#...............................................................................
+
+strc_pipes <- function(inp_file, id_pipes){
+  pipes <- as.tibble(net_input_01$Pipes) %>%
+           filter(grepl(id_pipes, ID)) %>%
+           select(ID, from_node = Node1, to_node = Node2)
+  pipes
+}

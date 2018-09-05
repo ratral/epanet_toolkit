@@ -18,25 +18,26 @@ library(stringr)
 library(purrr)
 
 # Initialize params
-params <- list(base_network  = "base_dma", 
-               new_network   = "base_dma_w_leaks",
-               functs_name   = "epanet_api_functions",
-               inlet_valves  = c("PRV_001"),
-               time_step     = "hour",
-               pattern_start = "2020-1-1 00:30",
-               pattern_end   = "2020-1-1 23:30",
-               jt_to_analyze = "^JT_0[A-K]", # RegExp
-               main_nodes    = c("JT_0A_001", "JT_0K_011"),
-               emitter_coeff = 10000,
-               leak_rate     = 0.05, # Percentage of the network with leaks
-               demad_factor  = list( names =c( "wd_spring_summer",
-                                               "hw_spring_summer",
-                                               "wd_summer_break",
-                                               "hw_summer_break",
-                                                "wd_fall_winter",
-                                               "hw_fall_winter"),
-                                     factors = c( 0.92, 1.00, 1.09, 
-                                                  0.81, 0.66, 0.95)))
+params <- list(base_network    = "base_dma", 
+               new_network     = "base_dma_w_leaks",
+               functs_name     = "epanet_api_functions",
+               inlet_valves    = c("PRV_001"),
+               time_step       = "hour",
+               pattern_start   = "2020-1-1 00:30",
+               pattern_end     = "2020-1-1 23:30",
+               jt_to_analyze   = "^JT_0[A-K]", # RegExp
+               pipe_to_analyze = "PS_", # RegExp
+               main_nodes      = c("JT_0A_001", "JT_0K_011"),
+               emitter_coeff   = 10000,
+               leak_rate       = 0.05, # Percentage of the network with leaks
+               demad_factor    = list( names =c( "wd_spring_summer",
+                                                 "hw_spring_summer",
+                                                 "wd_summer_break",
+                                                 "hw_summer_break",
+                                                 "wd_fall_winter",
+                                                 "hw_fall_winter"),
+                                       factors = c( 0.92, 1.00, 1.09, 
+                                                    0.81, 0.66, 0.95)))
 
 # initialize files paths and files
 work_folders <- list( dir_work   = getwd(),
@@ -87,8 +88,75 @@ net_input_01  <- read.inp(f_names$base_file_inp)
 ENepanet(f_names$base_file_inp, f_names$base_file_report)
 ENepanet(f_names$new_file_inp,  f_names$new_file_report)
 
+net_input_01  <- read.inp(f_names$base_file_inp)   
 base_report   <- read.rpt(f_names$base_file_report)
 leack_report  <- read.rpt(f_names$new_file_report)
+
+
+# EMITTERS
+
+emitters <- eval_emitters (net_input_01, params$jt_to_analyze)
+pipes    <- strc_pipes(net_input_01, params$pipe_to_analyze)
+
+# NODES
+
+nodes_base     <- eval_nodes ( base_report, params$jt_to_analyze,
+                               group = TRUE, standardize = FALSE)
+
+nodes_leack    <- eval_nodes ( leack_report, params$jt_to_analyze,
+                               group = TRUE, standardize = FALSE)
+
+delta_pressure <-  full_join( nodes_base,  nodes_leack,  by = "ID")
+delta_pressure <-  left_join( delta_pressure, emitters,  by = "ID")
+
+# PIPES AND FLOW
+
+pipes_f_base   <- eval_pipes ( base_report, params$pipe_to_analyze ,
+                               value = "Flow",
+                               group = TRUE, standardize = FALSE)
+
+pipes_f_leack  <- eval_pipes ( leack_report, params$pipe_to_analyze ,
+                               value = "Flow", 
+                               group = TRUE, standardize = FALSE)
+
+delta_flow    <- full_join( pipes,      pipes_f_base,   by = "ID")
+delta_flow    <- full_join( delta_flow, pipes_f_leack,  by = "ID")
+
+# PIPES AND HEADLOSS 
+
+pipes_hl_base  <- eval_pipes ( base_report,params$pipe_to_analyze ,
+                               value = "Headloss", 
+                               group = TRUE, standardize = FALSE)
+
+pipes_hl_leack <- eval_pipes ( leack_report,params$pipe_to_analyze ,
+                               value = "Headloss", 
+                               group = TRUE, standardize = FALSE)
+
+delta_headloss <- full_join( pipes, pipes_hl_base,  by = "ID")
+delta_headloss <- full_join( delta_headloss, pipes_hl_leack,  by = "ID")
+
+
+# glimpse(base_report$linkResults)
+
+#...............................................................................
+#0000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+# Standardize data columns
+
+
+# pipes <- left_join(pipes,link_results,  by = "ID")
+# pipes <- left_join(pipes,nodes_results, by = c("from_node" = "ID"))
+# pipes <- left_join(pipes,nodes_results, by = c("to_node" = "ID"))
+
+# write_excel_csv(pipes, "D:/r_projects/epanet_toolkit/data/pipes_test.csv")
+
+
+#...............................................................................
+# glimpse(net_report_01)
+# git push origin master
+#...............................................................................
+
 
 # tab_reports(report,results, type, id, value, summary = FALSE)
 
@@ -136,51 +204,3 @@ flow_leack     <- tab_reports( report  = leack_report,
                                summary = FALSE)
 #...............................................................................
 
-base_net     <- net_input_01
-report       <- base_report
-id_pipes     <- "PS_" 
-id_junctions <- "^JT_0[A-K]"
-
-pipes <- as.tibble(base_net$Pipes) %>%
-         filter(grepl(id_pipes, ID)) %>%
-         select(ID, from_node = Node1, to_node = Node2)
-
-
-emitters    <- as.tibble(base_net$Emitters)
-emitters$ID <- as.character(emitters$ID)
-
-nodes_results <- as.tibble(report$nodeResults)  %>%
-                 filter(nodeType == "Junction" & grepl(id_junctions,ID ))  %>%
-                 select(ID, Pressure) %>%
-                 group_by(ID) %>%
-                 summarise(p_min    = min(Pressure),
-                           p_q25    = quantile(Pressure, 0.25),
-                           p_median = median(Pressure),
-                           p_mean   = mean(Pressure),
-                           p_q75    = quantile(Pressure, 0.75),
-                           p_max    = max(Pressure))
-
-nodes_results <- left_join(nodes_results, emitters, by = "ID")
-
-link_results <- as.tibble(report$linkResults) %>%
-                filter(linkType == "Pipe" & grepl(id_pipes,ID )) %>%
-                select(ID, Flow, Headloss) %>%
-                group_by(ID) %>%
-                summarise(f_min     = min(Flow),
-                          f_q25     = quantile(Flow, 0.25),
-                          f_median  = median(Flow),
-                          f_mean    = mean(Flow),
-                          f_q75     = quantile(Flow, 0.75),
-                          hl_q25    = quantile(Headloss, 0.25),
-                          hl_min    = min(Headloss),
-                          f_max     = max(Flow),
-                          hl_median = median(Headloss),
-                          hl_mean   = mean(Headloss),
-                          hl_q75    = quantile(Headloss, 0.75),
-                          hl_max    = max(Headloss))
-
-pipes <- left_join(pipes,link_results, by = "ID")
-pipes <- left_join(pipes,nodes_results, by = c("from_node" = "ID"))
-pipes <- left_join(pipes,nodes_results, by = c("to_node" = "ID"))
-
-# glimpse(net_report_01)
