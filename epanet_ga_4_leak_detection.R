@@ -16,12 +16,13 @@ library(ggthemes)
 library(scales)
 library(stringr)
 library(purrr)
+library(XLConnect) #!!!!!
 
 # Initialize params
-params <- list(base_network    = "base_dma", 
+params <- list(base_network    = "base_dma_02", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
-               inlet_valves    = c("PRV_001"),
+               inlet_valves    = "^PRV_",
                time_step       = "hour",
                pattern_start   = "2020-1-1 00:30",
                pattern_end     = "2020-1-1 23:30",
@@ -88,52 +89,72 @@ net_input_01  <- read.inp(f_names$base_file_inp)
 ENepanet(f_names$base_file_inp, f_names$base_file_report)
 ENepanet(f_names$new_file_inp,  f_names$new_file_report)
 
-net_input_01  <- read.inp(f_names$base_file_inp)   
+net_input_01  <- read.inp(f_names$new_file_inp)   
 base_report   <- read.rpt(f_names$base_file_report)
 leack_report  <- read.rpt(f_names$new_file_report)
-
 
 # EMITTERS
 
 emitters <- eval_emitters (net_input_01, params$jt_to_analyze)
+
 pipes    <- strc_pipes(net_input_01, params$pipe_to_analyze)
+pipes <- left_join( pipes, emitters,  by = c("from_node" = "ID"))
+pipes <- left_join( pipes, emitters,  by = c("to_node" = "ID"))
 
-# NODES
-
-nodes_base     <- eval_nodes ( base_report, params$jt_to_analyze,
-                               group = TRUE, standardize = FALSE)
-
-nodes_leack    <- eval_nodes ( leack_report, params$jt_to_analyze,
-                               group = TRUE, standardize = FALSE)
-
-delta_pressure <-  full_join( nodes_base,  nodes_leack,  by = "ID")
-delta_pressure <-  left_join( delta_pressure, emitters,  by = "ID")
 
 # PIPES AND FLOW
 
+#...............................................................................
+#  INLET FLOW
+#...............................................................................
+
+inlet_flow_base   <- inlet_flows ( base_report, "^PRV_", group = FALSE)
+
+#...............................................................................
+
 pipes_f_base   <- eval_pipes ( base_report, params$pipe_to_analyze ,
-                               value = "Flow",
-                               group = TRUE, standardize = FALSE)
+                               value = "Flow", 
+                               group = TRUE, standardize = TRUE)
 
 pipes_f_leack  <- eval_pipes ( leack_report, params$pipe_to_analyze ,
                                value = "Flow", 
-                               group = TRUE, standardize = FALSE)
+                               group = TRUE, standardize = TRUE)
 
-delta_flow    <- full_join( pipes,      pipes_f_base,   by = "ID")
+
+delta_flow    <- full_join( pipes, pipes_f_base, by = "ID")
 delta_flow    <- full_join( delta_flow, pipes_f_leack,  by = "ID")
 
-# PIPES AND HEADLOSS 
+rm(pipes_f_base,pipes_f_leack)
 
-pipes_hl_base  <- eval_pipes ( base_report,params$pipe_to_analyze ,
-                               value = "Headloss", 
-                               group = TRUE, standardize = FALSE)
+delta_flow <- delta_flow %>%
+              select(ID, from_node, to_node, 
+                     from_flowcoef = FlowCoef.x, 
+                     to_flowcoef   = FlowCoef.y,
+                     flow_base     = f_median.x, 
+                     flow_leak     = f_median.y) %>%
+              mutate(D_flow = abs( flow_base - flow_leak )) %>%
+              arrange(desc(D_flow))
 
-pipes_hl_leack <- eval_pipes ( leack_report,params$pipe_to_analyze ,
-                               value = "Headloss", 
-                               group = TRUE, standardize = FALSE)
 
-delta_headloss <- full_join( pipes, pipes_hl_base,  by = "ID")
-delta_headloss <- full_join( delta_headloss, pipes_hl_leack,  by = "ID")
+#...............................................................................
+# Create a new xlsx file
+#...............................................................................
+
+file_xls <- file.path(work_folders$dir_data, paste0("test1.xlsx"))
+
+if(file.exists(file_xls)){
+  unlink(file_xls, recursive = FALSE, force = FALSE)
+}
+
+# Loading/Creating and Excel workbook
+book <- loadWorkbook(file_xls, create = TRUE)
+
+# Creating Sheets "delta_flow" and Writing data to WorkSheets
+createSheet(book, name = "delta_flow")
+writeWorksheet(book, delta_flow,     sheet = "delta_flow")
+
+#Saving Workbooks
+saveWorkbook(book)
 
 
 # glimpse(base_report$linkResults)

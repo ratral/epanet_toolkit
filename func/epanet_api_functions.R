@@ -5,15 +5,14 @@
 
 Stats_calc <- function(x){
   min    <- min(x, na.rm=TRUE)
-  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
+#  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
   q50    <- quantile(x, probs=0.50, na.rm=TRUE )
-  mean   <- round(mean(x, na.rm=TRUE),2)
-  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
+#  mean   <- round(mean(x, na.rm=TRUE),2)
+#  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
   max    <- max(x, na.rm=TRUE)
-  sd     <- round(sd(x, na.rm=TRUE),2)
-  dvalue <- max-min
-  return(c(Min=min, Qu=q25, Qu=q50, Mean=mean, 
-           Qu=q75, Max=max, SD=sd, D.Value=dvalue))
+#  sd     <- round(sd(x, na.rm=TRUE),2)
+#  dvalue <- max-min
+  return(c(Min=min, Qu=q50, Max=max))
 }
 
 #...............................................................................
@@ -247,6 +246,8 @@ eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardi
   
     if (standardize) {
       
+      
+      
       l <- length(pipes_tab)
       
       maxs    <- apply(pipes_tab[2:l], 2, max) 
@@ -267,7 +268,9 @@ eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardi
 
 eval_emitters <- function(inp_file, id_nodes){
   
-  emitters    <- as.tibble(inp_file$Emitters) %>% filter(grepl(id_nodes,ID ))
+  emitters    <- as.tibble(inp_file$Emitters) %>% 
+                 filter(grepl(id_nodes,ID ))
+  
   emitters$ID <- as.character(emitters$ID)
   
   emitters
@@ -281,4 +284,36 @@ strc_pipes <- function(inp_file, id_pipes){
            filter(grepl(id_pipes, ID)) %>%
            select(ID, from_node = Node1, to_node = Node2)
   pipes
+}
+
+#...............................................................................
+# EVALUATION INLET FLOWS
+#...............................................................................
+inlet_flows <- function(report,id_pipes, group = FALSE){
+  
+  pipes_tab <- as.tibble(report$linkResults) %>%
+               filter( grepl(id_pipes, ID )) 
+  
+  if(!group){
+    pipes_tab <- pipes_tab  %>%
+                 select(timeInSeconds, ID, Flow ) %>%
+                 spread(ID, Flow) 
+    
+    pipes_tab <- cbind(pipes_tab, 
+                       t(apply(pipes_tab[,2:dim(pipes_tab)[2]],1, Stats_calc)))
+  }   
+  
+  if(group) {
+    pipes_tab <- pipes_tab %>%
+                 select(ID, Flow) %>%
+                 group_by(ID) %>%
+                 summarise( f_min  = min(Flow),
+                            f_q25     = quantile(Flow, 0.25),
+                            f_median  = median(Flow),
+                            f_mean    = mean(Flow),
+                            f_q75     = quantile(Flow, 0.75),
+                            f_max     = max(Flow))
+    
+  }
+  pipes_tab
 }
