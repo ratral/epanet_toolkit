@@ -5,13 +5,13 @@
 
 Stats_calc <- function(x){
   min    <- min(x, na.rm=TRUE)
-#  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
-  q50    <- quantile(x, probs=0.50, na.rm=TRUE )
-#  mean   <- round(mean(x, na.rm=TRUE),2)
-#  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
   max    <- max(x, na.rm=TRUE)
-#  sd     <- round(sd(x, na.rm=TRUE),2)
-#  dvalue <- max-min
+  #  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
+  q50    <- quantile(x, probs=0.50, na.rm=TRUE )
+  #  mean   <- round(mean(x, na.rm=TRUE),2)
+  #  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
+  #  sd     <- round(sd(x, na.rm=TRUE),2)
+  #  dvalue <- max-min
   return(c(Min=min, Qu=q50, Max=max))
 }
 
@@ -203,7 +203,8 @@ eval_nodes <- function(report,id_nodes, group = FALSE, standardize = FALSE){
 }
 #...............................................................................
 
-eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardize = FALSE){
+eval_pipes <- function(report, id_pipes = "", value = "Flow", 
+                       group = FALSE, standardize = FALSE){
     
     pipes_tab <- as.tibble(report$linkResults) %>%
                  filter(linkType == "Pipe" & grepl( id_pipes, ID )) 
@@ -218,12 +219,7 @@ eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardi
       pipes_tab <- pipes_tab %>%
                    select(ID, Flow) %>%
                    group_by(ID) %>%
-                   summarise( f_min  = min(Flow),
-                              f_q25     = quantile(Flow, 0.25),
-                              f_median  = median(Flow),
-                              f_mean    = mean(Flow),
-                              f_q75     = quantile(Flow, 0.75),
-                              f_max     = max(Flow))
+                   summarise(f_median  = median(Flow))
     }
  
     if (value == "Headloss" & !group){
@@ -236,18 +232,11 @@ eval_pipes <- function(report,id_pipes, value = "Flow", group = FALSE, standardi
       pipes_tab <- pipes_tab %>%
                    select(ID, Headloss) %>%
                    group_by(ID) %>%
-                   summarise( hl_min    = min(Headloss),
-                              hl_q25    = quantile(Headloss, 0.25),
-                              hl_median = median(Headloss),
-                              hl_mean   = mean(Headloss),
-                              hl_q75    = quantile(Headloss, 0.75),
-                              hl_max    = max(Headloss))
+                   summarise( hl_median = median(Headloss))
     }
   
     if (standardize) {
-      
-      
-      
+
       l <- length(pipes_tab)
       
       maxs    <- apply(pipes_tab[2:l], 2, max) 
@@ -279,8 +268,8 @@ eval_emitters <- function(inp_file, id_nodes){
 
 #...............................................................................
 
-strc_pipes <- function(inp_file, id_pipes){
-  pipes <- as.tibble(net_input_01$Pipes) %>%
+strc_pipes <- function(inp_file, id_pipes = "" ) {
+  pipes <- as.tibble(inp_file$Pipes) %>%
            filter(grepl(id_pipes, ID)) %>%
            select(ID, from_node = Node1, to_node = Node2)
   pipes

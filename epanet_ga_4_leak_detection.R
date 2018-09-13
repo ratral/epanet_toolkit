@@ -19,7 +19,7 @@ library(purrr)
 library(XLConnect) #!!!!!
 
 # Initialize params
-params <- list(base_network    = "base_dma_02", 
+params <- list(base_network    = "base_dma_01", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
                inlet_valves    = "^PRV_",
@@ -108,7 +108,7 @@ pipes <- left_join( pipes, emitters,  by = c("to_node" = "ID"))
 #  INLET FLOW
 #...............................................................................
 
-inlet_flow_base   <- inlet_flows ( base_report, "^PRV_", group = FALSE)
+inlet_flow_base   <- inlet_flows ( base_report, "^PRV_", group = TRUE)
 
 #...............................................................................
 
@@ -135,6 +135,18 @@ delta_flow <- delta_flow %>%
               mutate(D_flow = abs( flow_base - flow_leak )) %>%
               arrange(desc(D_flow))
 
+#........................................
+
+emitters <- emitters %>% filter(FlowCoef >0)
+
+pipes_with_leacks <- delta_flow %>%
+                     select( ID,from_node,to_node, D_flow) %>%
+                     head(10)
+
+                     
+
+
+# delta_flow
 
 #...............................................................................
 # Create a new xlsx file
