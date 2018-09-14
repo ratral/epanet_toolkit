@@ -80,6 +80,7 @@ net_input_01  <- read.inp(f_names$base_file_inp)
 
 #  }
 
+rm(net_input_01)
 #...............................................................................
 # 3. Running a Full Simulation                                             ####
 #    The function ENepanet() runs a full simulation and 
@@ -93,30 +94,31 @@ net_input_01  <- read.inp(f_names$new_file_inp)
 base_report   <- read.rpt(f_names$base_file_report)
 leack_report  <- read.rpt(f_names$new_file_report)
 
+
+# NODES
+nodes <- eval_nodes (base_report,
+                     node_type = "",
+                     id_nodes  = "", 
+                     group = TRUE, standardize = TRUE) %>%
+         select(ID,p_median)
+
 # EMITTERS
 
-emitters <- eval_emitters (net_input_01, params$jt_to_analyze)
+emitters <- net_input_01$Emitters
 
-pipes    <- strc_pipes(net_input_01, params$pipe_to_analyze)
+pipes    <- strc_pipes(net_input_01, "", TRUE)
+
 pipes <- left_join( pipes, emitters,  by = c("from_node" = "ID"))
 pipes <- left_join( pipes, emitters,  by = c("to_node" = "ID"))
 
 
 # PIPES AND FLOW
 
-#...............................................................................
-#  INLET FLOW
-#...............................................................................
-
-inlet_flow_base   <- inlet_flows ( base_report, "^PRV_", group = TRUE)
-
-#...............................................................................
-
-pipes_f_base   <- eval_pipes ( base_report, params$pipe_to_analyze ,
+pipes_f_base   <- eval_pipes ( base_report,"" ,
                                value = "Flow", 
                                group = TRUE, standardize = TRUE)
 
-pipes_f_leack  <- eval_pipes ( leack_report, params$pipe_to_analyze ,
+pipes_f_leack  <- eval_pipes ( leack_report, "",
                                value = "Flow", 
                                group = TRUE, standardize = TRUE)
 
@@ -136,14 +138,6 @@ delta_flow <- delta_flow %>%
               arrange(desc(D_flow))
 
 #........................................
-
-emitters <- emitters %>% filter(FlowCoef >0)
-
-pipes_with_leacks <- delta_flow %>%
-                     select( ID,from_node,to_node, D_flow) %>%
-                     head(10)
-
-                     
 
 
 # delta_flow

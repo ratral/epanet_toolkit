@@ -142,7 +142,9 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
   
   emitters[index,]$Betha <- emitters[index,]$Betha + 1/rweibull(1,5,10000)
   
-  emitters <- emitters %>% mutate( FlowCoef = round(Betha*Length,6))
+  emitters <- emitters %>% 
+              mutate( FlowCoef = round(Betha*Length,6)) %>%
+              filter(FlowCoef > 0)
   
   net_input_01$Title <- paste0("BASIC DMA MODEL v00.03 WITH LEAKS IN NODES:\n",
                                str_c(emitters[index,]$ID, collapse = ", "), 
@@ -162,10 +164,13 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
 # Evaluate, compare, benchmark Networks 
 #...............................................................................
 
-eval_nodes <- function(report,id_nodes, group = FALSE, standardize = FALSE){
+eval_nodes <- function(report,
+                       node_type = "",
+                       id_nodes  = "", 
+                       group = FALSE, standardize = FALSE){
 
   nodes_tab <- as.tibble(report$nodeResults)  %>%
-               filter(nodeType == "Junction" & grepl(id_nodes,ID )) 
+               filter(grepl(node_type,nodeType) & grepl(id_nodes,ID)) 
   
   if(!group){
     nodes_tab <- nodes_tab  %>%
@@ -203,11 +208,15 @@ eval_nodes <- function(report,id_nodes, group = FALSE, standardize = FALSE){
 }
 #...............................................................................
 
-eval_pipes <- function(report, id_pipes = "", value = "Flow", 
+eval_pipes <- function(report, 
+                       link_type ="",
+                       id_pipes = "", 
+                       inlet_links ="",
+                       value = "Flow", 
                        group = FALSE, standardize = FALSE){
     
     pipes_tab <- as.tibble(report$linkResults) %>%
-                 filter(linkType == "Pipe" & grepl( id_pipes, ID )) 
+                 filter(grepl(link_type, linkType) & grepl(id_pipes, ID)) 
     
     if(value == "Flow" & !group){
       pipes_tab <- pipes_tab  %>%
@@ -222,24 +231,12 @@ eval_pipes <- function(report, id_pipes = "", value = "Flow",
                    summarise(f_median  = median(Flow))
     }
  
-    if (value == "Headloss" & !group){
-      pipes_tab <- pipes_tab %>%
-                   select(timeInSeconds, ID, Headloss) %>%
-                   spread(ID, Headloss) 
-    }
-    
-    if (value == "Headloss" & group){
-      pipes_tab <- pipes_tab %>%
-                   select(ID, Headloss) %>%
-                   group_by(ID) %>%
-                   summarise( hl_median = median(Headloss))
-    }
-  
     if (standardize) {
 
-      l <- length(pipes_tab)
+      maxs    <- pipes_tab %>% 
+                 filter(grepl(inlet_links, ID)) %>%
+                 select(f_median)
       
-      maxs    <- apply(pipes_tab[2:l], 2, max) 
       mins    <- apply(pipes_tab[2:l], 2, min)
       
       scaled  <- (scale(pipes_tab[2:l], 
@@ -255,23 +252,27 @@ eval_pipes <- function(report, id_pipes = "", value = "Flow",
 
 #...............................................................................
 
-eval_emitters <- function(inp_file, id_nodes){
+strc_pipes <- function(inp_file, id_pipes = "", other_elements = FALSE ) {
   
-  emitters    <- as.tibble(inp_file$Emitters) %>% 
-                 filter(grepl(id_nodes,ID ))
-  
-  emitters$ID <- as.character(emitters$ID)
-  
-  emitters
-  
-}
-
-#...............................................................................
-
-strc_pipes <- function(inp_file, id_pipes = "" ) {
   pipes <- as.tibble(inp_file$Pipes) %>%
            filter(grepl(id_pipes, ID)) %>%
            select(ID, from_node = Node1, to_node = Node2)
+
+  if(other_elements){
+    
+    if(!is.null(inp_file$Valves)){
+      valves <- as.tibble(inp_file$Valves) %>% 
+                select(ID, from_node = Node1, to_node = Node2)
+      pipes  <-  rbind.data.frame(pipes,valves)
+    }
+    
+    if(!is.null(inp_file$Pumps)){
+      pumps  <- as.tibble(inp_file$Pumps) %>% 
+                select(ID, from_node = Node1, to_node = Node2)
+      pipes  <-  rbind.data.frame(pipes,pumps)
+    }
+  }
+  
   pipes
 }
 

@@ -57,7 +57,17 @@ ENepanet(f_names$base_file_inp, f_names$base_file_report)
 
 base_report   <- read.rpt(f_names$base_file_report)
 
-pipes         <- strc_pipes(base_input, "")
+
+# Select nodes
+nodes <- eval_nodes (base_report,
+                     node_type = "",
+                     id_nodes  = "", 
+                     group = TRUE, standardize = TRUE) %>%
+         select(ID,p_median)
+
+
+# Select pipes 
+pipes         <- strc_pipes(base_input, "", TRUE)
 
 pipes_f_base  <- eval_pipes ( base_report,
                               value = "Flow", 
@@ -66,12 +76,41 @@ pipes_f_base  <- eval_pipes ( base_report,
 
 pipes <- full_join( pipes, pipes_f_base, by = "ID")
 
+# change from_node and to_node in function of the Flow direction 
 df <- pipes
 
-df$from_node[pipes$f_median < 0 ] <-  pipes$to_node[pipes$f_median < 0 ] 
-df$to_node[pipes$f_median < 0 ]   <-  pipes$from_node[pipes$f_median < 0 ] 
-df$f_median[pipes$f_median < 0 ]  <-  abs(pipes$f_median[pipes$f_median < 0 ])
+df$from_node[pipes$f_median < 0 ]  <-  pipes$to_node[pipes$f_median < 0] 
+df$to_node  [pipes$f_median < 0 ]  <-  pipes$from_node[pipes$f_median < 0] 
+df$f_median [pipes$f_median < 0 ]  <-  abs(pipes$f_median[pipes$f_median < 0])
 
+# standardize df
+l <- length(df)
+maxs    <- max(df$f_median) 
+mins    <- min(df$f_median)
+
+scaled  <- scale( df$f_median, 
+                  center = mins, 
+                  scale = maxs - mins)*100
+
+df$f_median <- scaled
+
+# generate data for the visNetwork
+
+nodes <- data.frame( id     = nodes$ID, 
+                     value  = nodes$p_median, 
+                     shadow = TRUE)
+
+edges <- data.frame( from   = df$from_node, 
+                     to     = df$to_node,
+                     value  = df$f_median,
+                     arrows = "to",
+                     shadow = TRUE)
+
+# visNetwork
+visNetwork(nodes, edges ,
+           main = "A really simple example", 
+           width = "100%") %>%
+  visLayout(randomSeed = 12)# to have always the same network
 
 
 
