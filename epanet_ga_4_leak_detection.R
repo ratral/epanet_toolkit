@@ -7,6 +7,7 @@ rm(list=ls())
 
 # Installs libraries 
 library(tidyverse)
+library(dplyr)
 library(zoo)
 library(lubridate)
 library(epanetReader)
@@ -16,13 +17,12 @@ library(ggthemes)
 library(scales)
 library(stringr)
 library(purrr)
-library(XLConnect) #!!!!!
 
 # Initialize params
-params <- list(base_network    = "base_dma_01", 
+params <- list(base_network    = "base_dma_02", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
-               inlet_valves    = "^PRV_",
+               inlet_valves    = "PRV_001",
                time_step       = "hour",
                pattern_start   = "2020-1-1 00:30",
                pattern_end     = "2020-1-1 23:30",
@@ -80,7 +80,6 @@ net_input_01  <- read.inp(f_names$base_file_inp)
 
 #  }
 
-rm(net_input_01)
 #...............................................................................
 # 3. Running a Full Simulation                                             ####
 #    The function ENepanet() runs a full simulation and 
@@ -90,77 +89,48 @@ rm(net_input_01)
 ENepanet(f_names$base_file_inp, f_names$base_file_report)
 ENepanet(f_names$new_file_inp,  f_names$new_file_report)
 
-net_input_01  <- read.inp(f_names$new_file_inp)   
+net_input_01  <- read.inp(f_names$new_file_inp)
+
 base_report   <- read.rpt(f_names$base_file_report)
 leack_report  <- read.rpt(f_names$new_file_report)
 
-
-# NODES
-nodes <- eval_nodes (base_report,
-                     node_type = "",
-                     id_nodes  = "", 
-                     group = TRUE, standardize = TRUE) %>%
-         select(ID,p_median)
-
-# EMITTERS
+# New Leaks (EMITTERS)
 
 emitters <- net_input_01$Emitters
 
-pipes    <- strc_pipes(net_input_01, "", TRUE)
-
-pipes <- left_join( pipes, emitters,  by = c("from_node" = "ID"))
-pipes <- left_join( pipes, emitters,  by = c("to_node" = "ID"))
-
-
 # PIPES AND FLOW
 
-pipes_f_base   <- eval_pipes ( base_report,"" ,
+pipes   <- strc_pipes(net_input_01, "", TRUE)
+
+pipes_f_base   <- eval_pipes ( base_report,
+                               link_type ="",
+                               id_pipes = "", 
+                               inlet_links ="",
                                value = "Flow", 
-                               group = TRUE, standardize = TRUE)
+                               group = TRUE, 
+                               standardize = FALSE)
 
-pipes_f_leack  <- eval_pipes ( leack_report, "",
+pipes_f_leack  <- eval_pipes ( leack_report, 
+                               link_type ="",
+                               id_pipes = "", 
+                               inlet_links ="",
                                value = "Flow", 
-                               group = TRUE, standardize = TRUE)
+                               group = TRUE, 
+                               standardize = FALSE)
 
+pipes    <- full_join( pipes, pipes_f_base,   by = "ID")
+pipes    <- full_join( pipes, pipes_f_leack,  by = "ID")
 
-delta_flow    <- full_join( pipes, pipes_f_base, by = "ID")
-delta_flow    <- full_join( delta_flow, pipes_f_leack,  by = "ID")
+rm(pipes_f_base, pipes_f_leack)
 
-rm(pipes_f_base,pipes_f_leack)
+# change from_node and to_node in function of the Flow direction 
+df <- pipes
 
-delta_flow <- delta_flow %>%
-              select(ID, from_node, to_node, 
-                     from_flowcoef = FlowCoef.x, 
-                     to_flowcoef   = FlowCoef.y,
-                     flow_base     = f_median.x, 
-                     flow_leak     = f_median.y) %>%
-              mutate(D_flow = abs( flow_base - flow_leak )) %>%
-              arrange(desc(D_flow))
+df$from_node[pipes$f_median.y < 0 ]  <-  pipes$to_node  [pipes$f_median.y < 0] 
+df$to_node  [pipes$f_median.y < 0 ]  <-  pipes$from_node[pipes$f_median.y < 0] 
 
-#........................................
+df$d_flow <- abs(df$f_median.y - df$f_median.x)
 
-
-# delta_flow
-
-#...............................................................................
-# Create a new xlsx file
-#...............................................................................
-
-file_xls <- file.path(work_folders$dir_data, paste0("test1.xlsx"))
-
-if(file.exists(file_xls)){
-  unlink(file_xls, recursive = FALSE, force = FALSE)
-}
-
-# Loading/Creating and Excel workbook
-book <- loadWorkbook(file_xls, create = TRUE)
-
-# Creating Sheets "delta_flow" and Writing data to WorkSheets
-createSheet(book, name = "delta_flow")
-writeWorksheet(book, delta_flow,     sheet = "delta_flow")
-
-#Saving Workbooks
-saveWorkbook(book)
 
 
 # glimpse(base_report$linkResults)

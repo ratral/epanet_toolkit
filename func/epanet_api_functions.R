@@ -182,12 +182,7 @@ eval_nodes <- function(report,
     nodes_tab <- nodes_tab %>%
                  select(ID, Pressure) %>% 
                  group_by(ID) %>%
-                 summarise(p_min    = min(Pressure),
-                           p_q25    = quantile(Pressure, 0.25),
-                           p_median = median(Pressure),
-                           p_mean   = mean(Pressure),
-                           p_q75    = quantile(Pressure, 0.75),
-                           p_max    = max(Pressure))
+                 summarise(p_median = median(Pressure))
  }
   
   if (standardize) {
