@@ -9,7 +9,6 @@ rm(list=ls())
 library(tidyverse)
 library(epanetReader)
 library(epanet2toolkit)
-
 library(visNetwork)
 library(igraph)
 

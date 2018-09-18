@@ -15,14 +15,13 @@ library(epanet2toolkit)
 library(ggfortify)
 library(ggthemes)
 library(scales)
-library(stringr)
 library(purrr)
 
 # Initialize params
 params <- list(base_network    = "base_dma_02", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
-               inlet_valves    = "PRV_001",
+               inlet_valves    = "PRV_",
                time_step       = "hour",
                pattern_start   = "2020-1-1 00:30",
                pattern_end     = "2020-1-1 23:30",
@@ -30,7 +29,7 @@ params <- list(base_network    = "base_dma_02",
                pipe_to_analyze = "PS_", # RegExp
                main_nodes      = c("JT_0A_001", "JT_0K_011"),
                emitter_coeff   = 10000,
-               leak_rate       = 0.05, # Percentage of the network with leaks
+               leak_rate       = 0.01, # Percentage of the network with leaks
                demad_factor    = list( names =c( "wd_spring_summer",
                                                  "hw_spring_summer",
                                                  "wd_summer_break",
@@ -123,81 +122,53 @@ pipes    <- full_join( pipes, pipes_f_leack,  by = "ID")
 
 rm(pipes_f_base, pipes_f_leack)
 
+# calculate input flow
+input_flow <- pipes %>%
+              filter(grepl(params$inlet_valves, ID)) %>%
+              summarise( total.x = sum(f_median.x), total.y = sum(f_median.y))
+
+# select only the net pipes 
+pipes    <- pipes %>% 
+            filter(grepl(params$pipe_to_analyze, ID))
+
+
 # change from_node and to_node in function of the Flow direction 
 df <- pipes
 
 df$from_node[pipes$f_median.y < 0 ]  <-  pipes$to_node  [pipes$f_median.y < 0] 
 df$to_node  [pipes$f_median.y < 0 ]  <-  pipes$from_node[pipes$f_median.y < 0] 
 
-df$d_flow <- abs(df$f_median.y - df$f_median.x)
+df <- df %>% mutate(d_flow = abs(f_median.y - f_median.x)) 
 
+maxs    <- apply(df[4:6], 2, max) 
+mins    <- apply(df[4:6], 2, min)
 
+# scaled  <- (scale(df[4:5], center = mins, scale = maxs - mins)*100)
 
-# glimpse(base_report$linkResults)
+scaled    <- as.tibble(scale(df[4:6], center = mins, scale = maxs - mins)*100)
 
-#...............................................................................
-#0000000000000000000000000000000000000000000000000000000000000000000000000000000
+names(scaled) <- c("scaled_flow.x","scaled_flow.y", "scaled_d_flow")
 
+df <- as.tibble(cbind(df[,1:5],scaled)) %>%
+      mutate(relative_flow_change = abs(scaled_flow.y-scaled_flow.x))
 
-# Standardize data columns
+# maxs <- max(df$scaled_d_flow)
+# mins <- min(df$scaled_d_flow)
 
+# df <- df %>% 
+#       mutate(scaled_d_flow = scale(f_median.y, 
+#                                    center = mins[2], 
+#                                   scale = maxs[2] - mins[2])*100)
 
-# pipes <- left_join(pipes,link_results,  by = "ID")
-# pipes <- left_join(pipes,nodes_results, by = c("from_node" = "ID"))
-# pipes <- left_join(pipes,nodes_results, by = c("to_node" = "ID"))
+df <- left_join(df, emitters, by = c("from_node" = "ID"))
+df <- left_join(df, emitters, by = c("to_node"   = "ID"))
 
-# write_excel_csv(pipes, "D:/r_projects/epanet_toolkit/data/pipes_test.csv")
+df <- as.tibble(df) %>% arrange(desc(relative_flow_change))
 
+emitters
 
 #...............................................................................
 # glimpse(net_report_01)
 # git push origin master
-#...............................................................................
-
-
-# tab_reports(report,results, type, id, value, summary = FALSE)
-
-
-pres_base       <- tab_reports( report  = base_report,
-                                results = "nodes", 
-                                type    = "Junction", 
-                                id      = params$jt_to_analyze,
-                                value   = "Pressure", 
-                                summary = FALSE)
-
-headloss_base   <- tab_reports( report  = base_report, 
-                                results = "links",
-                                type    = "Pipe",
-                                id      = "PS_",
-                                value   = "Headloss",
-                                summary = FALSE)
-
-flow_base      <- tab_reports( report  = base_report, 
-                               results = "links",
-                               type    = "Pipe",
-                               id      = "PS_",
-                               value   = "Flow",
-                               summary = FALSE)
-
-pres_leack     <- tab_reports( report  = leack_report,
-                               results = "nodes", 
-                               type    = "Junction", 
-                               id      = params$jt_to_analyze,
-                               value   = "Pressure", 
-                               summary = FALSE)
-
-headloss_leack <- tab_reports( report  = leack_report, 
-                               results = "links",
-                               type    = "Pipe",
-                               id      = "PS_",
-                               value   = "Headloss",
-                               summary = FALSE)
-
-flow_leack     <- tab_reports( report  = leack_report, 
-                               results = "links",
-                               type    = "Pipe",
-                               id      = "PS_",
-                               value   = "Flow",
-                               summary = FALSE)
 #...............................................................................
 

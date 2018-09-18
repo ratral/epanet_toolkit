@@ -111,15 +111,22 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
   
   # All nodes are selected and the values of the existing emitters are added.
   
-  emitters  <- as.tibble(inp_file$Junctions) %>%
-               full_join(as.tibble(inp_file$Emitters), by= "ID") %>%
-               select(ID,Demand,FlowCoef) %>%
-               replace_na(list(FlowCoef = 0))
+  if(is.null(inp_file$Emitters)){
+    emitters  <- as.tibble(inp_file$Junctions) %>%
+                 mutate(FlowCoef = 0) %>%
+                 select(ID,Demand,FlowCoef)
+  } else {
+    emitters  <- as.tibble(inp_file$Junctions) %>%
+                 left_join(as.tibble(inp_file$Emitters), by= "ID") %>%
+                 select(ID,Demand,FlowCoef) %>%
+                 replace_na(list(FlowCoef = 0))
+  }
+  
   
   # For each pipe, the total leakage is assigned to its end nodes,
   # half to each node.
   
-  pipes <- as.tibble(inp_file$Pipes) %>% select(Node1, Node2,Length)
+  pipes <- as.tibble(inp_file$Pipes) %>% select(Node1, Node2, Length)
   
   node1 <- pipes %>% group_by(Node1) %>% summarize(sum(Length)) %>% 
            rename(ID = Node1, sum1 = `sum(Length)`)
@@ -146,11 +153,7 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
               mutate( FlowCoef = round(Betha*Length,6)) %>%
               filter(FlowCoef > 0)
   
-  net_input_01$Title <- paste0("BASIC DMA MODEL v00.03 WITH LEAKS IN NODES:\n",
-                               str_c(emitters[index,]$ID, collapse = ", "), 
-                               "\n", "Damages in approximately ",
-                               sum(emitters[index,]$Length),
-                               " meters of the network")
+  net_input_01$Title <- "BASIC DMA MODEL v00.03 WITH LEAKS"
   
   net_input_01$Emitters <- data.frame(ID       = emitters$ID,
                                       FlowCoef = emitters$FlowCoef)
