@@ -148,6 +148,7 @@ scaled    <- as.data.frame(scale(df[4:6], center = mins, scale = maxs - mins)*10
 
 names(scaled) <- c("scaled_flow.x","scaled_flow.y", "scaled_d_flow")
 
+
 df <- as.tibble(cbind(df[,1:5],scaled)) %>%
       mutate(relative_flow_change = abs(scaled_flow.y-scaled_flow.x))
 
@@ -157,9 +158,6 @@ df <- left_join(df, emitters, by = c("to_node"   = "ID"))
 df <- as.tibble(df) %>% arrange(desc(relative_flow_change))
 
 pipes <- as.tibble(df)
-
-# <-
-#.............New function ??
 
 rm(scaled,df)
 
@@ -195,4 +193,3 @@ visNetwork(nodes, edges ,
 # glimpse(net_report_01)
 # git push origin master
 #...............................................................................
-

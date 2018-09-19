@@ -281,4 +281,5 @@ inlet_flows <- function(report,id_pipes, group = FALSE){
   }
   pipes_tab
 }
+
 #...............................................................................
