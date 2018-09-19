@@ -82,30 +82,6 @@ tab_reports <- function(report,results, type, id, value, summary = FALSE){
 
 #...............................................................................
 
-# tab_reports <- function(report,results, type, id, value, summary = FALSE){
-
-
-
-
-
-#...............................................................................
-# EMITTERS
-#
-# Generation of the Emitters coefficients
-# Generates a new network from a base network with randomly generated Leaks                             
-#
-# The pressure-leakage relationship for a pipe k can be stated as follows:
-# q = (Betha * Length) * (Pressure)^ (Alpha) 
-# 
-# FlowCoef = (Betha * Length)
-#
-# q = FlowCoef * (Pressure)^ (Alpha) 
-# 
-# The Alpha parameter can take values between 0.5 and 2.5
-# The Betha parameter is related to the pipe material material deterioration
-#           and its value but must be set by calibration
-#           (initial values can be set around 10e-7)
-#...............................................................................
 
 gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
   
@@ -305,3 +281,4 @@ inlet_flows <- function(report,id_pipes, group = FALSE){
   }
   pipes_tab
 }
+#...............................................................................
