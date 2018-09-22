@@ -4,15 +4,16 @@
 #...............................................................................
 
 Stats_calc <- function(x){
-  min    <- min(x, na.rm=TRUE)
-  max    <- max(x, na.rm=TRUE)
+  sum_vaulue   <- sum(x, na.rm=TRUE)
+  min_value    <- min(x, na.rm=TRUE)
+  max_value    <- max(x, na.rm=TRUE)
   #  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
-  q50    <- quantile(x, probs=0.50, na.rm=TRUE )
+  #  q50    <- quantile(x, probs=0.50, na.rm=TRUE )
   #  mean   <- round(mean(x, na.rm=TRUE),2)
   #  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
   #  sd     <- round(sd(x, na.rm=TRUE),2)
   #  dvalue <- max-min
-  return(c(Min=min, Qu=q50, Max=max))
+  return(c(Sum = sum_vaulue, Min = min_value, Max = max_value))
 }
 
 #...............................................................................
@@ -123,7 +124,7 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
   
   index   <- sample(1:nrow(emitters),round(params$leak_rate*nrow(emitters)))
   
-  emitters[index,]$Betha <- emitters[index,]$Betha + 1/rweibull(1,5,10000)
+  emitters[index,]$Betha <- emitters[index,]$Betha + 1/rweibull(1,5,500)
   
   emitters <- emitters %>% 
               mutate( FlowCoef = round(Betha*Length,6)) %>%
@@ -271,7 +272,7 @@ inlet_flows <- function(report,id_pipes, group = FALSE){
     pipes_tab <- pipes_tab %>%
                  select(ID, Flow) %>%
                  group_by(ID) %>%
-                 summarise( f_min  = min(Flow),
+                 summarise( f_min     = min(Flow),
                             f_q25     = quantile(Flow, 0.25),
                             f_median  = median(Flow),
                             f_mean    = mean(Flow),
