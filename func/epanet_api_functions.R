@@ -5,15 +5,15 @@
 
 Stats_calc <- function(x){
   sum_vaulue   <- sum(x, na.rm=TRUE)
-  min_value    <- min(x, na.rm=TRUE)
-  max_value    <- max(x, na.rm=TRUE)
+  # min_value    <- min(x, na.rm=TRUE)
+  # max_value    <- max(x, na.rm=TRUE)
   #  q25    <- quantile(x, probs=0.25, na.rm=TRUE )
   #  q50    <- quantile(x, probs=0.50, na.rm=TRUE )
   #  mean   <- round(mean(x, na.rm=TRUE),2)
   #  q75    <- quantile(x, probs=0.75, na.rm=TRUE )
   #  sd     <- round(sd(x, na.rm=TRUE),2)
   #  dvalue <- max-min
-  return(c(Sum = sum_vaulue, Min = min_value, Max = max_value))
+  return(c(total = sum_vaulue))
 }
 
 #...............................................................................
@@ -147,22 +147,25 @@ gen_network_w_leaks <- function(inp_file, leak_rate, id_junctions) {
 eval_nodes <- function(report,
                        node_type = "",
                        id_nodes  = "", 
-                       group = FALSE, standardize = FALSE){
+                       group = FALSE,          
+                       standardize = FALSE){
 
   nodes_tab <- as.tibble(report$nodeResults)  %>%
                filter(grepl(node_type,nodeType) & grepl(id_nodes,ID)) 
   
   if(!group){
     nodes_tab <- nodes_tab  %>%
-                 select(timeInSeconds, ID, Pressure) %>%
-                 spread(ID, Pressure) 
+                 select(timeInSeconds, ID, Pressure)
   }
   
   if (group) {
     nodes_tab <- nodes_tab %>%
                  select(ID, Pressure) %>% 
                  group_by(ID) %>%
-                 summarise(p_median = median(Pressure))
+                 summarise(p_min    = min(Pressure),
+                           p_median = median(Pressure),
+                           p_mean   = mean(Pressure),
+                           p_max    = max(Pressure))
  }
   
   if (standardize) {
@@ -264,9 +267,11 @@ inlet_flows <- function(report,id_pipes, group = FALSE){
                  select(timeInSeconds, ID, Flow ) %>%
                  spread(ID, Flow) 
     
-    pipes_tab <- cbind(pipes_tab, 
-                       t(apply(pipes_tab[,2:dim(pipes_tab)[2]],1, Stats_calc)))
-  }   
+    l <- dim(pipes_tab)[2]
+   
+    pipes_tab <- pipes_tab %>% mutate(inflow = rowSums(.[2:l]))
+                      
+   }   
   
   if(group) {
     pipes_tab <- pipes_tab %>%
@@ -284,3 +289,4 @@ inlet_flows <- function(report,id_pipes, group = FALSE){
 }
 
 #...............................................................................
+

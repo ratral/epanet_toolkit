@@ -139,8 +139,6 @@ df$to_node  [pipes$f_median.y < 0 ]  <-  pipes$from_node[pipes$f_median.y < 0]
 
 df <- df %>% mutate(d_flow = abs(f_median.y - f_median.x)) 
 
-
-
 maxs    <- apply(df[4:6], 2, max) 
 mins    <- apply(df[4:6], 2, min)
 
@@ -161,14 +159,20 @@ pipes <- as.tibble(df)
 
 rm(scaled,df)
 
+# suspicious nodes
+
+l <- round(length(pipes$ID)*params$leak_rate,0)
+
+susp_nodes <- as.tibble(c( pipes$from_node[1:l], pipes$to_node[1:l])) %>% 
+              count(value, sort = TRUE )
+
+susp_pipes <- pipes[1:l,] %>% select(ID, from_node, to_node)
 #-------------------------------------------------------------------------------
 # NETWORK VIZUALIZATION
 #-------------------------------------------------------------------------------
 
 nodes <- nodes %>%
          mutate(color = ifelse(is.na(FlowCoef),"grey","red"))
-
-
 
 # generate data for the visNetwork
 

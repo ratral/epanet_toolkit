@@ -19,13 +19,12 @@ library(purrr)
 library(visNetwork)
 
 # Initialize params
-params <- list(base_network    = "base_dma_01", 
+params <- list(base_network    = "base_dma_02", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
                inlet_valves    = "PRV_",
                jt_to_analyze   = "^JT_0[A-K]", # RegExp
                pipe_to_analyze = "PS_",        # RegExp
-               emitter_coeff   = 10000,
                leak_rate       = 0.01, # Percentage of the network with leaks
                demad_factor    = list( names =c( "wd_spring_summer",
                                                  "hw_spring_summer",
@@ -88,14 +87,57 @@ net_input_01  <- read.inp(params$f_names$new_file_inp)
 report_base   <- read.rpt(params$f_names$base_file_report)
 report_leack  <- read.rpt(params$f_names$new_file_report)
 
+#...............................................................................
+# 4. pattern to estimate the evolution of the consumption                   ####
+#...............................................................................
+
 # New Leaks (EMITTERS)
 
 emitters <- as.tibble(net_input_01$Emitters)
 
-base_inlet_flow <- inlet_flows(report_base, params$inlet_valves, group = TRUE)
+# 4.1.- the average inflow f(t) was calculated at each hour t
 
-leak_inlet_flow <- inlet_flows(report_leack, params$inlet_valves, group = TRUE)
+base_inletflow <- inlet_flows(report_base,  params$inlet_valves, group = FALSE) 
+leak_inletflow <- inlet_flows(report_leack, params$inlet_valves, group = FALSE)
 
-print(emitters)
-print(base_inlet_flow)
-print(leak_inlet_flow)
+inletflow      <- full_join(base_inletflow, 
+                            leak_inletflow, 
+                            by = "timeInSeconds") %>%
+                  select(timeInSeconds, inflow.x, inflow.y)  %>%
+                  mutate(leakflow = inflow.y - inflow.x)
+
+
+rm(base_inletflow,leak_inletflow)
+
+# 4.2.- the average network pressure p(t) was calculated at each hour t
+
+rep01 <- eval_nodes (report_base, node_type = "",
+                     id_nodes  = params$jt_to_analyze, 
+                     group = FALSE) %>%
+                     group_by(timeInSeconds) %>%
+                     summarise(p_median = median(Pressure))
+                
+rep02 <- eval_nodes (report_leack, node_type = "",
+                     id_nodes  = params$jt_to_analyze, 
+                     group = FALSE) %>%
+                     group_by(timeInSeconds) %>%
+                     summarise(p_median = median(Pressure))
+
+rep_p_time <-  full_join(rep01, rep02, by = "timeInSeconds" )
+
+global_emitter <-  full_join(rep_p_time,inletflow, by = "timeInSeconds" )
+
+rm(rep01,rep02, rep_p_time)
+
+# calculate a global emitter
+
+global_emitter <- global_emitter %>%
+                  mutate(DMA_FlowCoef = leakflow/sqrt(p_median.y))
+
+# detection capability matrix Mdc Where : 
+# - the rows represent the pontential sensor locations and 
+# - the columns represent the potential leak location
+
+
+
+
