@@ -63,7 +63,9 @@ source(params$f_names$file_func)
 
 net_input_01  <- read.inp(params$f_names$base_file_inp)
 
+junctions <- net_input_01$Junctions
 
+net_input_01$Emitters <- data.frame(ID = emitters$ID, FlowCoef = 0.4)
 
 
 write.inp(net_input_01, params$f_names$new_file_inp)
