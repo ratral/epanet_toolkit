@@ -63,7 +63,9 @@ source(params$f_names$file_func)
 
 net_input_01  <- read.inp(params$f_names$base_file_inp)
 
-
+net_input_01 <- gen_network_w_leaks(net_input_01, 
+                                    params$leak_rate, 
+                                    params$jt_to_analyze )
 
 
 write.inp(net_input_01, params$f_names$new_file_inp)
@@ -93,12 +95,6 @@ report_leack  <- read.rpt(params$f_names$new_file_report)
 # New Leaks (EMITTERS)
 
 emitters <- as.tibble(net_input_01$Emitters)
-
-
-
-
-
-
 
 # 4.1.- the average inflow f(t) was calculated at each hour t
 
@@ -152,7 +148,8 @@ residual <- full_join(rep01, rep02, by = c("timeInSeconds","ID")) %>%
             mutate(D_Pressure = Pressure.y - Pressure.x)
 
 # sensitivity vector
-
+emitters
+summary(inletflow)
 
 # detection capability matrix Mdc Where : 
 # - the rows represent the pontential sensor locations and 

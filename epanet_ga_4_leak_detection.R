@@ -19,14 +19,14 @@ library(purrr)
 library(visNetwork)
 
 # Initialize params
-params <- list(base_network    = "base_dma_02", 
+params <- list(base_network    = "base_dma_01", 
                new_network     = "base_dma_w_leaks",
                functs_name     = "epanet_api_functions",
                inlet_valves    = "PRV_",
                jt_to_analyze   = "^JT_0[A-K]", # RegExp
                pipe_to_analyze = "PS_",        # RegExp
                emitter_coeff   = 10000,
-               leak_rate       = 0.05, # Percentage of the network with leaks
+               leak_rate       = 0.01, # Percentage of the network with leaks
                demad_factor    = list( names =c( "wd_spring_summer",
                                                  "hw_spring_summer",
                                                  "wd_summer_break",

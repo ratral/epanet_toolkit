@@ -55,18 +55,31 @@ params$f_names <- list( base_file_inp    = file.path(params$work_folders$dir_dat
 # Load Functions Standard
 source(params$f_names$file_func)
 
-#...............................................................................
-# 2. GENERATE THE LEAKAGE IN A NEW NETWORK                                  ####
-#...............................................................................
-
-# Read network information from an *.inp
-
+# load model
 net_input_01  <- read.inp(params$f_names$base_file_inp)
 
-junctions <- net_input_01$Junctions
+# initialise th Juction for the leakage analyse
+junctions <- net_input_01$Junctions %>%
+             filter(grepl(params$jt_to_analyze,ID))
 
-net_input_01$Emitters <- data.frame(ID = emitters$ID, FlowCoef = 0.4)
+# initialise data frames
+leak_node <- tibble( "ID"       = character(),
+                     "FlowCoef" = double(),
+                     "leakflow" = double())
 
+
+
+
+# Generate Leack
+emitters_ID <- junctions$ID[sample(1:nrow(junctions),1)]
+
+
+# coef ~= y = 0.1436*(l/s) - 0.0026
+#   Leack(l/s) = 2.0	then coef =  0.285
+
+coefficient <- 0.2846
+
+net_input_01$Emitters <- data.frame(ID = emitters_ID, FlowCoef = coefficient)
 
 write.inp(net_input_01, params$f_names$new_file_inp)
 
@@ -88,19 +101,6 @@ net_input_01  <- read.inp(params$f_names$new_file_inp)
 report_base   <- read.rpt(params$f_names$base_file_report)
 report_leack  <- read.rpt(params$f_names$new_file_report)
 
-#...............................................................................
-# 4. pattern to estimate the evolution of the consumption                   ####
-#...............................................................................
-
-# New Leaks (EMITTERS)
-
-emitters <- as.tibble(net_input_01$Emitters)
-
-
-
-
-
-
 
 # 4.1.- the average inflow f(t) was calculated at each hour t
 
@@ -112,33 +112,16 @@ inletflow      <- full_join(base_inletflow, leak_inletflow,
                   select(timeInSeconds, inflow.x, inflow.y)  %>%
                   mutate(leakflow = inflow.y - inflow.x)
 
+inletflow <- median(inletflow$leakflow)
+
+#-----
+leak_node <- add_row(leak_node, "ID"       = emitters_ID, 
+                                "FlowCoef" = coefficient, 
+                                "leakflow" = inletflow)
+#-------------------------
+
 
 rm(base_inletflow,leak_inletflow)
-
-# 4.2.- the average network pressure p(t) was calculated at each hour t
-
-rep01 <- eval_nodes (report_base, node_type = "",
-                     id_nodes  = params$jt_to_analyze, 
-                     group = FALSE) %>%
-                     group_by(timeInSeconds) %>%
-                     summarise(p_median = median(Pressure))
-                
-rep02 <- eval_nodes (report_leack, node_type = "",
-                     id_nodes  = params$jt_to_analyze, 
-                     group = FALSE) %>%
-                     group_by(timeInSeconds) %>%
-                     summarise(p_median = median(Pressure))
-
-rep_p_time <-  full_join(rep01, rep02, by = "timeInSeconds" )
-
-global_emitter <-  full_join(rep_p_time,inletflow, by = "timeInSeconds" )
-
-rm(rep01,rep02, rep_p_time)
-
-# calculate a global emitter
-
-global_emitter <- global_emitter %>%
-                  mutate(DMA_FlowCoef = leakflow/sqrt(p_median.y))
 
 # residual vector
 
@@ -150,11 +133,21 @@ rep02 <- eval_nodes (report_leack, node_type = "",
                      id_nodes  = params$jt_to_analyze, 
                      group = FALSE)
 
-residual <- full_join(rep01, rep02, by = c("timeInSeconds","ID")) %>%
-            mutate(D_Pressure = Pressure.y - Pressure.x)
+residual_vector <- full_join(rep01, rep02, by = c("timeInSeconds","ID")) %>%
+                   mutate(D_Pressure = Pressure.y - Pressure.x) %>%
+                   select(timeInSeconds,ID, D_Pressure) %>%
+                   group_by(ID) %>%
+                   summarise( rv_min = min(D_Pressure))
+
+residual_matrix <- 1
+
+rm(rep01,rep02)
 
 # sensitivity vector
 
+sensitivity_vector <- residual_vector %>% 
+                      mutate(sensitivity = rv_min/inletflow)
+                      
 
 # detection capability matrix Mdc Where : 
 # - the rows represent the pontential sensor locations and 
