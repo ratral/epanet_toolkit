@@ -71,7 +71,10 @@ nodes <- nodes %>%
 nodes <- nodes$ID
 
 # coef ~= y = 0.1436*(l/s) - 0.0026
-#   Leack(l/s) = 2.0	then coef =  0.285
+#   Leack(l/s) = 2.0	then coef =  0.2846
+
+# coefficient <- c(1.0, 2.0, 3.0 )
+# coefficient <- coefficient * 0.1436 - 0.0026
 
 coefficient <- 0.2846
 
