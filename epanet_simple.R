@@ -1,26 +1,61 @@
+#...............................................................................
 # Initialize Session
+#...............................................................................
+
 cat("\014")
 rm(list=ls()) 
 
+#...............................................................................
 # Installs libraries 
+#...............................................................................
 library(tidyverse)
 library(lubridate)
 library(epanetReader)
 library(epanet2toolkit)
 
+#...............................................................................
+# Initialize params
+## coefficient ~= y = 0.1436*(l/s) - 0.0026 
+##   Leack(l/s) = 2.0	then coef =  0.285
+#...............................................................................
+
+model_files <- list( network      = "./data/base_dma_02.inp",
+                     temp_network = "./data/temp_network.inp",
+                     report       = "./reports/rep_dma_02.rpt",
+                     temp_report  = "./reports/temp_report.rpt",
+                     rds          = "./data/network_results.rds")
+
+params <- list( id_model  = "M00000",
+                id_result = "R00000",
+                nodes_to_analyze  = "^JT_0[A-K]", # RegExp
+                coefficient = 0.2846) 
+
+#...............................................................................
+# Sources
+#...............................................................................
+source("./func/simple_functions.R")
+
+
+#...............................................................................
 # Read Data Network Base
-networks <- read.inp("./data/base_dma_02.inp")
+#...............................................................................
+networks <- read.inp(model_files$network)
 
+#...............................................................................
 # Calculation and generating Report Base
+#...............................................................................
+ENepanet(model_files$network, model_files$report)
 
-ENepanet("./data/base_dma_02.inp", "./reports/rep_dma_02.rpt")
-
+#...............................................................................
 #Read Report
-report  <- read.rpt("./reports/rep_dma_02.rpt")
+#...............................................................................
+report  <- read.rpt(model_files$report)
 
-## Network Components and Results of the Network BASE
+#...............................................................................
+## Generate Network Components and Results of the Network BASE
+#...............................................................................
 
-network_components <- tibble( id_model = "M00000",
+network_components <- tibble( id_model = params$id_model,
                               junctions = list(as_tibble(networks$Junctions)),
                               reservoirs = list(as_tibble(networks$Reservoirs)),
                               tanks = list(as_tibble(networks$Tanks)),
@@ -29,13 +64,19 @@ network_components <- tibble( id_model = "M00000",
                               valves = list(as_tibble(networks$Valves)),
                               coordinates = list(as_tibble(networks$Coordinates)))
 
-network_results    <- tibble( id_model  = "M00000",
-                              id_result = "R00000",
+network_results    <- tibble( id_model  = params$id_model,
+                              id_result = params$id_result,
                               emitters = list(as_tibble(networks$Emitters)),
                               node_results = list(as_tibble(report$nodeResults)),
-                              link_results = list(as_tibble(report$linkResults)))
+                              link_results = list(as_tibble(report$linkResults)),
+                              residual_pressure = NA,
+                              residual_flow = NA)
 
+remove(report)
+
+#...............................................................................
 # Calculation of the pipe length associated each the nodes.
+#...............................................................................
 
 node1 <- network_components$pipes[[1]] %>% 
          select(Node1, Node2, Length) %>% 
@@ -58,25 +99,14 @@ network_components$node_pipe_length <- list(node)
 
 remove(node1, node2, node)
 
-# Generate Models with Leacks
+#...............................................................................
+# Generate Models with Single-Leacks Scenario assumption !!
+#...............................................................................
+      
 
-nodes_to_analyze <- "^JT_0[A-K]" # RegExp
-
-nodes <- network_components$junctions[[network_components$id_model == "M00000"]]
-
-nodes <- nodes %>% 
-         subset(grepl(nodes_to_analyze,ID)) %>%
-         select(ID)
-
+nodes <- network_components$junctions[[network_components$id_model == params$id_model]]
+nodes <- nodes %>% subset(grepl(params$nodes_to_analyze,ID)) %>% select(ID)
 nodes <- nodes$ID
-
-# coef ~= y = 0.1436*(l/s) - 0.0026
-#   Leack(l/s) = 2.0	then coef =  0.2846
-
-# coefficient <- c(1.0, 2.0, 3.0 )
-# coefficient <- coefficient * 0.1436 - 0.0026
-
-coefficient <- 0.2846
 
 # Loop
 i <- 0
@@ -85,33 +115,64 @@ for (node in nodes) {
 
   i <- i + 1
   
-  id_result <- ifelse ( i < 10,   "R0000", 
-               ifelse ( i < 100,  "R000", 
-               ifelse ( i < 1000, "R00", 
-               ifelse ( i < 10000,"R0", "R"))))
-  
-  id_result <-  paste0(id_result, i)
-     
   networks$Emitters <- data.frame(ID = node, FlowCoef = 0.2846)
 
-  write.inp(networks, "./data/temp_network.inp")
+  write.inp(networks, model_files$temp_network)
 
-  ENepanet("./data/temp_network.inp", "./reports/temp_report.rpt")
+  ENepanet(model_files$temp_network, model_files$temp_report)
 
   #Read Report
 
-  report  <- read.rpt("./reports/temp_report.rpt")
+  report  <- read.rpt(model_files$temp_report)
 
   network_results <- network_results %>%
-                     add_row( id_model  = "M00000",
-                              id_result = id_result,
+                     add_row( id_model  = params$id_model,
+                              id_result = result_id(i),
                               emitters = list(as_tibble(networks$Emitters)),
                               node_results = list(as_tibble(report$nodeResults)),
                               link_results = list(as_tibble(report$linkResults)))
 }
 
-# Save the DB of the calculation
-saveRDS(network_results, "./data/network_results.rds")
+remove(i,node, networks, report) # !! REMOVE
 
+#-------------------------------------------------------------------------------
+# Save the DB of the calculation
+#-------------------------------------------------------------------------------
+
+saveRDS(network_results, model_files$rds)
+
+
+#-------------------------------------------------------------------------------
 # Restore the DB of the calculation
-# network_results <- readRDS("./data/network_results.rds")
+#-------------------------------------------------------------------------------
+
+# network_results <- readRDS(rds_file)
+
+#-------------------------------------------------------------------------------
+#  calculation residuals of pressure and flow
+#-------------------------------------------------------------------------------
+
+for(i in c(1:length(network_results$id_result))) {
+  
+  d_pressure <- residual_vector( network_results$node_results[[1]],
+                                 network_results$node_results[[i]],
+                                 reading = "Pressure")
+  
+  d_flow    <- residual_vector( network_results$link_results[[1]],
+                                network_results$link_results[[i]],
+                                reading = "Flow")
+  
+  network_results$residual_pressure[i] <- list(d_pressure)
+  network_results$residual_flow[i]     <- list(d_flow)
+  
+}
+
+remove(i,d_pressure,d_flow)  # !! REMOVE
+
+#-------------------------------------------------------------------------------
+# Save the DB of the calculation
+#-------------------------------------------------------------------------------
+
+saveRDS(network_results,model_files$rds)
+
+
