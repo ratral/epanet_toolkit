@@ -73,7 +73,9 @@ network_results    <- tibble( id_model  = params$id_model,
                               link_results = list(as_tibble(report$linkResults)),
                               residual_pressure = NA,
                               residual_flow = NA,
-                              leak_size = NA)
+                              leak_size = NA,
+                              sensitivity_pressure = NA,
+                              sensitivity_flow = NA)
 
 remove(report)
 
@@ -134,6 +136,8 @@ for (node in nodes) {
                               emitters = list(as_tibble(networks$Emitters)),
                               node_results = list(as_tibble(report$nodeResults)),
                               link_results = list(as_tibble(report$linkResults)))
+  
+  
 }
 
 remove(i,node, networks, report) # !! REMOVE
@@ -164,7 +168,6 @@ remove(i,d_pressure,d_flow)  # !! REMOVE
 # calculation of the leak_size
 #-------------------------------------------------------------------------------
 
-
 leak_size_01 <- network_results$link_results[[1]] %>% 
                 subset(grepl(params$inlets_and_outlets,ID)) %>%
                 select(Timestamp, Flow ) %>%
@@ -194,6 +197,32 @@ remove(i,leak_size_01,leak_size)  # !! REMOVE
 # map(.x = network_results$leak_size, .f = ~mean(.x$LeakFlow, na.rm = TRUE ))
 
 #-------------------------------------------------------------------------------
+# calculation of the sensitivity
+#-------------------------------------------------------------------------------
+
+
+for(i in c(2:length(network_results$id_result))) {
+  
+  sensitivity <-  left_join(network_results$residual_pressure[[i]],
+                            network_results$leak_size[[i]],
+                            by = "Timestamp") %>%
+                   mutate(sensitivity = Residual/LeakFlow) %>% 
+                   select(ID, Timestamp, sensitivity)
+  
+  network_results$sensitivity_pressure[i] <- list(sensitivity)
+  
+  sensitivity <-  left_join(network_results$residual_flow[[i]],
+                            network_results$leak_size[[i]],
+                            by = "Timestamp") %>%
+                   mutate(sensitivity = Residual/LeakFlow) %>% 
+                   select(ID, Timestamp, sensitivity)
+  
+  network_results$sensitivity_flow[i] <- list(sensitivity)
+
+}
+
+
+#-------------------------------------------------------------------------------
 # Save the DB of the calculation
 #-------------------------------------------------------------------------------
 
@@ -207,5 +236,3 @@ saveRDS(network_results,model_files$rds)
 
 #-------------------------------------------------------------------------------
 
-network_results$residual_pressure[[2]]
-network_results$residual_flow[[2]]
