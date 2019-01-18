@@ -27,7 +27,9 @@ model_files <- list( network      = "./data/base_dma_02.inp",
 
 params <- list( id_model  = "M00000",
                 id_result = "R00000",
-                nodes_to_analyze  = "^JT_0[A-K]", # RegExp
+                nodes_to_analyze   = "^JT_0[A-K]", # RegExp
+                pipes_to_analyze   = "^PS_",       # RegExp
+                inlets_and_outlets = "^PRV_",      # RegExp
                 coefficient = 0.2846) 
 
 #...............................................................................
@@ -70,7 +72,8 @@ network_results    <- tibble( id_model  = params$id_model,
                               node_results = list(as_tibble(report$nodeResults)),
                               link_results = list(as_tibble(report$linkResults)),
                               residual_pressure = NA,
-                              residual_flow = NA)
+                              residual_flow = NA,
+                              leak_size = NA)
 
 remove(report)
 
@@ -104,7 +107,7 @@ remove(node1, node2, node)
 #...............................................................................
       
 
-nodes <- network_components$junctions[[network_components$id_model == params$id_model]]
+nodes <- network_components$junctions[[1]]
 nodes <- nodes %>% subset(grepl(params$nodes_to_analyze,ID)) %>% select(ID)
 nodes <- nodes$ID
 
@@ -135,18 +138,6 @@ for (node in nodes) {
 
 remove(i,node, networks, report) # !! REMOVE
 
-#-------------------------------------------------------------------------------
-# Save the DB of the calculation
-#-------------------------------------------------------------------------------
-
-saveRDS(network_results, model_files$rds)
-
-
-#-------------------------------------------------------------------------------
-# Restore the DB of the calculation
-#-------------------------------------------------------------------------------
-
-# network_results <- readRDS(rds_file)
 
 #-------------------------------------------------------------------------------
 #  calculation residuals of pressure and flow
@@ -170,9 +161,51 @@ for(i in c(1:length(network_results$id_result))) {
 remove(i,d_pressure,d_flow)  # !! REMOVE
 
 #-------------------------------------------------------------------------------
+# calculation of the leak_size
+#-------------------------------------------------------------------------------
+
+
+leak_size_01 <- network_results$link_results[[1]] %>% 
+                subset(grepl(params$inlets_and_outlets,ID)) %>%
+                select(Timestamp, Flow ) %>%
+                group_by(Timestamp) %>%
+                summarize(Flow = sum(Flow))
+
+for(i in c(1:length(network_results$id_result))) {
+  
+
+  leak_size  <- network_results$link_results[[i]] %>% 
+                subset(grepl(params$inlets_and_outlets,ID)) %>%
+                select(Timestamp, Flow ) %>%
+                group_by(Timestamp) %>%
+                summarize(Flow = sum(Flow))
+  
+  leak_size <- full_join(leak_size_01, leak_size, by = "Timestamp") %>%
+               mutate(LeakFlow = Flow.y - Flow.x) %>%
+               select(Timestamp, LeakFlow)
+  
+  
+  network_results$leak_size[i] <- list(leak_size)
+
+}
+
+remove(i,leak_size_01,leak_size)  # !! REMOVE
+
+# map(.x = network_results$leak_size, .f = ~mean(.x$LeakFlow, na.rm = TRUE ))
+
+#-------------------------------------------------------------------------------
 # Save the DB of the calculation
 #-------------------------------------------------------------------------------
 
 saveRDS(network_results,model_files$rds)
 
+#-------------------------------------------------------------------------------
+# Restore the DB of the calculation
+#-------------------------------------------------------------------------------
 
+# network_results <- readRDS(rds_file)
+
+#-------------------------------------------------------------------------------
+
+network_results$residual_pressure[[2]]
+network_results$residual_flow[[2]]
