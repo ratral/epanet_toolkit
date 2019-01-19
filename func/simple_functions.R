@@ -10,18 +10,18 @@
 residual_vector <- function(modelation, simulation, reading = "Pressure"){
   
   if(reading == "Pressure") {
-    rv_1 <- modelation %>% select(ID, Timestamp, value = Pressure)
-    rv_2 <- simulation %>% select(ID, Timestamp, value = Pressure)
+    rv_1 <- modelation %>% select(ID, timeInSeconds, value = Pressure)
+    rv_2 <- simulation %>% select(ID, timeInSeconds, value = Pressure)
     
   } else if(reading == "Flow") {
-    rv_1 <- modelation %>% select(ID, Timestamp, value = Flow)
-    rv_2 <- simulation %>% select(ID, Timestamp, value = Flow)
+    rv_1 <- modelation %>% select(ID, timeInSeconds, value = Flow)
+    rv_2 <- simulation %>% select(ID, timeInSeconds, value = Flow)
   } 
   
   residual_vector   <- left_join(rv_1, rv_2, 
-                        by = c('ID','Timestamp')) %>%
+                        by = c('ID','timeInSeconds')) %>%
                         mutate(Residual = value.x - value.y) %>%
-                        select(ID, Timestamp, Residual)
+                        select(ID, timeInSeconds, Residual)
   
   # residual_vector   <- left_join(simulation,
   #                                residual_vector, 
