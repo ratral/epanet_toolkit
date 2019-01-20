@@ -9,7 +9,6 @@ rm(list=ls())
 # Installs libraries 
 #...............................................................................
 library(tidyverse)
-library(lubridate)
 library(epanetReader)
 library(epanet2toolkit)
 
@@ -75,7 +74,9 @@ network_results    <- tibble( id_model  = params$id_model,
                               residual_flow = NA,
                               leak_size = NA,
                               sensitivity_pressure = NA,
-                              sensitivity_flow = NA)
+                              sensitivity_flow = NA,
+                              sensor_pressure = NA,
+                              sensor_flow = NA)
 
 remove(report)
 
@@ -144,7 +145,7 @@ remove(i,node, networks, report) # !! REMOVE
 
 
 #-------------------------------------------------------------------------------
-#  calculation residuals of pressure and flow
+#  calculation RESIDUALS of pressure and flow
 #-------------------------------------------------------------------------------
 
 for(i in c(1:length(network_results$id_result))) {
@@ -203,25 +204,64 @@ remove(i,leak_size_01,leak_size)  # !! REMOVE
 
 for(i in c(2:length(network_results$id_result))) {
   
-  sensitivity <-  left_join(network_results$residual_pressure[[i]],
-                            network_results$leak_size[[i]],
-                            by = "timeInSeconds") %>%
-                   mutate(sensitivity = Residual/LeakFlow) %>% 
-                   select(ID, timeInSeconds, sensitivity)
+  sensitivity_pressure <-  left_join(network_results$residual_pressure[[i]],
+                                     network_results$leak_size[[i]],
+                                     by = "timeInSeconds") %>%
+                           mutate(Sensitivity = Residual/LeakFlow) %>% 
+                           select(ID, timeInSeconds, Sensitivity)
   
-  network_results$sensitivity_pressure[i] <- list(sensitivity)
+  sensitivity_flow <-  left_join(network_results$residual_flow[[i]],
+                                 network_results$leak_size[[i]],
+                                 by = "timeInSeconds") %>%
+                       mutate(Sensitivity = Residual/LeakFlow) %>% 
+                       select(ID, timeInSeconds, Sensitivity)
   
-  sensitivity <-  left_join(network_results$residual_flow[[i]],
-                            network_results$leak_size[[i]],
-                            by = "timeInSeconds") %>%
-                   mutate(sensitivity = Residual/LeakFlow) %>% 
-                   select(ID, timeInSeconds, sensitivity)
-  
-  network_results$sensitivity_flow[i] <- list(sensitivity)
+  network_results$sensitivity_pressure[i] <- list(sensitivity_pressure)
+  network_results$sensitivity_flow[i]     <- list(sensitivity_flow)
 
 }
 
+remove(i,sensitivity_pressure, sensitivity_flow)  # !! REMOVE
+#-------------------------------------------------------------------------------
 
+for(i in c(2:length(network_results$id_result))) {
+
+sensor_pressure <- left_join(network_results$residual_pressure[[i]],
+                             network_results$sensitivity_pressure[[i]],
+                             by = c('ID','timeInSeconds')) %>%
+                             mutate(ID_leak  = network_results$emitters[[i]]$ID) %>%
+                             select(ID, timeInSeconds , Residual, Sensitivity, ID_leak)
+
+
+sensor_flow <- left_join(network_results$residual_flow[[i]],
+                         network_results$sensitivity_flow[[i]],
+                         by = c('ID','timeInSeconds')) %>%
+                         mutate(ID_leak  = network_results$emitters[[i]]$ID) %>%
+                         select(ID, timeInSeconds , Residual, Sensitivity, ID_leak)
+
+network_results$sensor_pressure <- list(sensor_pressure)
+network_results$sensor_flow     <- list(sensor_flow)
+
+}
+
+remove(i,sensor_pressure, sensor_flow) 
+
+#cor(residual, sensitivity) 
+
+sensor_pressure <- network_results$sensor_pressure[[2]]
+sensor_flow     <- network_results$sensor_flow[[2]]
+
+for(i in c(3:length(network_results$id_result))) {
+
+  sensor_pressure <- rbind( sensor_pressure,
+                            network_results$sensor_pressure[[i]])
+  
+  sensor_flow     <- rbind( sensor_flow,
+                            network_results$sensor_flow[[i]])
+
+}
+
+sensor_PF <- rbind(sensor_pressure, sensor_flow)
 #-------------------------------------------------------------------------------
 # Save the DB of the calculation
 #-------------------------------------------------------------------------------
@@ -232,18 +272,16 @@ saveRDS(network_results,model_files$rds)
 # Restore the DB of the calculation
 #-------------------------------------------------------------------------------
 
-cat("\014")
-rm(list=ls()) 
-
-library(tidyverse)
-library(lubridate)
-library(epanetReader)
-library(epanet2toolkit)
-
-
-network_results <- readRDS("./data/network_results.rds")
-
+#  cat("\014")
+#  rm(list=ls()) 
+#  
+#  library(tidyverse)
+#  library(epanetReader)
+#  library(epanet2toolkit)
+#  
+#  
+#  network_results <- readRDS("./data/network_results.rds")
+#  
 #-------------------------------------------------------------------------------
 
-spread(network_results$residual_pressure[[2]], timeInSeconds, Residual)
 

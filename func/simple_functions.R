@@ -20,7 +20,7 @@ residual_vector <- function(modelation, simulation, reading = "Pressure"){
   
   residual_vector   <- left_join(rv_1, rv_2, 
                         by = c('ID','timeInSeconds')) %>%
-                        mutate(Residual = value.x - value.y) %>%
+                        mutate(Residual = abs(value.x - value.y)) %>%
                         select(ID, timeInSeconds, Residual)
   
   # residual_vector   <- left_join(simulation,
